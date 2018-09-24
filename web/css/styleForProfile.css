@@ -1,0 +1,31 @@
+.container .btn-success{
+    margin-top: 20px;
+}
+.left-menu{
+    float: right;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.panel{
+    margin-top: 80px;
+}
+.panel-body .img-circle{
+    width: 15%;
+    height: 15%;
+}
+.panel-body .img-thumbnail{
+    width: 30%;
+    height: 30%;
+}
+.table .btn-success{
+    margin-top: 0px;
+}
+.table .btn-danger{
+    margin-top: 0px;
+}
+.panel-body .bt-danger{
+    margin-top: 0px;
+}

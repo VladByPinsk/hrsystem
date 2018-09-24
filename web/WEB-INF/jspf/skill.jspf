@@ -1,0 +1,126 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}" key="locale.resume.skill" var="skill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.skillName"
+	var="skillName" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.enterSkillName"
+	var="enterSkillName" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.wrongSkilName"
+	var="wrongSkillName" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.skillLevel"
+	var="skillLevel" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.noviceSkill"
+	var="noviceSkill" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.skill.intermediateSkill" var="intermediateSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.advancedSkill"
+	var="advancedSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.expertSkill"
+	var="expertSkill" />
+<div class="panel-group col-xs-8 clearfix">
+	<div class="panel panel-primary clearfix">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">${skill}</h3>
+			<a class="btn btn-default  pull-right" data-toggle="collapse"
+				href="#collapseThird">${addField}</a>
+
+		</div>
+		<div id="collapseThird" class="collapse">
+
+			<div class="panel-body">
+				<form class="form-horizontal" action="Controller" method="post">
+					<input type="hidden" name="command" value="add-skill"> <input
+						type="hidden" value="${requestScope.resume.idResume}"
+						name="idResume">
+
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="skillName">${skillName}*:</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" name="skillName"
+								placeholder="${enterSkillName}" required>
+						</div>
+						<c:if test="${requestScope.errorSkillName}">
+							<div class="col-xs-2">
+								<p class="text-danger">${wrongSkillName}</p>
+							</div>
+						</c:if>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="skillLevel">${skillLevel}</label>
+						<div class="col-xs-6">
+							<select class="form-control" name="skillLevel">
+								<option value="novice">${noviceSkill}</option>
+								<option value="intermediate">${intermediateSkill}</option>
+								<option value="advanced">${advancedSkill}</option>
+								<option value="expert">${expertSkill}</option>
+							</select>
+						</div>
+					</div>
+					<div class="left-menu clearfix">
+						<input type="submit" class="btn btn-success btn-lg"
+							value="${addResume}">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<c:forEach items="${requestScope.skillList}" var="skill">
+
+		<div class="panel panel-default clearfix">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title pull-left">${skill.name}:
+					${skill.raiting}</h3>
+				<a class="btn btn-danger  pull-right"
+					href="Controller?command=delete-skill&idSkill=${skill.idSkill}">${remove}</a>
+				<a class="btn btn-default  pull-right" data-toggle="collapse"
+					href="#${skill.idSkill}">${edit}</a>
+			</div>
+			<div id="${skill.idSkill}" class="collapse">
+				<form class="form-horizontal" action="Controller" method="post">
+					<input type="hidden" name="command" value="edit-skill"> <input
+						type="hidden" value="${skill.idSkill}" name="idSkill">
+					<div class="panel-body">
+
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="skillName">${skillName}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="skillName"
+									value="${skill.name}">
+							</div>
+							<c:if test="${requestScope.errorSkillName}">
+								<div class="col-xs-2">
+									<p class="text-danger">${wrongSkillName}</p>
+								</div>
+							</c:if>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="skillLevel">${skillLevel}</label>
+							<div class="col-xs-6">
+								<select class="form-control" name="skillLevel">
+									<option value="novice">${noviceSkill}</option>
+									<option value="intermediate">${intermediateSkill}</option>
+									<option value="advanced">${advancedSkill}</option>
+									<option value="expert">${expertSkill}</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="left-menu clearfix">
+							<input type="submit" class="btn btn-success btn-lg"
+								value="${edit}">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</c:forEach>
+
+
+</div>

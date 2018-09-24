@@ -1,0 +1,201 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}" key="locale.resume.workplace.dateBegin"
+	var="dateBegin" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.enterDateBegin" var="enterDateBegin" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.wrongDateBegin" var="wrongDateBegin" />
+
+<fmt:message bundle="${locale}" key="locale.resume.workplace.dateEnd"
+	var="dateEnd" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.enterDateEnd" var="enterDateEnd" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.wrongDateEnd" var="wrondDateEnd" />
+<fmt:message bundle="${locale}" key="locale.resume.workplace"
+	var="workplace" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.workPlaceName" var="workPlaceName" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.enterWorkPlaceName"
+	var="enterWorkPlaceName" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.wrongWorkPlaceName"
+	var="wrongWorkPlaceName" />
+
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.workPlacePosition" var="workPlacePosition" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.enterWorkPlacePosition"
+	var="enterWorkPlacePosition" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.workplace.wrongWorkPlacePosition"
+	var="wronWorkPlacePosition" />
+
+
+<div class="panel-group col-xs-8 clearfix">
+	<div class="panel panel-primary clearfix">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">${workplace}</h3>
+			<a class="btn btn-default  pull-right" data-toggle="collapse"
+				href="#collapseFourth">${addField}</a>
+
+		</div>
+		<div id="collapseFourth" class="collapse">
+
+			<div class="panel-body">
+				<form class="form-horizontal" action="Controller" method="post">
+					<input type="hidden" name="command" value="add-workplace">
+					<input type="hidden" value="${requestScope.resume.idResume}"
+						name="idResume">
+
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="workPlaceName">${workPlaceName}*:</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" name="workPlaceName"
+								placeholder="${enterWorkPlaceName}" required>
+						</div>
+						<c:if test="${requestScope.errorWorkPlaceName}">
+							<div class="col-xs-2">
+								<p class="text-danger">${wrongWorkPlaceName}</p>
+							</div>
+						</c:if>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="workPlacePosition">${workPlacePosition}*:</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" name="workPlacePosition"
+								placeholder="${enterWorkPlacePosition}" required>
+						</div>
+						<c:if test="${requestScope.errorWorkPlacePosition}">
+							<div class="col-xs-2">
+								<p class="text-danger">${wrongWorkPlacePosition}</p>
+							</div>
+						</c:if>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="dateBegin">${dateBegin}*:</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" name="dateBegin"
+								placeholder="${enterDateBegin}" required>
+						</div>
+						<c:if test="${requestScope.errorDateBegin}">
+							<div class="col-xs-2">
+								<p class="text-danger">${wrongDateBegin}</p>
+							</div>
+						</c:if>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="dateEnd">${dateEnd}*:</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" name="dateEnd"
+								placeholder="${enterDateEnd}" required>
+						</div>
+						<c:if test="${requestScope.errorDateEnd}">
+							<div class="col-xs-2">
+								<p class="text-danger">${wrongDateEnd}</p>
+							</div>
+						</c:if>
+					</div>
+
+
+					<div class="left-menu clearfix">
+						<input type="submit" class="btn btn-success btn-lg"
+							value="${addResume}">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<c:forEach items="${requestScope.workPlaceList}" var="workPlace">
+
+		<div class="panel panel-default clearfix">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title pull-left">${workPlace.companyName}:
+					${workPlace.position}</h3>
+				<a class="btn btn-danger  pull-right"
+					href="Controller?command=delete-workPlace&idWorkPlace=${workPlace.idWorkPlace}">${remove}</a>
+				<a class="btn btn-default  pull-right" data-toggle="collapse"
+					href="#${workPlace.idWorkPlace}">${edit}</a>
+			</div>
+			<div id="${workPlace.idWorkPlace}" class="collapse">
+				<form class="form-horizontal" action="Controller" method="post">
+					<input type="hidden" name="command" value="edit-workPlace">
+					<input type="hidden" value="${workPlace.idWorkPlace}"
+						name="idWorkPlace">
+					<div class="panel-body">
+
+
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="workPlaceName">${workPlaceName}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="workPlaceName"
+									value="${workPlace.companyName}">
+							</div>
+							<c:if test="${requestScope.errorWorkPlaceName}">
+								<div class="col-xs-2">
+									<p class="text-danger">${wrongWorkPlaceName}</p>
+								</div>
+							</c:if>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="workPlacePosition">${workPlacePosition}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="workPlacePosition"
+									value="${workPlace.position} ">
+							</div>
+							<c:if test="${requestScope.errorWorkPlacePosition}">
+								<div class="col-xs-2">
+									<p class="text-danger">${wrongWorkPlacePosition}</p>
+								</div>
+							</c:if>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="dateBegin">${dateBegin}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="dateBegin"
+									value="${workPlace.dateBegin}">
+							</div>
+							<c:if test="${requestScope.errorDateBegin}">
+								<div class="col-xs-2">
+									<p class="text-danger">${wrongDateBegin}</p>
+								</div>
+							</c:if>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="dateEnd">${dateEnd}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="dateEnd"
+									value="${workPlace.dateEnd}">
+							</div>
+							<c:if test="${requestScope.errorDateEnd}">
+								<div class="col-xs-2">
+									<p class="text-danger">${wrongDateEnd}</p>
+								</div>
+							</c:if>
+						</div>
+
+
+						<div class="left-menu clearfix">
+							<input type="submit" class="btn btn-success btn-lg"
+								value="${edit}">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</c:forEach>
+</div>

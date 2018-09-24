@@ -1,0 +1,74 @@
+.nav .btn-success {
+	margin-top: 7px;
+	margin-left: 5px;
+}
+
+.employer .bnt-warning {
+	margin-bottom: 20px;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.jumbotron {
+	background: url(../images/fon.jpg) 5% 45%;
+}
+
+.jumbotron h1 {
+	color: #FFFFF0;
+}
+
+.about-work {
+	margin-left: 10px;
+	float: left;
+}
+
+.about-work .btn {
+	margin-top: 60px;
+	margin-bottom: -40px;
+}
+
+.count-workplace {
+	border-left: 3px;
+	border-left-color: #FFFFF0;
+	border-left-style: solid;
+	margin-left: 820px;
+}
+
+.count-workplace h2 {
+	color: #FFFFF0;
+	margin-bottom: -7px;
+	margin-left: 10px;
+}
+
+.count-workplace p {
+	color: #FFFFF0;
+	margin-left: 10px;
+}
+
+.list-group-item-heading img {
+	width: 100%;
+	height: 100%;
+}
+
+.container .btn-success {
+	margin-bottom: 20px;
+}
+
+.list-group-item-heading .img-circle {
+	width: 100%;
+	height: 80%;
+}
+
+.error-image {
+	width: 100%;
+	height: 80%;
+}
+
+.form-horizontal .control-label {
+	/* text-align:right; */
+	text-align: left;
+}

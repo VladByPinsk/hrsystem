@@ -1,0 +1,295 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}" key="locale.resume.fio" var="fio" />
+<fmt:message bundle="${locale}" key="locale.resume.resEmail"
+	var="resEmail" />
+<fmt:message bundle="${locale}" key="locale.resume.birthDate"
+	var="birthDate" />
+<fmt:message bundle="${locale}" key="locale.resume.skype" var="skype" />
+<fmt:message bundle="${locale}" key="locale.resume.phone" var="phone" />
+<fmt:message bundle="${locale}" key="locale.resume.military"
+	var="military" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.military.notSpecified" var="notSpecified" />
+<fmt:message bundle="${locale}" key="locale.resume.military.fit"
+	var="fit" />
+<fmt:message bundle="${locale}" key="locale.resume.military.notFit"
+	var="notFit" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.military.militaryDepartment"
+	var="militaryDepartment" />
+<fmt:message bundle="${locale}" key="locale.resume.military.notBound"
+	var="notBound" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.noviceSkill"
+	var="noviceSkill" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.skill.intermediateSkill" var="intermediateSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.advancedSkill"
+	var="advancedSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.expertSkill"
+	var="expertSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill" var="skill" />
+<fmt:message bundle="${locale}" key="locale.resume.skill.noSkill"
+	var="noSkill" />
+<fmt:message bundle="${locale}" key="locale.resume.education"
+	var="education" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.noEducation" var="noEducation" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.notSpecified" var="notSpecified" />
+<fmt:message bundle="${locale}" key="locale.resume.education.incomplete"
+	var="incomplete" />
+<fmt:message bundle="${locale}" key="locale.resume.education.higher"
+	var="higher" />
+<fmt:message bundle="${locale}" key="locale.resume.education.master"
+	var="master" />
+<fmt:message bundle="${locale}" key="locale.resume.education.phD"
+	var="phD" />
+<fmt:message bundle="${locale}" key="locale.resume.education.secondary"
+	var="secondary" />
+<fmt:message bundle="${locale}" key="locale.resume.education.techSchool"
+	var="techSchool" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.phDCandidate" var="phDCandidate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.notAssigned" var="notAssigned" />
+<fmt:message bundle="${locale}" key="locale.resume.education.assigned"
+	var="assigned" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.toBeAssigned" var="toBeAssigned" />
+<fmt:message bundle="${locale}" key="locale.resume.noLanguage"
+	var="noLanguage" />
+<fmt:message bundle="${locale}" key="locale.resume.language"
+	var="language" />
+<fmt:message bundle="${locale}" key="locale.resume.language.elementary"
+	var="elementary" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowPreIntermediate"
+	var="lowPreIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.preIntermediate" var="preIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowIntermediate" var="lowIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.intermediate" var="intermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowUppermediate" var="lowUppermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.upperMediate" var="upperMediate" />
+<fmt:message bundle="${locale}" key="locale.resume.language.preAdvanced"
+	var="preAdvanced" />
+<fmt:message bundle="${locale}" key="locale.resume.language.advanced"
+	var="advanced" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.preProficient" var="preProficient" />
+<fmt:message bundle="${locale}" key="locale.resume.language.proficient"
+	var="proficient" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.nativeSpeaker" var="nativeSpeaker" />
+<fmt:message bundle="${locale}" key="locale.resume.workplace"
+	var="workplace" />
+<fmt:message bundle="${locale}" key="locale.resume.noWorkplace"
+	var="noWorkplace" />
+<fmt:message bundle="${locale}" key="locale.resume.workplace.from"
+	var="from" />
+<fmt:message bundle="${locale}" key="locale.resume.workplace.to"
+	var="to" />
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">${requestScope.resume.name}</h3>
+	</div>
+	<div class="panel-body">
+		<p>
+			<strong>${fio}:</strong>
+		</p>
+		<p>${requestScope.applicant.surname}
+			${requestScope.applicant.name} ${requestScope.applicant.secondName}</p>
+		<p>
+			<strong>${resEmail}:</strong>
+		</p>
+		<p>${requestScope.applicant.email}</p>
+		<p>
+			<strong>${birthDate}:</strong>
+		</p>
+		<p>${requestScope.applicant.birthDate}</p>
+		<p>
+			<strong>${skype}:</strong>
+		</p>
+		<p>${requestScope.applicant.skype}</p>
+		<p>
+			<strong>${phone}:</strong>
+		</p>
+		<p>${requestScope.applicant.contactPhone}</p>
+		<p>
+			<strong>${military}:</strong>
+		</p>
+		<c:choose>
+			<c:when test="${requestScope.resume.militatyType=='NOT_SPECIFIED'}">
+				<p>${notSpecified}</p>
+			</c:when>
+			<c:when test="${requestScope.resue.militatyType=='FIT'}">
+				<p>${fit}</p>
+			</c:when>
+			<c:when test="${requestScope.resume.militatyType=='NOT_FIT'}">
+				<p>${notFit}</p>
+			</c:when>
+			<c:when
+				test="${requestScope.resume.militatyType=='MILITARY_DEPARTMENT'}">
+				<p>${militaryDepartment}</p>
+			</c:when>
+			<c:when test="${requestScope.resume.militatyType=='NOT_BOUND'}">
+				<p>${notBound}</p>
+			</c:when>
+		</c:choose>
+
+		<p>
+			<strong>${skill}:</strong>
+		</p>
+		<c:choose>
+			<c:when test="${empty requestScope.skillList}">
+				<p>${noSkill}</p>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${requestScope.skillList}" var="skill">
+					<c:choose>
+						<c:when test="${skill.raiting=='NOVICE'}">
+							<p>${skill.name}:${noviceSkill}</p>
+						</c:when>
+						<c:when test="${skill.raiting=='INTERMEDIATE'}">
+							<p>${skill.name}:${intermediateSkill}</p>
+						</c:when>
+						<c:when test="${skill.raiting=='ADVANCED'}">
+							<p>${skill.name}:${advancedSkill}</p>
+						</c:when>
+						<c:when test="${skill.raiting=='EXPERT'}">
+							<p>${skill.name}:${expertSkill}</p>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		<p>
+			<strong>${education}:</strong>
+		</p>
+		<c:choose>
+			<c:when test="${empty requestScope.educationList}">
+				<p>${noEducation}</p>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${requestScope.educationList}" var="education">
+					<p>${education.institution},${education.faculty},${education.department},
+						<c:choose>
+							<c:when test="${education.education=='NOT_SPECIFIED'}">
+									${notSpecified}, 
+								</c:when>
+							<c:when test="${education.education=='UNIVERSITY_INCOMPLITE'}">
+									${incomplete}, 
+								</c:when>
+							<c:when test="${education.education=='HIGHER'}">
+									${higher}, 
+								</c:when>
+							<c:when test="${education.education=='MASTER'}">
+									${master}, 
+								</c:when>
+							<c:when test="${education.education=='PHD'}">
+									${phD}, 
+								</c:when>
+							<c:when test="${education.education=='SECONDARY'}">
+									${secondary}, 
+								</c:when>
+							<c:when test="${education.education=='TECHNICAL_SHOOL'}">
+									${techSchool}, 
+								</c:when>
+							<c:when test="${education.education=='PHD_CANDIDATE'}">
+									${phDCandidate}, 
+								</c:when>
+						</c:choose>
+						${education.gradYear},
+						<c:choose>
+							<c:when test="${education.postGraduate=='NOT_ASSIGNED'}">
+									${notAssigned}. 
+								</c:when>
+							<c:when test="${education.postGraduate=='ASSIGNED'}">
+									${assigned}.
+								</c:when>
+							<c:when test="${education.postGraduate=='TO_BE_ASSIGNED'}">
+									${toBeAssigned}.
+								</c:when>
+						</c:choose>
+					</p>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		<p>
+			<strong>${language}:</strong>
+		</p>
+		<c:choose>
+			<c:when test="${empty requestScope.resumeLangList}">
+				<p>${noLanguage}</p>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${requestScope.resumeLangList}" var="language">
+					<c:choose>
+						<c:when test="${language.raiting=='NOT_SPECIFIED'}">
+							<p>${language.name}-${notSpecified}</p>
+						</c:when>
+						<c:when test="${language.raiting=='A1'}">
+							<p>${language.name}-${elementary}</p>
+						</c:when>
+						<c:when test="${language.raiting=='A1_PLUS'}">
+							<p>${language.name}-${lowPreIntermediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='A2'}">
+							<p>${language.name}-${preIntermediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='A2_PLUS'}">
+							<p>${language.name}-${lowIntermediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='B1'}">
+							<p>${language.name}-${intermediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='B1_PLUS'}">
+							<p>${language.name}-${lowUppermediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='B2'}">
+							<p>${language.name}-${upperMediate}</p>
+						</c:when>
+						<c:when test="${language.raiting=='B2_PLUS'}">
+							<p>${language.name}-${preAdvanced}</p>
+						</c:when>
+						<c:when test="${language.raiting=='C1'}">
+							<p>${language.name}-${advanced}</p>
+						</c:when>
+						<c:when test="${language.raiting=='C1_PLUS'}">
+							<p>${language.name}-${preProficient}</p>
+						</c:when>
+						<c:when test="${language.raiting=='C2'}">
+							<p>${language.name}-${proficient}</p>
+						</c:when>
+						<c:when test="${language.raiting=='NATIVE_SPEAKER'}">
+							<p>${language.name}-${nativeSpeaker}</p>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		<p>
+			<strong>${workplace}:</strong>
+		</p>
+		<c:choose>
+			<c:when test="${empty requestScope.workPlaceList}">
+				<p>${noWorkplace}</p>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${requestScope.workPlaceList}" var="workPlace">
+					<p>${workPlace.companyName},${workPlace.position}(${from}
+						${workPlace.dateBegin} ${to} ${workPlace.dateEnd})</p>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>

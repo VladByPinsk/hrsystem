@@ -1,0 +1,203 @@
+$("#language").change(function() {
+
+	switch ($('#language').val()) {
+
+	case "not specified":
+		$('#for-not-spec').removeClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+
+	case "A1":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').removeClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "A1 plus":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').removeClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "A2":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').removeClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "A2 plus":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').removeClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "B1":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').removeClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "B1 plus":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').removeClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "B2":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').removeClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "B2 plus":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').removeClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "C1":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').removeClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "C1 plus":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').removeClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "C2":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').removeClass('hidden');
+		$('#for-native').addClass('hidden');
+		break;
+	case "Native speaker":
+		$('#for-not-spec').addClass('hidden');
+		$('#for-a1').addClass('hidden');
+		$('#for-a1-plus').addClass('hidden');
+		$('#for-a2').addClass('hidden');
+		$('#for-a2-plus').addClass('hidden');
+		$('#for-b1').addClass('hidden');
+		$('#for-b1-plus').addClass('hidden');
+		$('#for-b2').addClass('hidden');
+		$('#for-b2-plus').addClass('hidden');
+		$('#for-c1').addClass('hidden');
+		$('#for-c1-plus').addClass('hidden');
+		$('#for-c2').addClass('hidden');
+		$('#for-native').removeClass('hidden');
+		break;
+	}
+
+});

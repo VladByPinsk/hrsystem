@@ -1,0 +1,348 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}" key="locale.resume.education"
+	var="education" />
+<fmt:message bundle="${locale}" key="locale.resume.addField"
+	var="addField" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.institution" var="institution" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.enterInstitution" var="enterInstitution" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.wrongInstitution" var="wrongIstitution" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.istitutionPattern" var="istitutionPattern" />
+<fmt:message bundle="${locale}" key="locale.resume.education.faculty"
+	var="faculty" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.enterFaculty" var="enterFaculty" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.wrongFaculty" var="wrongFaculty" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.facultyPattern" var="facultyPattern" />
+<fmt:message bundle="${locale}" key="locale.resume.education.department"
+	var="department" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.enterDepartment" var="enterDepartment" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.wrongDepartment" var="wrongDepartment" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.departmentPattern" var="departmentPattern" />
+<fmt:message bundle="${locale}" key="locale.resume.education.educField"
+	var="educField" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.notSpecified" var="notSpecified" />
+<fmt:message bundle="${locale}" key="locale.resume.education.incomplete"
+	var="incomplete" />
+<fmt:message bundle="${locale}" key="locale.resume.education.higher"
+	var="higher" />
+<fmt:message bundle="${locale}" key="locale.resume.education.master"
+	var="master" />
+<fmt:message bundle="${locale}" key="locale.resume.education.phD"
+	var="phD" />
+<fmt:message bundle="${locale}" key="locale.resume.education.secondary"
+	var="secondary" />
+<fmt:message bundle="${locale}" key="locale.resume.education.techSchool"
+	var="techSchool" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.phDCandidate" var="phDCandidate" />
+<fmt:message bundle="${locale}" key="locale.resume.education.gradYear"
+	var="gradYear" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.enterGradYear" var="enterGradYear" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.gradYearPattern" var="gradYearPattern" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.wrongGradYear" var="wrongGradYear" />
+<fmt:message bundle="${locale}" key="locale.resume.education.postGrad"
+	var="postGrad" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.notAssigned" var="notAssigned" />
+<fmt:message bundle="${locale}" key="locale.resume.education.assigned"
+	var="assigned" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.toBeAssigned" var="toBeAssigned" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.education.removeEducation" var="removeEducation" />
+<fmt:message bundle="${locale}" key="locale.areYouSure" var="areYouSure" />
+<fmt:message bundle="${locale}" key="locale.close" var="close" />
+
+<div class="panel-group col-xs-8 clearfix">
+	<div class="panel panel-primary clearfix">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">${education}</h3>
+			<a class="btn btn-default  pull-right" data-toggle="collapse"
+				href="#collapseOne">${addField}</a>
+		</div>
+		<div id="collapseOne" class="collapse">
+			<div class="panel-body">
+				<form class="form-horizontal" action="Controller" method="post"
+					id="form-education">
+					<input type="hidden" name="command" value="add-education">
+					<input type="hidden" value="${requestScope.resume.idResume}"
+						name="idResume">
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="institution">${institution}*:</label>
+						<div class="col-xs-7">
+							<input type="text" class="form-control" name="institution"
+								placeholder="${enterInstitution}" required maxlength="15">
+							<c:choose>
+								<c:when test="${requestScope.errorInstitution}">
+									<div class="help-block">
+										<p class="text-danger">${wrongIstitution}</p>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="help-block">
+										<p>${istitutionPattern}</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="faculty">${faculty}*:</label>
+						<div class="col-xs-7">
+							<input type="text" class="form-control" name="faculty"
+								placeholder="${enterFaculty}" required maxlength="15">
+							<c:choose>
+								<c:when test="${requestScope.errorFaculty}">
+									<div class="help-block">
+										<p class="text-danger">${wrongFaculty}</p>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="help-block">
+										<p>${facultyPattern}</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="department">${department}*:</label>
+						<div class="col-xs-7">
+							<input type="text" class="form-control" name="department"
+								placeholder="${enterDepartment}" required maxlength="15">
+							<c:choose>
+								<c:when test="${requestScope.errorDepartment}">
+									<div class="help-block">
+										<p class="text-danger">${wrongDepartment}</p>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="help-block">
+										<p>${departmentPattern}</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="educField">${educField}</label>
+						<div class="col-xs-7">
+							<select class="form-control" name="educField">
+								<option value="not specified">${notSpecified}</option>
+								<option value="university incomplete">${incomplete}</option>
+								<option value="higher">${higher}</option>
+								<option value="master">${master}</option>
+								<option value="PhD">${phD}</option>
+								<option value="secondary">${secondary}</option>
+								<option value="technical school">${techSchool}</option>
+								<option value="PhD candidate">${phDCandidate}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="gradYear">${gradYear}*:</label>
+						<div class="col-xs-7">
+							<input type="text" class="form-control" name="gradYear"
+								placeholder="${enterGradYear}" required pattern="\d{4}">
+							<c:choose>
+								<c:when test="${requestScope.errorGradYear}">
+									<div class="help-block">
+										<p class="text-danger">${wrongGradYear}</p>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="help-block">
+										<p>${gradYearPattern}</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="postGrad">${postGrad}*:</label>
+						<div class="col-xs-7">
+							<select class="form-control" name="postGrad">
+								<option value="not assigned">${notAssigned}</option>
+								<option value="assigned">${assigned}</option>
+								<option value="to be assigned">${toBeAssigned}</option>
+							</select>
+						</div>
+					</div>
+					<div class="left-menu clearfix">
+						<input type="submit" class="btn btn-success btn-lg"
+							value="${addResume}" id="add-education">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<c:forEach items="${requestScope.educationList}" var="education">
+		<div class="panel panel-default clearfix">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title pull-left">${education.institution},${education.faculty},${education.department}</h3>
+				<button class="btn btn-danger pull-right" data-toggle="modal"
+					data-target="#${education.gradYear}${education.institution}${education.idEducation}">${remove}</button>
+				<a class="btn btn-default  pull-right" data-toggle="collapse"
+					href="#${education.idEducation}${education.institution}${education.gradYear}">${edit}</a>
+			</div>
+			<div
+				id="${education.idEducation}${education.institution}${education.gradYear}"
+				class="collapse">
+				<form class="form-horizontal" action="Controller" method="post"
+					id="form-edit-education">
+					<input type="hidden" name="command" value="edit-education">
+					<input type="hidden" value="${education.idEducation}"
+						name="idEducation">
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="institution">${institution}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="institution"
+									value="${education.institution}" required maxlength="15">
+								<c:choose>
+									<c:when test="${requestScope.errorInstitution}">
+										<div class="help-block">
+											<p class="text-danger">${wrongIstitution}</p>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="help-block">
+											<p>${istitutionPattern}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="faculty">${faculty}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="faculty"
+									value="${education.faculty}" required maxlength="15">
+								<c:choose>
+									<c:when test="${requestScope.errorFaculty}">
+										<div class="help-block">
+											<p class="text-danger">${wrongFaculty}</p>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="help-block">
+											<p>${facultyPattern}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="department">${department}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="department"
+									value="${education.department}" required maxlength="15">
+								<c:choose>
+									<c:when test="${requestScope.errorDepartment}">
+										<div class="help-block">
+											<p class="text-danger">${wrongDepartment}</p>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="help-block">
+											<p>${departmentPattern}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="educField">${educField}</label>
+							<div class="col-xs-6">
+								<select class="form-control" name="educField">
+									<option value="not specified">${notSpecified}</option>
+									<option value="university incomplete">${incomplete}</option>
+									<option value="higher">${higher}</option>
+									<option value="master">${master}</option>
+									<option value="PhD">${phD}</option>
+									<option value="secondary">${secondary}</option>
+									<option value="technical school">${techSchool}</option>
+									<option value="PhD candidate">${phDCandidate}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="gradYear">${gradYear}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="gradYear"
+									value="${education.gradYear}" required pattern="\d{4}">
+								<c:choose>
+									<c:when test="${requestScope.errorGradYear}">
+										<div class="help-block">
+											<p class="text-danger">${wrongGradYear}</p>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="help-block">
+											<p>${gradYearPattern}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="postGrad">${postGrad}*:</label>
+							<div class="col-xs-6">
+								<select class="form-control" name="postGrad">
+									<option value="not assigned">${notAssigned}</option>
+									<option value="assigned">${assigned}</option>
+									<option value="to be assigned">${toBeAssigned}</option>
+								</select>
+							</div>
+						</div>
+						<div class="left-menu clearfix">
+							<input type="submit" class="btn btn-success btn-lg"
+								value="${edit}" id="edit-education">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="modal fade"
+			id="${education.gradYear}${education.institution}${education.idEducation}"
+			tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title">${removeEducation}</h3>
+					</div>
+					<div class="modal-body">
+						<p>${areYouSure}
+							"${education.institution},${education.faculty},${education.department}"?</p>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">${close}</button>
+						<a class="btn btn-danger  pull-right"
+							href="Controller?command=delete-education&idEducation=${education.idEducation}">${remove}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+</div>

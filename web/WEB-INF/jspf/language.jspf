@@ -1,0 +1,275 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.languageName" var="languageName" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.enterLanguageName" var="enterLanguageName" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.wrongLanguageName" var="wrongLanguageName" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.languageLevel" var="languageLevel" />
+<fmt:message bundle="${locale}" key="locale.resume.language.elementary"
+	var="elementary" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowPreIntermediate"
+	var="lowPreIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.preIntermediate" var="preIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowIntermediate" var="lowIntermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.intermediate" var="intermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.lowUppermediate" var="lowUppermediate" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.upperMediate" var="upperMediate" />
+<fmt:message bundle="${locale}" key="locale.resume.language.preAdvanced"
+	var="preAdvanced" />
+<fmt:message bundle="${locale}" key="locale.resume.language.advanced"
+	var="advanced" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.preProficient" var="preProficient" />
+<fmt:message bundle="${locale}" key="locale.resume.language.proficient"
+	var="proficient" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.nativeSpeaker" var="nativeSpeaker" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.languageNamePattern"
+	var="languageNamePattern" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForSpec"
+	var="textForSpec" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForA1"
+	var="textForA1" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForA1plus" var="textForA1plus" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForA2"
+	var="textForA2" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForA2plus" var="textForA2plus" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForB1"
+	var="textForB1" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForB1plus" var="textForB1plus" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForB2"
+	var="textForB2" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForB2plus" var="textForB2plus" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForC1"
+	var="textForC1" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForC1plus" var="textForC1plus" />
+<fmt:message bundle="${locale}" key="locale.resume.language.textForC2"
+	var="textForC2" />
+<fmt:message bundle="${locale}"
+	key="locale.resume.language.textForNative" var="textForNative" />
+
+
+<div class="panel-group col-xs-8 clearfix">
+	<div class="panel panel-primary clearfix">
+		<div class="panel-heading clearfix">
+			<h3 class="panel-title pull-left">${language}</h3>
+			<a class="btn btn-default  pull-right" data-toggle="collapse"
+				href="#collapseSecond">${addField}</a>
+		</div>
+		<div id="collapseSecond" class="collapse">
+			<div class="panel-body">
+				<form class="form-horizontal" action="Controller" method="post"
+					id="form-language">
+					<input type="hidden" name="command" value="add-resume-language">
+					<input type="hidden" value="${requestScope.resume.idResume}"
+						name="idResume">
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="languageName">${languageName}*:</label>
+						<div class="col-xs-8">
+							<input type="text" class="form-control" name="languageName"
+								placeholder="${enterLanguageName}" required maxlength="15">
+							<c:choose>
+								<c:when test="${requestScope.errorLanguageName}">
+									<div class="help-block">
+										<p class="text-danger">${wrongLanguageName}</p>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="help-block">
+										<p>${languageNamePattern}</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="languageLevel">${languageLevel}</label>
+						<div class="col-xs-8">
+							<select class="form-control" name="languageLevel" id="language">
+								<option value="not specified">${notSpecified}</option>
+								<option value="A1">${elementary}</option>
+								<option value="A1 plus">${lowPreIntermediate}</option>
+								<option value="A2">${preIntermediate}</option>
+								<option value="A2 plus">${lowIntermediate}</option>
+								<option value="B1">${intermediate}</option>
+								<option value="B1 plus">${lowUppermediate}</option>
+								<option value="B2">${upperMediate}</option>
+								<option value="B2 plus">${preAdvanced}</option>
+								<option value="C1">${advanced}</option>
+								<option value="C1 plus">${preProficient}</option>
+								<option value="C2">${proficient}</option>
+								<option value="Native speaker">${nativeSpeaker}</option>
+							</select>
+							<div class="help-block" id="for-not-spec">
+								<p>${textForScpec}</p>
+							</div>
+							<div class="help-block hidden" id="for-a1">
+								<p>${textForA1}</p>
+							</div>
+							<div class="help-block hidden" id="for-a1-plus">
+								<p>${textForA1plus}</p>
+							</div>
+							<div class="help-block hidden" id="for-a2">
+								<p>${textForA2}</p>
+							</div>
+							<div class="help-block hidden" id="for-a2-plus">
+								<p>${textForA2plus}</p>
+							</div>
+							<div class="help-block hidden" id="for-b1">
+								<p>${textForB1}</p>
+							</div>
+							<div class="help-block hidden" id="for-b1-plus">
+								<p>${textForB1plus}</p>
+							</div>
+							<div class="help-block hidden" id="for-b2">
+								<p>${textForB2}</p>
+							</div>
+							<div class="help-block hidden" id="for-b2-plus">
+								<p>${textForB2plus}</p>
+							</div>
+							<div class="help-block hidden" id="for-c1">
+								<p>${textForC1}</p>
+							</div>
+							<div class="help-block hidden" id="for-c1-plus">
+								<p>${textForC1plus}</p>
+							</div>
+							<div class="help-block hidden" id="for-c2">
+								<p>${textForC2}</p>
+							</div>
+							<div class="help-block hidden" id="for-native">
+								<p>${textForNative}</p>
+							</div>
+						</div>
+					</div>
+					<div class="left-menu clearfix">
+						<input type="submit" class="btn btn-success btn-lg"
+							value="${addResume}" id="add-language">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<c:forEach items="${requestScope.resumeLangList}" var="resumeLang">
+		<div class="panel panel-default clearfix">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title pull-left">
+					<c:choose>
+						<c:when test="${resumeLang.raiting=='NOT_SPECIFIED'}">
+							<p>${resumeLang.name}-${notSpecified}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='A1'}">
+							<p>${resumeLang.name}-${elementary}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='A1_PLUS'}">
+							<p>${resumeLang.name}-${lowPreIntermediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='A2'}">
+							<p>${resumeLang.name}-${preIntermediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='A2_PLUS'}">
+							<p>${resumeLang.name}-${lowIntermediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='B1'}">
+							<p>${resumeLang.name}-${intermediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='B1_PLUS'}">
+							<p>${resumeLang.name}-${lowUppermediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='B2'}">
+							<p>${resumeLang.name}-${upperMediate}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='B2_PLUS'}">
+							<p>${resumeLang.name}-${preAdvanced}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='C1'}">
+							<p>${resumeLang.name}-${advanced}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='C1_PLUS'}">
+							<p>${resumeLang.name}-${preProficient}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='C2'}">
+							<p>${resumeLang.name}-${proficient}</p>
+						</c:when>
+						<c:when test="${resumeLang.raiting=='NATIVE_SPEAKER'}">
+							<p>${resumeLang.name}-${nativeSpeaker}</p>
+						</c:when>
+					</c:choose>
+				</h3>
+				<a class="btn btn-danger  pull-right"
+					href="Controller?command=delete-resume-language&idLanguage=${resumeLang.idLanguage}">${remove}</a>
+				<a class="btn btn-default  pull-right" data-toggle="collapse"
+					href="#${resumeLang.idLanguage}${resumeLang.name}">${edit}</a>
+			</div>
+			<div id="${resumeLang.idLanguage}${resumeLang.name}" class="collapse">
+				<form class="form-horizontal" action="Controller" method="post" id="form-edit-language">
+					<input type="hidden" name="command" value="edit-resume-language">
+					<input type="hidden" value="${resumeLang.idLanguage}"
+						name="idLanguage">
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="languageName">${languageName}*:</label>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" name="languageName"
+									value="${resumeLang.name}" required maxlength="15">
+								<c:choose>
+									<c:when test="${requestScope.errorLanguageName}">
+										<div class="help-block">
+											<p class="text-danger">${wrongLanguageName}</p>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="help-block">
+											<p>${languageNamePattern}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-xs-2" for="languageLevel">${languageLevel}</label>
+							<div class="col-xs-6">
+								<select class="form-control" name="languageLevel">
+									<option value="not specified">${notSpecified}</option>
+									<option value="A1">${elementary}</option>
+									<option value="A1 plus">${lowPreIntermediate}</option>
+									<option value="A2">${preIntermediate}</option>
+									<option value="A2 plus">${lowIntermediate}</option>
+									<option value="B1">${intermediate}</option>
+									<option value="B1 plus">${lowUppermediate}</option>
+									<option value="B2">${upperMediate}</option>
+									<option value="B2 plus">${preAdvanced}</option>
+									<option value="C1">${advanced}</option>
+									<option value="C1 plus">${preProficient}</option>
+									<option value="C2">${proficient}</option>
+									<option value="Native speaker">${nativeSpeaker}</option>
+								</select>
+							</div>
+						</div>
+						<div class="left-menu clearfix">
+							<input type="submit" class="btn btn-success btn-lg"
+								value="${edit}" id="edit-language">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</c:forEach>
+</div>

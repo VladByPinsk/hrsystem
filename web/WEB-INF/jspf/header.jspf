@@ -1,0 +1,40 @@
+<fmt:setLocale value="EN" />
+<c:if test="${sessionScope.locale!=null}">
+	<fmt:setLocale value="${sessionScope.locale}" />
+</c:if>
+<fmt:setBundle basename="resource.locale" var="locale" />
+<fmt:message bundle="${locale}" key="locale.header.findJob"
+	var="findJob" />
+<fmt:message bundle="${locale}" key="locale.header.registration"
+	var="registration" />
+<fmt:message bundle="${locale}" key="locale.header.forEmployer"
+	var="forEmployer" />
+<fmt:message bundle="${locale}" key="locale.header.resume" var="resume" />
+<fmt:message bundle="${locale}" key="locale.header.vacancy"
+	var="vacancy" />
+<fmt:message bundle="${locale}" key="locale.header.applicants"
+	var="applicants" />
+
+<br>
+<br>
+<div class="jumbotron clearfix">
+
+	<div class="about-work">
+		<h1>${findJob}</h1>
+		<form action="Controller">
+			<p>
+				<input type="hidden" name="command" value="to-registration-page">
+				<input type="submit" class="btn btn-primary btn-lg"
+					value="${registration}">
+			</p>
+		</form>
+	</div>
+	<div class="count-workplace visible-lg visible-md">
+		<h2>${sessionScope.countResume}</h2>
+		<p>${resume}</p>
+		<h2>${sessionScope.countVacancy}</h2>
+		<p>${vacancy}</p>
+		<h2>${sessionScope.countApplicants}</h2>
+		<p>${applicants}</p>
+	</div>
+</div>

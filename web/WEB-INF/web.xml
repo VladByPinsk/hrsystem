@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>HrSystem</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<servlet>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>by.training.hrsystem.controller.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/Controller</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>by.training.hrsystem.listener.HrSystemServletContextListener</listener-class>
+	</listener>
+	<filter>
+		<display-name>CharsetFilter</display-name>
+		<filter-name>CharsetFilter</filter-name>
+		<filter-class>by.training.hrsystem.filter.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>character-encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharsetFilter</filter-name>
+		<url-pattern>/Controller</url-pattern>
+	</filter-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error/error400.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error/error500.jsp</location>
+	</error-page>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/tld/paging.tlg</taglib-uri>
+			<taglib-location>/WEB-INF/tld/paging.tlg</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>
