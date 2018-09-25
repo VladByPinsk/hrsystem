@@ -1,22 +1,13 @@
 package by.training.hrsystem.domain.type;
 
 public enum PassType {
-	PASS {
-		{
-			passType = "pass";
-		}
-	},
-	NOT_PASS {
-		{
-			passType = "not pass";
-		}
-	},
-	UNKNOWN {
-		{
-			passType = "unknown";
-		}
-	};
-	String passType;
+	PASS("pass"), NOT_PASS("not pass"), UNKNOWN("unknown");
+
+	private final String passType;
+
+	private PassType(final String passType) {
+		this.passType = passType;
+	}
 
 	public String getPassType() {
 		return passType;

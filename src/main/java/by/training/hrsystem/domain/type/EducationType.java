@@ -1,48 +1,20 @@
 package by.training.hrsystem.domain.type;
 
 public enum EducationType {
-	NOT_SPECIFIED{
-		{
-			educationType = "not specified";
-		}
-	},
-	UNIVERSITY_INCOMPLITE{
-		{
-			educationType="university incomplete";
-		}
-	},
-	HIGHER{
-		{
-			educationType="higher";
-		}
-	},
-	MASTER{
-		{
-			educationType="master";
-		}
-	},
-	PHD{
-		{
-			educationType="PhD";
-		}
-	},
-	SECONDARY{
-		{
-			educationType="secondary";
-		}
-	},
-	TECHNICAL_SHOOL{
-		{
-			educationType="technical school";
-		}
-	},
-	PHD_CANDIDATE{
-		{
-			educationType="PhD candidate";
-		}
-	};
+	NOT_SPECIFIED("not specified"),
+	UNIVERSITY_INCOMPLITE("university incomplete"),
+	HIGHER("higher"),
+	MASTER("master"),
+	PHD("PhD"),
+	SECONDARY("secondary"),
+	TECHNICAL_SHOOL("technical school"),
+	PHD_CANDIDATE("PhD candidate");
 	
-	String educationType;
+	private final String educationType;
+	
+	private EducationType(final String educationType) {
+		this.educationType = educationType;
+	}
 
 	public String getEducationType() {
 		return educationType;

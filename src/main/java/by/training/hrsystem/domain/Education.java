@@ -1,6 +1,13 @@
 package by.training.hrsystem.domain;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
 import by.training.hrsystem.domain.type.EducationType;
 import by.training.hrsystem.domain.type.PostgraduateType;
 import lombok.AllArgsConstructor;
@@ -16,17 +23,27 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Entity(name = "Education")
 public class Education implements Serializable {
 
 	private static final long serialVersionUID = 8686405203355662547L;
 
+	@Id
 	private int idEducation;
+	
+	@Column
 	private String institution;
 	private String faculty;
 	private String department;
+	
+	@Enumerated(EnumType.STRING)
+	@Column
 	private EducationType education;
 	private int course;
 	private int gradYear;
+	
+	@Enumerated(EnumType.STRING)
+	@Column
 	private PostgraduateType postGraduate;
 	private int idResume;
 

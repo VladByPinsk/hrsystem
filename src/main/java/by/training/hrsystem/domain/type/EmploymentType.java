@@ -1,26 +1,16 @@
 package by.training.hrsystem.domain.type;
 
 public enum EmploymentType {
-	FULL_TIME {
-		{
-			currencyType = "full time";
-		}
-	},
-	PART_TIME {
-		{
-			currencyType = "part time";
-		}
-	},
-	CONTRACTUAL {
-		{
-			currencyType = "contractual";
-		}
-	};
+	FULL_TIME("full time"), PART_TIME("part time"), CONTRACTUAL("contractual");
 
-	String currencyType;
+	private final String employmentType;
 
-	public String getCurrencyType() {
-		return currencyType;
+	private EmploymentType(final String employmentType) {
+		this.employmentType = employmentType;
+	}
+
+	public String getEmploymentType() {
+		return employmentType;
 	}
 
 }

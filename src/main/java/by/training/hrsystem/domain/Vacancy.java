@@ -6,7 +6,6 @@ import java.util.Date;
 import by.training.hrsystem.domain.type.ActiveType;
 import by.training.hrsystem.domain.type.CurrencyType;
 import by.training.hrsystem.domain.type.EmploymentType;
-import by.training.hrsystem.domain.type.HotType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,7 +33,7 @@ public class Vacancy implements Serializable {
 	private String condition;
 	private EmploymentType employmentType;
 	private ActiveType active;
-	private HotType hotType;
+	private boolean isHot;
 	private String hrEmail;
 
 }

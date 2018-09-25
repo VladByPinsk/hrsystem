@@ -1,21 +1,16 @@
 package by.training.hrsystem.domain.type;
 
 public enum ActiveType {
-	ACTIVE {
-		{
-			currencyType = "active";
-		}
-	},
-	NON_ACTIVE {
-		{
-			currencyType = "non active";
-		}
-	};
+	ACTIVE("active"), NON_ACTIVE("non active");
 
-	String currencyType;
+	private final String activeType;
 
-	public String getCurrencyType() {
-		return currencyType;
+	private ActiveType(final String activeType) {
+		this.activeType = activeType;
+	}
+
+	public String getActiveType() {
+		return activeType;
 	}
 
 }

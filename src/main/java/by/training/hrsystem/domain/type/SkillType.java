@@ -1,28 +1,13 @@
 package by.training.hrsystem.domain.type;
 
 public enum SkillType {
-	NOVICE {
-		{
-			skillType = "novice";
-		}
-	},
-	INTERMEDIATE {
-		{
-			skillType = "intermediate";
-		}
-	},
-	ADVANCED {
-		{
-			skillType = "advanced";
-		}
-	},
-	EXPERT {
-		{
-			skillType = "expert";
-		}
-	};
+	NOVICE("novice"), INTERMEDIATE("intermediate"), ADVANCED("advanced"), EXPERT("expert");
 
-	String skillType;
+	private final String skillType;
+
+	private SkillType(final String skillType) {
+		this.skillType = skillType;
+	}
 
 	public String getSkillType() {
 		return skillType;

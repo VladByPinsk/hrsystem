@@ -2,35 +2,13 @@ package by.training.hrsystem.domain.type;
 
 public enum MilitaryType {
 
-	NOT_SPECIFIED {
-		{
-			millatryType = "not specified";
-		}
-	},
-	FIT {
-		{
-			millatryType = "fit";
-		}
-	},
-	NOT_FIT {
-		{
-			millatryType = "not fit";
-		}
-	},
-	MILITARY_DEPARTMENT {
-		{
-			millatryType = "military department";
-		}
-	},
-	NOT_BOUND {
-		{
-			millatryType = "not bound";
-		}
-	};
+	NOT_SPECIFIED("not specified"), FIT("fit"), NOT_FIT("not fit"), MILITARY_DEPARTMENT(
+			"military department"), NOT_BOUND("not bound");
 
 	String millatryType;
 
-	private MilitaryType() {
+	private MilitaryType(final String millatryType) {
+		this.millatryType = millatryType;
 	}
 
 	public String getMillatryType() {

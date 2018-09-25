@@ -1,18 +1,13 @@
 package by.training.hrsystem.domain.type;
 
 public enum CurrencyType {
-	RUB {
-		{
-			currencyType = "rub";
-		}
-	},
-	DOLAR {
-		{
-			currencyType = "dolar";
-		}
-	};
+	RUB("rub"), DOLAR("dolar");
 
-	String currencyType;
+	private final String currencyType;
+
+	private CurrencyType(final String currencyType) {
+		this.currencyType = currencyType;
+	}
 
 	public String getCurrencyType() {
 		return currencyType;
