@@ -119,7 +119,7 @@ public final class Attribute {
   public static final String ID_INTERVIEW_MARK = "idInterviewMark";
   public static final String MARK_TECHICAL = "listMarkTechnical";
   public static final String MARK_PRELIMINARY = "listMarkPreliminary";
-  private Attribute() {}
-
   public static final String TRANSL_EXIST = "translExist";
+
+  private Attribute() {}
 }

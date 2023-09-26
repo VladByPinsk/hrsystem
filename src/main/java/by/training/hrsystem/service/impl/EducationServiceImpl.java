@@ -6,7 +6,6 @@ import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Education;
 import by.training.hrsystem.service.EducationService;
 import by.training.hrsystem.service.exeption.ServiceException;
-import by.training.hrsystem.service.exeption.education.WrongCourseServiceException;
 import by.training.hrsystem.service.exeption.education.WrongDepartmentServiceException;
 import by.training.hrsystem.service.exeption.education.WrongEducationServiceException;
 import by.training.hrsystem.service.exeption.education.WrongFacultyServiceException;

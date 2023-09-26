@@ -23,37 +23,38 @@ import org.apache.logging.log4j.Logger;
 
 public class ShowApplicantsWhoLeaveResume implements Command {
 
-	private static final Logger logger = LogManager.getLogger(ShowApplicantsWhoLeaveResume.class);
+  private static final Logger logger = LogManager.getLogger(ShowApplicantsWhoLeaveResume.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("ShowApplicantsWhoLiveResume.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ShowApplicantsWhoLiveResume.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idVacancy = request.getParameter(Attribute.ID_VACANCY);
-		String lang = (session == null) ? null : (String) request.getSession().getAttribute(Attribute.LOCALE);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				VerifyService verifyService = serviceFactory.gerVerifyService();
-				VacancyService vacancyService = serviceFactory.getVacancyService();
-				Vacancy vacancy = vacancyService.selectVacancyById(idVacancy, lang);
-				List<Verify> verifyList = verifyService.verifyList(idVacancy);
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idVacancy = request.getParameter(Attribute.ID_VACANCY);
+    String lang =
+        (session == null) ? null : (String) request.getSession().getAttribute(Attribute.LOCALE);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        VerifyService verifyService = serviceFactory.gerVerifyService();
+        VacancyService vacancyService = serviceFactory.getVacancyService();
+        Vacancy vacancy = vacancyService.selectVacancyById(idVacancy, lang);
+        List<Verify> verifyList = verifyService.verifyList(idVacancy);
 
-				request.setAttribute(Attribute.VERIFY_LIST, verifyList);
-				request.setAttribute(Attribute.VACANCY, vacancy);
-				request.getRequestDispatcher(PageName.HR_LIST_APPLICANTS_PAGE).forward(request, response);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong!");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		QueryUtil.saveHttpQuery(request);
-		logger.debug("ShowApplicantsWhoLiveResume.execute() end");
-
-	}
+        request.setAttribute(Attribute.VERIFY_LIST, verifyList);
+        request.setAttribute(Attribute.VACANCY, vacancy);
+        request.getRequestDispatcher(PageName.HR_LIST_APPLICANTS_PAGE).forward(request, response);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong!");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("ShowApplicantsWhoLiveResume.execute() end");
+  }
 }

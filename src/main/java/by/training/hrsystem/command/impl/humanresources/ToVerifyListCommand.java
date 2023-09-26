@@ -21,47 +21,49 @@ import org.apache.logging.log4j.Logger;
 
 public class ToVerifyListCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(ToVerifyListCommand.class);
-	private static final int PAGE_NUMBER = 1;
-	private static final int VACANCY_PER_PAGE = 1;
+  private static final Logger logger = LogManager.getLogger(ToVerifyListCommand.class);
+  private static final int PAGE_NUMBER = 1;
+  private static final int VACANCY_PER_PAGE = 1;
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-		logger.debug("ToVerifyPageCommand.execute()  start");
+    logger.debug("ToVerifyPageCommand.execute()  start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		if (user != null && user.getRole() == Role.HR) {
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    if (user != null && user.getRole() == Role.HR) {
 
-			int pageNumber = PAGE_NUMBER;
-			if (request.getParameter(Attribute.PAGE) != null) {
-				pageNumber = Integer.parseInt(request.getParameter(Attribute.PAGE));
-			}
-			ServiceFactory serviceFactory = ServiceFactory.getInstance();
-			VacancyService vacancyService = serviceFactory.getVacancyService();
-			String lang = (session == null) ? null : (String) request.getSession().getAttribute(Attribute.LOCALE);
+      int pageNumber = PAGE_NUMBER;
+      if (request.getParameter(Attribute.PAGE) != null) {
+        pageNumber = Integer.parseInt(request.getParameter(Attribute.PAGE));
+      }
+      ServiceFactory serviceFactory = ServiceFactory.getInstance();
+      VacancyService vacancyService = serviceFactory.getVacancyService();
+      String lang =
+          (session == null) ? null : (String) request.getSession().getAttribute(Attribute.LOCALE);
 
-			try {
-				List<Vacancy> vacancyList = vacancyService.selectVacancyByHrEmail(user.getEmail(), lang,
-						(pageNumber - 1) * VACANCY_PER_PAGE, VACANCY_PER_PAGE);
-				request.setAttribute(Attribute.VACANCIES, vacancyList);
-				int vacancyAmount = vacancyService.countVacancyByHrEmail(user.getEmail());
-				int pageAmount = (int) Math.ceil(vacancyAmount * 1.0 / VACANCY_PER_PAGE);
-				request.setAttribute(Attribute.PAGE_AMONT, pageAmount);
-				request.setAttribute(Attribute.PAGE, pageNumber);
-				request.getRequestDispatcher(PageName.HR_VERIFY_PAGE).forward(request, response);
+      try {
+        List<Vacancy> vacancyList =
+            vacancyService.selectVacancyByHrEmail(
+                user.getEmail(), lang, (pageNumber - 1) * VACANCY_PER_PAGE, VACANCY_PER_PAGE);
+        request.setAttribute(Attribute.VACANCIES, vacancyList);
+        int vacancyAmount = vacancyService.countVacancyByHrEmail(user.getEmail());
+        int pageAmount = (int) Math.ceil(vacancyAmount * 1.0 / VACANCY_PER_PAGE);
+        request.setAttribute(Attribute.PAGE_AMONT, pageAmount);
+        request.setAttribute(Attribute.PAGE, pageNumber);
+        request.getRequestDispatcher(PageName.HR_VERIFY_PAGE).forward(request, response);
 
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		QueryUtil.saveHttpQuery(request);
-		logger.debug("ToVerifyPageCommand.execute()  end");
-
-	}
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("ToVerifyPageCommand.execute()  end");
+  }
 }

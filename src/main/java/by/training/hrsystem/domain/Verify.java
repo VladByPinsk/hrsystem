@@ -17,12 +17,11 @@ import lombok.ToString;
 @ToString
 public class Verify implements Serializable {
 
-	private static final long serialVersionUID = -3057614338988817055L;
+  private static final long serialVersionUID = -3057614338988817055L;
 
-	private int idVerify;
-	private PassType pass;
+  private int idVerify;
+  private PassType pass;
 
-	private Vacancy vacancy;
-	private Resume resume;
-
+  private Vacancy vacancy;
+  private Resume resume;
 }

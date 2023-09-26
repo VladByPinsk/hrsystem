@@ -8,11 +8,9 @@ import by.training.hrsystem.service.exeption.skill.WrongRaitingServiceException;
 import by.training.hrsystem.service.exeption.skill.WrongSkillNameServiceException;
 
 public interface SkillService {
-  void addSkill(String name, String raiting, String idResume)
-      throws ServiceException;
+  void addSkill(String name, String raiting, String idResume) throws ServiceException;
 
-  void updateSkill(String name, String raiting, String idSkill)
-      throws ServiceException;
+  void updateSkill(String name, String raiting, String idSkill) throws ServiceException;
 
   void deleteSkill(String idSkill) throws ServiceException;
 

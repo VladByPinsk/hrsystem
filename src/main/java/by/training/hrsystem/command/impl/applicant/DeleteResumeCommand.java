@@ -18,31 +18,33 @@ import org.apache.logging.log4j.Logger;
 
 public class DeleteResumeCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(DeleteResumeCommand.class);
+  private static final Logger logger = LogManager.getLogger(DeleteResumeCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("DeleteResumeCommand.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("DeleteResumeCommand.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idResume = request.getParameter(Attribute.ID_RESUME);
-		String prevQuery = (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
-		if (user != null && user.getRole() == Role.APPLICANT) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				ResumeService resumeService = serviceFactory.getResumeService();
-				resumeService.deleteResume(idResume);
-				response.sendRedirect(prevQuery);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idResume = request.getParameter(Attribute.ID_RESUME);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    if (user != null && user.getRole() == Role.APPLICANT) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ResumeService resumeService = serviceFactory.getResumeService();
+        resumeService.deleteResume(idResume);
+        response.sendRedirect(prevQuery);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
 
-		logger.debug("DeleteResumeCommand.execute() stop");
-	}
+    logger.debug("DeleteResumeCommand.execute() stop");
+  }
 }

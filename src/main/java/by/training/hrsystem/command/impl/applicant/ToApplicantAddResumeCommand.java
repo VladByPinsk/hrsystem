@@ -15,22 +15,21 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ToApplicantAddResumeCommand implements Command {
-	private static final Logger logger = LogManager.getLogger(ToApplicantAddResumeCommand.class);
+  private static final Logger logger = LogManager.getLogger(ToApplicantAddResumeCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		logger.debug("ToApplicantAddResumeCommand.execute() start");
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null :(User) session.getAttribute(Attribute.USER);
-		if (user != null && user.getRole() == Role.APPLICANT) {
-			request.getRequestDispatcher(PageName.APPLICANT_ADD_RESUME_PAGE).forward(request, response);
-			QueryUtil.saveHttpQuery(request);
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		logger.debug("ToApplicantAddResumeCommand.execute() end");
-	}
-
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ToApplicantAddResumeCommand.execute() start");
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    if (user != null && user.getRole() == Role.APPLICANT) {
+      request.getRequestDispatcher(PageName.APPLICANT_ADD_RESUME_PAGE).forward(request, response);
+      QueryUtil.saveHttpQuery(request);
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    logger.debug("ToApplicantAddResumeCommand.execute() end");
+  }
 }
