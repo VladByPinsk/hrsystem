@@ -1,20 +1,19 @@
 package by.training.hrsystem.dao.impl;
 
+import by.training.hrsystem.dao.WorkPlaceDAO;
+import by.training.hrsystem.dao.exception.DAOException;
+import by.training.hrsystem.dao.pool.ConnectionPool;
+import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
+import by.training.hrsystem.domain.WorkPlace;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.training.hrsystem.dao.WorkPlaceDAO;
-import by.training.hrsystem.dao.exception.DAOException;
-import by.training.hrsystem.dao.pool.ConnectionPool;
-import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
-import by.training.hrsystem.domain.WorkPlace;
 /**
  * Class {@code DBWorkPlaceDAO} implements
  * {@link by.training.hrsystem.dao.WorkPlaceDAO WorkPlaceDAO} and override all

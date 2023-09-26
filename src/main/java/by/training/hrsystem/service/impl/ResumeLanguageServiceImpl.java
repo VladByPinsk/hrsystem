@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.ResumeLangugaeDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -16,13 +11,16 @@ import by.training.hrsystem.service.exeption.languagelevel.LanguageNameServiceEx
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ResumeLanguageServiceImpl implements ResumeLanguageService {
 	private static final Logger logger = LogManager.getLogger(ResumeLanguageServiceImpl.class);
 
 	@Override
 	public void addLanguage(String name, String skillLevel, String idResume)
-			throws LanguageNameServiceException, LanguageLevelServiceException, ServiceException {
+			throws ServiceException {
 		logger.debug("ResumeLanguageImpl.addLanguage() : user's data is valid (name = {}, skillLevel={}, idResume={})",
 				name, skillLevel, idResume);
 
@@ -52,7 +50,7 @@ public class ResumeLanguageServiceImpl implements ResumeLanguageService {
 
 	@Override
 	public void updateLanguage(String name, String skillLevel, String idLanguage)
-			throws LanguageNameServiceException, LanguageLevelServiceException, ServiceException {
+			throws ServiceException {
 		logger.debug(
 				"ResumeLanguageImpl.updateLanguage() : user's data is valid (name = {}, skillLevel={}, idLanguage={})",
 				name, skillLevel, idLanguage);

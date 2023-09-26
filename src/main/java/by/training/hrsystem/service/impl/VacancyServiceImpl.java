@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.VacancyDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -19,6 +14,9 @@ import by.training.hrsystem.service.exeption.vacancy.WrongVacancyNameServiceExce
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class VacancyServiceImpl implements VacancyService {
 	private static final Logger logger = LogManager.getLogger(VacancyServiceImpl.class);
@@ -26,8 +24,8 @@ public class VacancyServiceImpl implements VacancyService {
 	@Override
 	public void addVacancy(String vacancyName, String salary, String currency, String description, String duties,
 			String conditions, String employmentType, String hrEmail)
-			throws WrongVacancyNameServiceException, WrongSalaryServiceException, WrongDescriptionServiceException,
-			WrongConditionsServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"VacancyServiceImpl.addVacancy() : user's data is valid (vacancyName = {}, salary={}, currency = {}, "
 						+ "description = {}, conditions={}, employmantType={}, hrEmail={})",
@@ -75,8 +73,8 @@ public class VacancyServiceImpl implements VacancyService {
 	@Override
 	public void updateVacancy(String vacancyName, String salary, String currency, String description, String duties,
 			String conditions, String employmentType, String idVacancy)
-			throws WrongVacancyNameServiceException, WrongSalaryServiceException, WrongDescriptionServiceException,
-			WrongDutyServiceException, WrongConditionsServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"VacancyServiceImpl.addVacancy() : user's data is valid (vacancyName = {}, salary={}, currency = {}, "
 						+ "description = {}, conditions={}, employmantType={}, idVacancy={})",
@@ -285,8 +283,8 @@ public class VacancyServiceImpl implements VacancyService {
 
 	@Override
 	public void addTranslVacancy(String idVacancy, String lang, String vacancyName, String description, String duties,
-			String conditions) throws WrongVacancyNameServiceException, WrongDescriptionServiceException,
-			WrongConditionsServiceException, ServiceException {
+			String conditions) throws
+            ServiceException {
 		logger.debug(
 				"VacancyServiceImpl.addTranslVacancy : user's data is valid (Idvacancy={}, lang = {}, vacancyName = {},  "
 						+ "description = {}, duties={}, conditions={}, employmantType={}, hrEmail={})",
@@ -403,10 +401,7 @@ public class VacancyServiceImpl implements VacancyService {
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
 			VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
-			if (vacancyDAO.translExist(Parser.parseStringtoInt(idVacancy))) {
-				return true;
-			} else
-				return false;
+            return vacancyDAO.translExist(Parser.parseStringtoInt(idVacancy));
 		} catch (DAOException e) {
 			throw new ServiceException("Service layer: cannot make a selectUserByEmail operation", e);
 		}

@@ -15,19 +15,19 @@ import by.training.hrsystem.domain.role.Role;
 
 public class ToPrivateOfficeCommand implements Command {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = (User) request.getSession().getAttribute(Attribute.USER);
-		if (user != null) {
-			if (user.getRole() == Role.APPLICANT) {
-				request.getRequestDispatcher(PageName.APPLICANT_OFFICE_PAGE).forward(request, response);
-			} else if (user.getRole() == Role.HR) {
-				request.getRequestDispatcher(PageName.HR_OFFICE_PAGE).forward(request, response);
-			}
-			QueryUtil.saveHttpQuery(request);
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-		}
-
-	}
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    User user = (User) request.getSession().getAttribute(Attribute.USER);
+    if (user != null) {
+      if (user.getRole() == Role.APPLICANT) {
+        request.getRequestDispatcher(PageName.APPLICANT_OFFICE_PAGE).forward(request, response);
+      } else if (user.getRole() == Role.HR) {
+        request.getRequestDispatcher(PageName.HR_OFFICE_PAGE).forward(request, response);
+      }
+      QueryUtil.saveHttpQuery(request);
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+    }
+  }
 }

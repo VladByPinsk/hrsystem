@@ -17,11 +17,10 @@ import lombok.ToString;
 @ToString
 public class ResumeLanguage implements Serializable {
 
-	private static final long serialVersionUID = -3957407860323858751L;
+  private static final long serialVersionUID = -3957407860323858751L;
 
-	private int idLanguage;
-	private String name;
-	private LanguageLevelType raiting;
-	private int idResume;
-
+  private int idLanguage;
+  private String name;
+  private LanguageLevelType raiting;
+  private int idResume;
 }

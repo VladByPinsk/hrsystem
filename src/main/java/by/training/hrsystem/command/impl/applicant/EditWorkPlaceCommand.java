@@ -1,15 +1,5 @@
 package by.training.hrsystem.command.impl.applicant;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.command.Command;
 import by.training.hrsystem.command.constant.Attribute;
 import by.training.hrsystem.command.constant.PageName;
@@ -23,6 +13,13 @@ import by.training.hrsystem.service.exeption.workplace.WrongDateEndServiceExcept
 import by.training.hrsystem.service.exeption.workplace.WrongDateServiceException;
 import by.training.hrsystem.service.exeption.workplace.WrongPositionServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EditWorkPlaceCommand implements Command {
 

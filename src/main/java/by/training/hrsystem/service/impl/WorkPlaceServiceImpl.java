@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.WorkPlaceDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -20,14 +15,17 @@ import by.training.hrsystem.service.exeption.workplace.WrongPositionServiceExcep
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class WorkPlaceServiceImpl implements WorkPlaceService {
 	private static final Logger logger = LogManager.getLogger(WorkPlaceServiceImpl.class);
 
 	@Override
 	public void addWorkplace(String companyName, String position, String dateBegin, String dateEnd, String idResume)
-			throws WrongCompanyNameServiceException, WrongPositionServiceException, WrongDateBeginServiceException,
-			WrongDateEndServiceException, WrongDateServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"WorkPlaceServiceImpl.addWorkPlace() : user's data is valid (companyName = {}, position={}, dateBigin = {}, "
 						+ " dateEnd = {}, idResume={})",
@@ -74,8 +72,8 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
 
 	@Override
 	public void updateWorkplace(String companyName, String position, String dateBegin, String dateEnd,
-			String idWorkPlace) throws WrongCompanyNameServiceException, WrongPositionServiceException,
-			WrongDateBeginServiceException, WrongDateEndServiceException, WrongDateServiceException, ServiceException {
+			String idWorkPlace) throws
+            ServiceException {
 		logger.debug(
 				"WorkPlaceServiceImpl.updateWorkPlace() : user's data is valid (companyName = {}, position={}, dateBigin = {}, "
 						+ " dateEnd = {}, idWorkPlace={})",
@@ -138,7 +136,7 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
 
 	@Override
 	public List<WorkPlace> selectWorkPlaceByIdResume(String idResume)
-			throws ListWorkPlaceIsEmptyServiceException, ServiceException {
+			throws ServiceException {
 		logger.debug("WorkPlaceServiceImpl.selectWorkPlaceByIdResume() : user's data is valid (idResume={})", idResume);
 
 		List<WorkPlace> listWorkPlace = null;

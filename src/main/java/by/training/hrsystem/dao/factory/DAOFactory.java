@@ -15,43 +15,43 @@ import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
 
 public abstract class DAOFactory {
-	private static final int MY_SQL = 1;
+  private static final int MY_SQL = 1;
 
-	private static final DAOFactory MY_SQL_DAOFACTORY = new MySQLDAOFactory();
+  private static final DAOFactory MY_SQL_DAOFACTORY = new MySQLDAOFactory();
 
-	public abstract EducationDAO getEducationDAO();
+  public static DAOFactory getInstance() throws DAOException {
+    int factoryType = readConfig();
+    switch (factoryType) {
+      case MY_SQL:
+        return MY_SQL_DAOFACTORY;
+      default:
+        throw new DAOException("Wrong config");
+    }
+  }
 
-	public abstract InterviewDAO getInterviewDAO();
+  private static int readConfig() {
+    return MY_SQL;
+  }
 
-	public abstract InterviewMarkDAO getInterviewMarkDAO();
+  public abstract EducationDAO getEducationDAO();
 
-	public abstract ResumeDAO getResumeDAO();
+  public abstract InterviewDAO getInterviewDAO();
 
-	public abstract ResumeLangugaeDAO getResumeLanguageDAO();
+  public abstract InterviewMarkDAO getInterviewMarkDAO();
 
-	public abstract SkillDAO getSkillDAO();
+  public abstract ResumeDAO getResumeDAO();
 
-	public abstract UserDAO getUserDAO();
+  public abstract ResumeLangugaeDAO getResumeLanguageDAO();
 
-	public abstract VacancyDAO getVacancyDAO();
+  public abstract SkillDAO getSkillDAO();
 
-	public abstract VerifyDAO getVerifyDAO();
+  public abstract UserDAO getUserDAO();
 
-	public abstract WorkPlaceDAO getWorkPlaceDAO();
+  public abstract VacancyDAO getVacancyDAO();
 
-	public abstract ConnectionPool getConnectionPool()throws ConnectionPoolException; 
+  public abstract VerifyDAO getVerifyDAO();
 
-	public static DAOFactory getInstance() throws DAOException {
-		int factoryType = readConfig();
-		switch (factoryType) {
-		case MY_SQL:
-			return MY_SQL_DAOFACTORY;
-		default:
-			throw new DAOException("Wrong config");
-		}
-	}
+  public abstract WorkPlaceDAO getWorkPlaceDAO();
 
-	private static int readConfig() {
-		return MY_SQL;
-	}
+  public abstract ConnectionPool getConnectionPool() throws ConnectionPoolException;
 }

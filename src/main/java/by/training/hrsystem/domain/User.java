@@ -1,9 +1,8 @@
 package by.training.hrsystem.domain;
 
+import by.training.hrsystem.domain.role.Role;
 import java.io.Serializable;
 import java.util.Date;
-
-import by.training.hrsystem.domain.role.Role;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.InterviewMarkDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -15,13 +10,16 @@ import by.training.hrsystem.service.exeption.interviewmark.WrongMarkSkillService
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class InterviewMarkServiceImpl implements InterviewMarkService {
 	private static final Logger logger = LogManager.getLogger(InterviewServiceImpl.class);
 
 	@Override
 	public void addMark(String skill, String mark, String idInterview)
-			throws WrongMarkSkillServiceException, ServiceException {
+			throws ServiceException {
 
 		logger.debug("InterviewMarkServiceImpl.addMark() : user's data is valid (skill = {}, mark={}, idInterview={})",
 				skill, mark, idInterview);

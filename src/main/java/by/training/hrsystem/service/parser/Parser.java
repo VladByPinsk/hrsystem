@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.parser;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import by.training.hrsystem.domain.role.Role;
 import by.training.hrsystem.domain.type.CurrencyType;
 import by.training.hrsystem.domain.type.EducationType;
@@ -15,6 +10,10 @@ import by.training.hrsystem.domain.type.MilitaryType;
 import by.training.hrsystem.domain.type.PostgraduateType;
 import by.training.hrsystem.domain.type.SkillType;
 import by.training.hrsystem.service.parser.exception.ParserException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public final class Parser {
 

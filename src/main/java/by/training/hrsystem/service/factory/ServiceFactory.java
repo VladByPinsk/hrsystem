@@ -24,68 +24,67 @@ import by.training.hrsystem.service.impl.VerifyServiceImpl;
 import by.training.hrsystem.service.impl.WorkPlaceServiceImpl;
 
 public class ServiceFactory {
-	private static final ServiceFactory INSTANCE = new ServiceFactory();
+  private static final ServiceFactory INSTANCE = new ServiceFactory();
 
-	private final UserService userService = new UserServiceImpl();
-	private final InitConnectionService initPoolService = new InitConnectionServiceImpl();
-	private final EducationService educationService = new EducationServiceImpl();
-	private final ResumeLanguageService resumeLanguageService = new ResumeLanguageServiceImpl();
-	private final SkillService skillService = new SkillServiceImpl();
-	private final VacancyService vacancyService = new VacancyServiceImpl();
-	private final WorkPlaceService workPlaceService = new WorkPlaceServiceImpl();
-	private final ResumeService resumeService = new ResumeServiceImpl();
-	private final VerifyService verifyService = new VerifyServiceImpl();
-	private final InterviewService interviewService = new InterviewServiceImpl();
-	private final InterviewMarkService interviewMarkService = new InterviewMarkServiceImpl();
+  private final UserService userService = new UserServiceImpl();
+  private final InitConnectionService initPoolService = new InitConnectionServiceImpl();
+  private final EducationService educationService = new EducationServiceImpl();
+  private final ResumeLanguageService resumeLanguageService = new ResumeLanguageServiceImpl();
+  private final SkillService skillService = new SkillServiceImpl();
+  private final VacancyService vacancyService = new VacancyServiceImpl();
+  private final WorkPlaceService workPlaceService = new WorkPlaceServiceImpl();
+  private final ResumeService resumeService = new ResumeServiceImpl();
+  private final VerifyService verifyService = new VerifyServiceImpl();
+  private final InterviewService interviewService = new InterviewServiceImpl();
+  private final InterviewMarkService interviewMarkService = new InterviewMarkServiceImpl();
 
-	private ServiceFactory() {
-	}
+  private ServiceFactory() {}
 
-	public static ServiceFactory getInstance() {
-		return INSTANCE;
-	}
+  public static ServiceFactory getInstance() {
+    return INSTANCE;
+  }
 
-	public UserService getUserService() {
-		return userService;
-	}
+  public UserService getUserService() {
+    return userService;
+  }
 
-	public InitConnectionService getInitPoolService() {
-		return initPoolService;
-	}
+  public InitConnectionService getInitPoolService() {
+    return initPoolService;
+  }
 
-	public EducationService getEducationService() {
-		return educationService;
-	}
+  public EducationService getEducationService() {
+    return educationService;
+  }
 
-	public ResumeLanguageService getResumeLanguageService() {
-		return resumeLanguageService;
-	}
+  public ResumeLanguageService getResumeLanguageService() {
+    return resumeLanguageService;
+  }
 
-	public SkillService getSkillService() {
-		return skillService;
-	}
+  public SkillService getSkillService() {
+    return skillService;
+  }
 
-	public VacancyService getVacancyService() {
-		return vacancyService;
-	}
+  public VacancyService getVacancyService() {
+    return vacancyService;
+  }
 
-	public WorkPlaceService getWorkPlaceService() {
-		return workPlaceService;
-	}
+  public WorkPlaceService getWorkPlaceService() {
+    return workPlaceService;
+  }
 
-	public ResumeService getResumeService() {
-		return resumeService;
-	}
+  public ResumeService getResumeService() {
+    return resumeService;
+  }
 
-	public VerifyService gerVerifyService() {
-		return verifyService;
-	}
+  public VerifyService gerVerifyService() {
+    return verifyService;
+  }
 
-	public InterviewService getInterviewService() {
-		return interviewService;
-	}
+  public InterviewService getInterviewService() {
+    return interviewService;
+  }
 
-	public InterviewMarkService getInterviewMarkService() {
-		return interviewMarkService;
-	}
+  public InterviewMarkService getInterviewMarkService() {
+    return interviewMarkService;
+  }
 }

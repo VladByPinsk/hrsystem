@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.VerifyDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -14,6 +9,9 @@ import by.training.hrsystem.domain.Verify;
 import by.training.hrsystem.service.VerifyService;
 import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.parser.Parser;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class VerifyServiceImpl implements VerifyService {
 

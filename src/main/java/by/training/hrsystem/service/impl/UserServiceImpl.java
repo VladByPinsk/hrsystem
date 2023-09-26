@@ -1,8 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.UserDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -23,13 +20,15 @@ import by.training.hrsystem.service.exeption.user.WrongSurnameServiceException;
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class UserServiceImpl implements UserService {
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 
 	@Override
 	public User login(String email, String password)
-			throws WrongEmailServiceException, WrongPasswordServiceException, ServiceException {
+			throws ServiceException {
 		logger.debug("UserServiceImpl.login() : user's data is valid (email = {}, password = {})", email, password);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
@@ -109,10 +108,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateProfile(String surname, String name, String secondName, String skype, String contcactPhone,
 			String birthDate, String email)
-			throws WrongEmailServiceException, WrongPasswordServiceException, PasswordNotEqualsServiceException,
-			WrongSurnameServiceException, WrongNameServiceException, WrongSecondnameServiceException,
-			WrongSkypeServiceException, WrongPhoneServiceException, WrongBirthDateServiceException,
-			UserWithThisEmailExistServiceException, UserServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"UserServiceImpl.updateProfile() : user's data is valid ( "
 						+ "surname = {}, name={}, secondname={}, skype={}, phone={}, birthdate={},email = {})",

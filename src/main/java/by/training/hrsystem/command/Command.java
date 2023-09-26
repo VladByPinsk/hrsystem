@@ -1,7 +1,6 @@
 package by.training.hrsystem.command;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,23 +18,20 @@ import javax.servlet.http.HttpServletResponse;
  * request / session, and on the basis of the results of the service makes the
  * decision on what type of page you want to redirect a request or a command to
  * transfer control for further processing.
- * 
- * @author Vladislav
  *
+ * @author Vladislav
  */
 public interface Command {
-	/**
-	 * Method {@code execute} describes the algorithm of a specific command for
-	 * the HTTP-request processing. The method accesses the HTTP-request query
-	 * parameters through the parameter which is HttpServletRequest object
-	 * class. Through this same setting method accesses a client session.
-	 * 
-	 * @param request
-	 *            http-request client
-	 * @param response
-	 *            http-response server
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    /**
+     * Method {@code execute} describes the algorithm of a specific command for
+     * the HTTP-request processing. The method accesses the HTTP-request query
+     * parameters through the parameter which is HttpServletRequest object
+     * class. Through this same setting method accesses a client session.
+     *
+     * @param request  http-request client
+     * @param response http-response server
+     * @throws ServletException
+     * @throws IOException
+     */
+    void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

@@ -1,14 +1,5 @@
 package by.training.hrsystem.command.impl;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.command.Command;
 import by.training.hrsystem.command.constant.Attribute;
 import by.training.hrsystem.command.constant.PageName;
@@ -26,6 +17,13 @@ import by.training.hrsystem.service.exeption.user.WrongSecondnameServiceExceptio
 import by.training.hrsystem.service.exeption.user.WrongSkypeServiceException;
 import by.training.hrsystem.service.exeption.user.WrongSurnameServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class UserRegistrationCommand implements Command {
 	private static final Logger logger = LogManager.getLogger(UserRegistrationCommand.class);

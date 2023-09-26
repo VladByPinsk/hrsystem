@@ -4,14 +4,13 @@ import by.training.hrsystem.service.exeption.ServiceException;
 
 public class InterviewMarkServiceException extends ServiceException {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	public InterviewMarkServiceException(String message) {
-		super(message);
-	}
+  public InterviewMarkServiceException(String message) {
+    super(message);
+  }
 
-	public InterviewMarkServiceException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
+  public InterviewMarkServiceException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }

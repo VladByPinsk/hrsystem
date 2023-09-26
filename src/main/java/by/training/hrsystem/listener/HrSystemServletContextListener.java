@@ -11,35 +11,33 @@ import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class HrSystemServletContextListener implements ServletContextListener {
-	private static final Logger logger = LogManager.getLogger(HrSystemServletContextListener.class);
+  private static final Logger logger = LogManager.getLogger(HrSystemServletContextListener.class);
 
-	public HrSystemServletContextListener() {
-	}
+  public HrSystemServletContextListener() {}
 
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
+  @Override
+  public void contextInitialized(ServletContextEvent sce) {
 
-		ServiceFactory serviceFactory = ServiceFactory.getInstance();
-		InitConnectionService poolService = serviceFactory.getInitPoolService();
-		try {
-			logger.debug("HrSystemServletContextListener.contextInitialized()");
-			poolService.initConnection();
-		} catch (ServiceException e) {
-			logger.error("can not init connection");
-		}
-	}
+    ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    InitConnectionService poolService = serviceFactory.getInitPoolService();
+    try {
+      logger.debug("HrSystemServletContextListener.contextInitialized()");
+      poolService.initConnection();
+    } catch (ServiceException e) {
+      logger.error("can not init connection");
+    }
+  }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
+  @Override
+  public void contextDestroyed(ServletContextEvent sce) {
 
-		ServiceFactory serviceFactory = ServiceFactory.getInstance();
-		InitConnectionService poolService = serviceFactory.getInitPoolService();
-		try {
-			logger.debug("HrSystemServletContextListener.contextDestroyed()");
-			poolService.destroyConnection();
-		} catch (ServiceException e) {
-			logger.error("can not close connection");
-		}
-
-	}
+    ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    InitConnectionService poolService = serviceFactory.getInitPoolService();
+    try {
+      logger.debug("HrSystemServletContextListener.contextDestroyed()");
+      poolService.destroyConnection();
+    } catch (ServiceException e) {
+      logger.error("can not close connection");
+    }
+  }
 }

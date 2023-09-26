@@ -1,16 +1,5 @@
 package by.training.hrsystem.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.VacancyDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
@@ -19,6 +8,15 @@ import by.training.hrsystem.domain.Vacancy;
 import by.training.hrsystem.domain.type.ActiveType;
 import by.training.hrsystem.domain.type.CurrencyType;
 import by.training.hrsystem.domain.type.EmploymentType;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class {@code DBVacancyDAO} implements
@@ -763,11 +761,7 @@ public class DBVacancyDAO implements VacancyDAO {
 			ps = conn.prepareStatement(SQL_SELECT_ONLY_TRANSLATE_VACANCY_BY_ID);
 			ps.setInt(1, idVacancy);
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				return true;
-			} else {
-				return false;
-			}
+            return rs.next();
 		} catch (SQLException e) {
 			throw new DAOException("Faild to find vacancy: ", e);
 		} catch (ConnectionPoolException e) {

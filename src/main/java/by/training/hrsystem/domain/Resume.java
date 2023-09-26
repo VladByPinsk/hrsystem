@@ -21,18 +21,17 @@ import lombok.ToString;
 @ToString
 public class Resume implements Serializable {
 
-	private static final long serialVersionUID = -5223362080259007779L;
+  private static final long serialVersionUID = -5223362080259007779L;
 
-	private int idResume;
-	private String name;
-	private Date publishDate;
-	private MilitaryType militatyType;
-	private ActiveType activeType;
+  private int idResume;
+  private String name;
+  private Date publishDate;
+  private MilitaryType militatyType;
+  private ActiveType activeType;
 
-	private User applicant;
-	private List<Education> educationList;
-	private List<Skill> skillList;
-	private List<ResumeLanguage> languageList;
-	private List<WorkPlace> workPlaceList;
-
+  private User applicant;
+  private List<Education> educationList;
+  private List<Skill> skillList;
+  private List<ResumeLanguage> languageList;
+  private List<WorkPlace> workPlaceList;
 }

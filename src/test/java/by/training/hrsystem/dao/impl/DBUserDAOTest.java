@@ -1,12 +1,5 @@
 package by.training.hrsystem.dao.impl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import by.training.hrsystem.dao.UserDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -14,7 +7,12 @@ import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
 import by.training.hrsystem.domain.User;
 import by.training.hrsystem.domain.role.Role;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import junit.framework.Assert;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class DBUserDAOTest {
 	private static ConnectionPool connectionPool;

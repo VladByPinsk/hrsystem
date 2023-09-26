@@ -18,11 +18,10 @@ import lombok.ToString;
 @ToString
 public class Skill implements Serializable {
 
-	private static final long serialVersionUID = 3051395711744352982L;
+  private static final long serialVersionUID = 3051395711744352982L;
 
-	private int idSkill;
-	private String name;
-	private SkillType raiting;
-	private int idResume;
-
+  private int idSkill;
+  private String name;
+  private SkillType raiting;
+  private int idResume;
 }

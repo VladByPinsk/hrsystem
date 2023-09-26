@@ -1,9 +1,8 @@
 package by.training.hrsystem.service;
 
-import java.util.List;
-
 import by.training.hrsystem.domain.Vacancy;
 import by.training.hrsystem.service.exeption.ServiceException;
+import java.util.List;
 
 public interface VacancyService {
 
@@ -45,7 +44,7 @@ public interface VacancyService {
 
 	void hotVacancy(String idVacancy) throws ServiceException;
 
-	public boolean translExist(String idVacancy) throws ServiceException;
+	boolean translExist(String idVacancy) throws ServiceException;
 
 	List<Vacancy> selectHotVacancy(String lang) throws ServiceException;
 

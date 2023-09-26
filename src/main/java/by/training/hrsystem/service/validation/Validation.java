@@ -5,10 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class Validation {
-	private Validation() {
-
-	}
-
 	private static final String EMAIL_PATTERN = "^[A-Za-z0-9\\-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,4}$";
 	private static final String PASSWORD_PATTERN = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
 	private static final String FIFTEEM_LETTERS_PATTERN = "^[a-zA-Z\\-]{1,15}$";
@@ -22,6 +18,9 @@ public final class Validation {
 	private static final int SMALL_LETTERS_LENGTH = 30;
 	private static final int SMALLEST_LETTERS_LENGTH = 15;
 	private static final int TEXT_LENGTH = 1000;
+	private Validation() {
+
+	}
 
 	private static boolean checkStringField(String patternStr, String field) {
 		Pattern pattern = Pattern.compile(patternStr);
@@ -30,12 +29,9 @@ public final class Validation {
 	}
 
 	private static boolean checkLength(String value, int length) {
-		if (value.length() > length) {
-			return false;
-		}
-		return true;
+        return value.length() <= length;
 
-	}
+    }
 
 	public static boolean validateEmail(String email) {
 		return checkStringField(EMAIL_PATTERN, email);
@@ -71,31 +67,19 @@ public final class Validation {
 	}
 
 	public static boolean validateTextField(String value) {
-		if (!checkLength(value, TEXT_LENGTH)) {
-			return false;
-		}
-		return true;
-	}
+        return checkLength(value, TEXT_LENGTH);
+    }
 
 	public static boolean validateMultyTextField(String value) {
-		if (!checkLength(value, LETTERS_LENGTH)) {
-			return false;
-		} else
-			return true;
+        return checkLength(value, LETTERS_LENGTH);
 	}
 
 	public static boolean validateSmallMultyTextField(String value) {
-		if (!checkLength(value, SMALL_LETTERS_LENGTH)) {
-			return false;
-		} else
-			return true;
+        return checkLength(value, SMALL_LETTERS_LENGTH);
 	}
 
 	public static boolean validateSmallestMultyTextField(String value) {
-		if (!checkLength(value, SMALLEST_LETTERS_LENGTH)) {
-			return false;
-		} else
-			return true;
+        return checkLength(value, SMALLEST_LETTERS_LENGTH);
 	}
 
 	public static boolean validateDateTime(String value) {

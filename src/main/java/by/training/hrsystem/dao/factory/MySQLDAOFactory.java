@@ -25,70 +25,69 @@ import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
 
 public class MySQLDAOFactory extends DAOFactory {
 
-	private final EducationDAO dbEducationDAO = new DBEducationDAO();
-	private final InterviewDAO dbInterviewDAO = new DBInterviewDAO();
-	private final InterviewMarkDAO dbInterviewMarkDAO = new DBInterviewMarkDAO();
-	private final ResumeDAO dbResumeDAO = new DBResumeDAO();
-	private final ResumeLangugaeDAO dbResumeLanguageDAO = new DBResumeLanguageDAO();
-	private final SkillDAO dbSkillDAO = new DBSkillDAO();
-	private final UserDAO dbUserDAO = new DBUserDAO();
-	private final VacancyDAO dbVacancyDAO = new DBVacancyDAO();
-	private final VerifyDAO dbVerifyDAO = new DBVerifyDAO();
-	private final WorkPlaceDAO dbWorkPlaceDAO = new DBWorkPlaceDAO();
+  private final EducationDAO dbEducationDAO = new DBEducationDAO();
+  private final InterviewDAO dbInterviewDAO = new DBInterviewDAO();
+  private final InterviewMarkDAO dbInterviewMarkDAO = new DBInterviewMarkDAO();
+  private final ResumeDAO dbResumeDAO = new DBResumeDAO();
+  private final ResumeLangugaeDAO dbResumeLanguageDAO = new DBResumeLanguageDAO();
+  private final SkillDAO dbSkillDAO = new DBSkillDAO();
+  private final UserDAO dbUserDAO = new DBUserDAO();
+  private final VacancyDAO dbVacancyDAO = new DBVacancyDAO();
+  private final VerifyDAO dbVerifyDAO = new DBVerifyDAO();
+  private final WorkPlaceDAO dbWorkPlaceDAO = new DBWorkPlaceDAO();
 
-	@Override
-	public EducationDAO getEducationDAO() {
-		return dbEducationDAO;
-	}
+  @Override
+  public EducationDAO getEducationDAO() {
+    return dbEducationDAO;
+  }
 
-	@Override
-	public InterviewDAO getInterviewDAO() {
-		return dbInterviewDAO;
-	}
+  @Override
+  public InterviewDAO getInterviewDAO() {
+    return dbInterviewDAO;
+  }
 
-	@Override
-	public InterviewMarkDAO getInterviewMarkDAO() {
-		return dbInterviewMarkDAO;
-	}
+  @Override
+  public InterviewMarkDAO getInterviewMarkDAO() {
+    return dbInterviewMarkDAO;
+  }
 
-	@Override
-	public ResumeDAO getResumeDAO() {
-		return dbResumeDAO;
-	}
+  @Override
+  public ResumeDAO getResumeDAO() {
+    return dbResumeDAO;
+  }
 
-	@Override
-	public ResumeLangugaeDAO getResumeLanguageDAO() {
-		return dbResumeLanguageDAO;
-	}
+  @Override
+  public ResumeLangugaeDAO getResumeLanguageDAO() {
+    return dbResumeLanguageDAO;
+  }
 
-	@Override
-	public SkillDAO getSkillDAO() {
-		return dbSkillDAO;
-	}
+  @Override
+  public SkillDAO getSkillDAO() {
+    return dbSkillDAO;
+  }
 
-	@Override
-	public UserDAO getUserDAO() {
-		return dbUserDAO;
-	}
+  @Override
+  public UserDAO getUserDAO() {
+    return dbUserDAO;
+  }
 
-	@Override
-	public VacancyDAO getVacancyDAO() {
-		return dbVacancyDAO;
-	}
+  @Override
+  public VacancyDAO getVacancyDAO() {
+    return dbVacancyDAO;
+  }
 
-	@Override
-	public VerifyDAO getVerifyDAO() {
-		return dbVerifyDAO;
-	}
+  @Override
+  public VerifyDAO getVerifyDAO() {
+    return dbVerifyDAO;
+  }
 
-	@Override
-	public WorkPlaceDAO getWorkPlaceDAO() {
-		return dbWorkPlaceDAO;
-	}
+  @Override
+  public WorkPlaceDAO getWorkPlaceDAO() {
+    return dbWorkPlaceDAO;
+  }
 
-	@Override
-	public ConnectionPool getConnectionPool() throws ConnectionPoolException {
-		return ConnectionPool.getInstance();
-	}
-
+  @Override
+  public ConnectionPool getConnectionPool() throws ConnectionPoolException {
+    return ConnectionPool.getInstance();
+  }
 }

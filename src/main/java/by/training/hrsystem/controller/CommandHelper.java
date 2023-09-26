@@ -1,8 +1,5 @@
 package by.training.hrsystem.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import by.training.hrsystem.command.Command;
 import by.training.hrsystem.command.impl.ChangeLocaleCommand;
 import by.training.hrsystem.command.impl.ToIndexPageCommand;
@@ -58,10 +55,12 @@ import by.training.hrsystem.command.impl.humanresources.ToPassVerifyApplicantCom
 import by.training.hrsystem.command.impl.humanresources.ToVerifyListCommand;
 import by.training.hrsystem.command.impl.humanresources.VerifyResumeNotPassCommand;
 import by.training.hrsystem.command.impl.humanresources.VerifyResumePassCommand;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class CommandHelper {
 	private static final CommandHelper INSTANCE = new CommandHelper();
-	private Map<CommandName, Command> commands = new HashMap<>();
+	private final Map<CommandName, Command> commands = new HashMap<>();
 
 	private CommandHelper() {
 		commands.put(CommandName.USER_REGISTRARION, new UserRegistrationCommand());
@@ -120,15 +119,15 @@ public final class CommandHelper {
 		commands.put(CommandName.EDIT_TRANSL_VACANCY, new EditTranslVacancyCommand());
 	}
 
+	public static CommandHelper getInstance() {
+		return INSTANCE;
+	}
+
 	public Command getCommand(String name) {
 		name = name.replace('-', '_');
 		CommandName commandName = CommandName.valueOf(name.toUpperCase());
 		Command command = commands.get(commandName);
 		return command;
 
-	}
-
-	public static CommandHelper getInstance() {
-		return INSTANCE;
 	}
 }
