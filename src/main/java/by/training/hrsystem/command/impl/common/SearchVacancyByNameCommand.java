@@ -23,38 +23,37 @@ import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class SearchVacancyByNameCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(SearchVacancyByNameCommand.class);
+  private static final Logger logger = LogManager.getLogger(SearchVacancyByNameCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		logger.debug("SearchVacancyByNameCommand.execute()  start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("SearchVacancyByNameCommand.execute()  start");
 
-		String vacancyName = request.getParameter(Attribute.VACANCY_NAME);
+    String vacancyName = request.getParameter(Attribute.VACANCY_NAME);
 
-		ServiceFactory serviceFactory = ServiceFactory.getInstance();
-		VacancyService vacancyService = serviceFactory.getVacancyService();
-		UserService userService = serviceFactory.getUserService();
-		ResumeService resumeService = serviceFactory.getResumeService();
+    ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    VacancyService vacancyService = serviceFactory.getVacancyService();
+    UserService userService = serviceFactory.getUserService();
+    ResumeService resumeService = serviceFactory.getResumeService();
 
-		try {
-			List<Vacancy> vacancyList = vacancyService.selectVacancyLike(vacancyName);
-			request.setAttribute(Attribute.VACANCIES, vacancyList);
-			int vacancyAmount = vacancyService.countAllActiveVacancy();
-			request.setAttribute(Attribute.COUNT_ALL_ACTIVE_VACANCY, vacancyAmount);
-			int countApplicants = userService.countAllApplicants();
-			request.setAttribute(Attribute.COUNT_ALL_APPLICANTS, countApplicants);
-			int countResume = resumeService.countAllResume();
-			request.setAttribute(Attribute.COUNT_ALL_RESUME, countResume);
-			request.getRequestDispatcher(PageName.SEARCH_PAGE).forward(request, response);
+    try {
+      List<Vacancy> vacancyList = vacancyService.selectVacancyLike(vacancyName);
+      request.setAttribute(Attribute.VACANCIES, vacancyList);
+      int vacancyAmount = vacancyService.countAllActiveVacancy();
+      request.setAttribute(Attribute.COUNT_ALL_ACTIVE_VACANCY, vacancyAmount);
+      int countApplicants = userService.countAllApplicants();
+      request.setAttribute(Attribute.COUNT_ALL_APPLICANTS, countApplicants);
+      int countResume = resumeService.countAllResume();
+      request.setAttribute(Attribute.COUNT_ALL_RESUME, countResume);
+      request.getRequestDispatcher(PageName.SEARCH_PAGE).forward(request, response);
 
-		} catch (ServiceException e) {
-			request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
+    } catch (ServiceException e) {
+      request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
 
-		QueryUtil.saveHttpQuery(request);
-		logger.debug("SearchVacancyByNameCommand.execute()  end");
-
-	}
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("SearchVacancyByNameCommand.execute()  end");
+  }
 }

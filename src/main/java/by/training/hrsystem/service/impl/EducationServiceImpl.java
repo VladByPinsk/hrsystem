@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.EducationDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -21,6 +16,9 @@ import by.training.hrsystem.service.exeption.education.WrongPostGraduateServiceE
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EducationServiceImpl implements EducationService {
 	private static final Logger logger = LogManager.getLogger(EducationServiceImpl.class);
@@ -28,9 +26,8 @@ public class EducationServiceImpl implements EducationService {
 	@Override
 	public void addEducation(String institution, String faculty, String department, String education, String course,
 			String gradYear, String postgraduate, String idResume)
-			throws WrongInstitutionServiceException, WrongFacultyServiceException, WrongDepartmentServiceException,
-			WrongEducationServiceException, WrongCourseServiceException, WrongGradYearServiceException,
-			WrongPostGraduateServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"EducationServiceImpl.addEducation() : user's data is valid (institution = {}, faculty={}, department = {}, "
 						+ "education = {}, course={}, gradYear={}, postGraduate={}, idResume={})",
@@ -74,9 +71,8 @@ public class EducationServiceImpl implements EducationService {
 	@Override
 	public void updateEducation(String institution, String faculty, String department, String education, String course,
 			String gradYear, String postgraduate, String idEducation)
-			throws WrongInstitutionServiceException, WrongFacultyServiceException, WrongDepartmentServiceException,
-			WrongEducationServiceException, WrongCourseServiceException, WrongGradYearServiceException,
-			WrongPostGraduateServiceException, ServiceException {
+			throws
+            ServiceException {
 		logger.debug(
 				"EducationServiceImpl.updateEducation() : user's data is valid (institution = {}, faculty={}, department = {}, "
 						+ "education = {}, course={}, gradYear={}, postGraduate={}, idEducation={})",

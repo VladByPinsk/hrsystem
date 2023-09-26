@@ -1,15 +1,13 @@
 package by.training.hrsystem.domain;
 
+import by.training.hrsystem.domain.type.EducationType;
+import by.training.hrsystem.domain.type.PostgraduateType;
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-
-import by.training.hrsystem.domain.type.EducationType;
-import by.training.hrsystem.domain.type.PostgraduateType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

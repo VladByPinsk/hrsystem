@@ -1,15 +1,5 @@
 package by.training.hrsystem.command.impl.humanresources;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.command.Command;
 import by.training.hrsystem.command.constant.Attribute;
 import by.training.hrsystem.command.constant.PageName;
@@ -20,6 +10,13 @@ import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.exeption.interview.InterviewServiceException;
 import by.training.hrsystem.service.exeption.interview.WrongDateInterviewServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AddInterviewToApplicantCommand implements Command {
 	private static final Logger logger = LogManager.getLogger(AddInterviewToApplicantCommand.class);

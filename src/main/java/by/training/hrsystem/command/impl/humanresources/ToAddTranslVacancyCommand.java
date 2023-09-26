@@ -23,38 +23,42 @@ import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class ToAddTranslVacancyCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(AddTranslVacancyCommand.class);
+  private static final Logger logger = LogManager.getLogger(AddTranslVacancyCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("ToAddTranslVacancyCommand.execute() start");
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idVacancy = request.getParameter(Attribute.ID_VACANCY);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				VacancyService vacancyService = serviceFactory.getVacancyService();
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ToAddTranslVacancyCommand.execute() start");
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idVacancy = request.getParameter(Attribute.ID_VACANCY);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        VacancyService vacancyService = serviceFactory.getVacancyService();
 
-				if (vacancyService.translExist(idVacancy)) {
-					Vacancy vacnacy = vacancyService.selectTranslVacancyById(idVacancy);
-					request.setAttribute(Attribute.VACANCY, vacnacy);
-					request.getRequestDispatcher(PageName.HR_EDIT_TRANSL_VACANCY_PAGE).forward(request, response);
-				} else {
-					Vacancy vacnacy = vacancyService.selectNormalVacancyById(idVacancy);
-					request.setAttribute(Attribute.VACANCY, vacnacy);
-					request.getRequestDispatcher(PageName.HR_ADD_TRANSL_VACANCY_PAGE).forward(request, response);
-				}
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong!");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		QueryUtil.saveHttpQuery(request);
-		logger.debug("ToAddTranslVacancyCommand.execute() end");
-
-	}
+        if (vacancyService.translExist(idVacancy)) {
+          Vacancy vacnacy = vacancyService.selectTranslVacancyById(idVacancy);
+          request.setAttribute(Attribute.VACANCY, vacnacy);
+          request
+              .getRequestDispatcher(PageName.HR_EDIT_TRANSL_VACANCY_PAGE)
+              .forward(request, response);
+        } else {
+          Vacancy vacnacy = vacancyService.selectNormalVacancyById(idVacancy);
+          request.setAttribute(Attribute.VACANCY, vacnacy);
+          request
+              .getRequestDispatcher(PageName.HR_ADD_TRANSL_VACANCY_PAGE)
+              .forward(request, response);
+        }
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong!");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("ToAddTranslVacancyCommand.execute() end");
+  }
 }

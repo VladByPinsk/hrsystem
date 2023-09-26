@@ -22,38 +22,40 @@ import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class EditResumeCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(EditResumeCommand.class);
+  private static final Logger logger = LogManager.getLogger(EditResumeCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("editResumeCommand.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("editResumeCommand.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idResume = request.getParameter(Attribute.ID_RESUME);
-		String resumeName = request.getParameter(Attribute.RESUME_NAME);
-		String resumeMilitary = request.getParameter(Attribute.RESUME_MILITARY);
-		String prevQuery = (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idResume = request.getParameter(Attribute.ID_RESUME);
+    String resumeName = request.getParameter(Attribute.RESUME_NAME);
+    String resumeMilitary = request.getParameter(Attribute.RESUME_MILITARY);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
 
-		if (user != null && user.getRole() == Role.APPLICANT) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				ResumeService resumeService = serviceFactory.getResumeService();
-				resumeService.updateResume(resumeName, resumeMilitary, idResume);
-				response.sendRedirect(prevQuery);
-			} catch (WrongResumeNameServiceException e) {
-				request.setAttribute(Attribute.ERROR_RESUME_NAME, true);
-				request.getRequestDispatcher(PageName.APPLICANT_ADD_RESUME_PAGE).forward(request, response);
-				logger.error("wrong resume name");
-			} catch (ServiceException e) {
-				logger.error("somthing goes wrong");
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
+    if (user != null && user.getRole() == Role.APPLICANT) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ResumeService resumeService = serviceFactory.getResumeService();
+        resumeService.updateResume(resumeName, resumeMilitary, idResume);
+        response.sendRedirect(prevQuery);
+      } catch (WrongResumeNameServiceException e) {
+        request.setAttribute(Attribute.ERROR_RESUME_NAME, true);
+        request.getRequestDispatcher(PageName.APPLICANT_ADD_RESUME_PAGE).forward(request, response);
+        logger.error("wrong resume name");
+      } catch (ServiceException e) {
+        logger.error("somthing goes wrong");
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
 
-		logger.debug("editResumeCommand:execute() stop");
-	}
+    logger.debug("editResumeCommand:execute() stop");
+  }
 }

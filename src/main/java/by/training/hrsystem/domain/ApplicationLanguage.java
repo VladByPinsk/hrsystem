@@ -17,9 +17,8 @@ import lombok.ToString;
 @ToString
 public class ApplicationLanguage implements Serializable {
 
-	private static final long serialVersionUID = 7287177338372583134L;
+  private static final long serialVersionUID = 7287177338372583134L;
 
-	private String lang;
-	private String langName;
-
+  private String lang;
+  private String langName;
 }

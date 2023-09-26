@@ -1,16 +1,17 @@
 package by.training.hrsystem.domain.type;
 
 public enum PostgraduateType {
-	NOT_ASSIGNED("not assigned"), ASSIGNED("assigned"), TO_BE_ASSIGNED("to be assigned");
+  NOT_ASSIGNED("not assigned"),
+  ASSIGNED("assigned"),
+  TO_BE_ASSIGNED("to be assigned");
 
-	private final String postgraduateType;
+  private final String postgraduateType;
 
-	private PostgraduateType(final String postgraduateType) {
-		this.postgraduateType = postgraduateType;
-	}
+  PostgraduateType(final String postgraduateType) {
+    this.postgraduateType = postgraduateType;
+  }
 
-	public String getPostgraduateType() {
-		return postgraduateType;
-	}
-
+  public String getPostgraduateType() {
+    return postgraduateType;
+  }
 }

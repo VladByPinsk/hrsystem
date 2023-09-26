@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'checkstyle'
 	id 'org.springframework.boot' version '3.1.4'
 	id 'io.spring.dependency-management' version '1.1.3'
 }
@@ -11,11 +12,16 @@ java {
 	sourceCompatibility = '21'
 }
 
+configurations {
+	checkstyleConfig
+}
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	checkstyleConfig("com.puppycrawl.tools:checkstyle:10.12.3") { transitive = false }
 	// https://mvnrepository.com/artifact/javax.servlet/servlet-api
 	compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 // https://mvnrepository.com/artifact/javax.servlet/jsp-api
@@ -30,6 +36,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+checkstyle {
+	toolVersion '10.12.3'
+	config = resources.text.fromArchiveEntry(configurations.checkstyleConfig, 'google_checks.xml')
+}
+
+checkstyleMain.mustRunAfter compileJava
 
 tasks.named('test') {
 	useJUnitPlatform()

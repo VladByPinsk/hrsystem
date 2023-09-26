@@ -1,10 +1,5 @@
 package by.training.hrsystem.service.impl;
 
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.dao.ResumeDAO;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
@@ -16,13 +11,16 @@ import by.training.hrsystem.service.exeption.resume.WrongResumeNameServiceExcept
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ResumeServiceImpl implements ResumeService {
 	private static final Logger logger = LogManager.getLogger(ResumeServiceImpl.class);
 
 	@Override
 	public void addResume(String name, String military, String email)
-			throws WrongResumeNameServiceException, ServiceException {
+			throws ServiceException {
 
 		logger.debug("ResumeServiceImpl.addResume() : user's data is valid (name = {}, military={}, email={})", name,
 				military, email);
@@ -51,7 +49,7 @@ public class ResumeServiceImpl implements ResumeService {
 
 	@Override
 	public void updateResume(String name, String military, String idResume)
-			throws WrongResumeNameServiceException, ServiceException {
+			throws ServiceException {
 
 		logger.debug("ResumeServiceImpl.updateResume() : user's data is valid (name = {}, military={}, idResume={})",
 				name, military, idResume);

@@ -1,21 +1,18 @@
 package by.training.hrsystem.customtag;
 
 import java.io.IOException;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 public class PageTag extends TagSupport {
 
 	private static final long serialVersionUID = 1L;
-
-	private int page;
-	private int pageAmount;
-	private String href;
-
 	private static final String TOP = "<div class=\"row text-center\"><div class=\"col-lg-12\"><ul class=\"pagination\">";
 	private static final String IF_FIRST_PAGE = "<li class=\"disabled\"><a href=\"#\">&laquo;</a></li>";
 	private static final String BOTTOM = "</ul></div></div>";
+	private int page;
+	private int pageAmount;
+	private String href;
 
 	@Override
 	public int doStartTag() throws JspException {

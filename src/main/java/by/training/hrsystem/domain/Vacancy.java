@@ -21,19 +21,18 @@ import lombok.ToString;
 @ToString
 public class Vacancy implements Serializable {
 
-	private static final long serialVersionUID = -1818575473655456286L;
+  private static final long serialVersionUID = -1818575473655456286L;
 
-	private int idVacancy;
-	private String name;
-	private int salary;
-	private CurrencyType currency;
-	private Date publishDate;
-	private String description;
-	private String duty;
-	private String condition;
-	private EmploymentType employmentType;
-	private ActiveType active;
-	private boolean isHot;
-	private String hrEmail;
-
+  private int idVacancy;
+  private String name;
+  private int salary;
+  private CurrencyType currency;
+  private Date publishDate;
+  private String description;
+  private String duty;
+  private String condition;
+  private EmploymentType employmentType;
+  private ActiveType active;
+  private boolean isHot;
+  private String hrEmail;
 }

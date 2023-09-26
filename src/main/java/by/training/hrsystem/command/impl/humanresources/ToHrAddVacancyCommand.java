@@ -16,16 +16,16 @@ import by.training.hrsystem.domain.role.Role;
 
 public class ToHrAddVacancyCommand implements Command {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null :(User) session.getAttribute(Attribute.USER);
-		if (user != null && user.getRole() == Role.HR) {
-			request.getRequestDispatcher(PageName.HR_ADD_VACANCY_PAGE).forward(request, response);
-			QueryUtil.saveHttpQuery(request);
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-		}
-	}
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    if (user != null && user.getRole() == Role.HR) {
+      request.getRequestDispatcher(PageName.HR_ADD_VACANCY_PAGE).forward(request, response);
+      QueryUtil.saveHttpQuery(request);
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+    }
+  }
 }

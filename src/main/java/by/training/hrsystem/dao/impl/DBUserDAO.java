@@ -6,12 +6,12 @@ import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
 import by.training.hrsystem.domain.User;
 import by.training.hrsystem.domain.role.Role;
-import org.apache.commons.codec.binary.Base64;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -210,7 +210,7 @@ public class DBUserDAO implements UserDAO {
 	}
 
 	@Override
-	public User getUserByIdVacancy(int idVcancy) throws DAOException, DAOException {
+	public User getUserByIdVacancy(int idVcancy) throws DAOException {
 		logger.debug("DBUserDAO.getUserByIdVacancy - idVacancy = {}", idVcancy);
 		User user = null;
 		Connection conn = null;
@@ -299,7 +299,7 @@ public class DBUserDAO implements UserDAO {
 	}
 
 	@Override
-	public User getUserByIdResume(int idResume) throws DAOException, DAOException {
+	public User getUserByIdResume(int idResume) throws DAOException {
 		logger.debug("DBUserDAO. getUserByIdResume - idResume = {}", idResume);
 		User user = null;
 		Connection conn = null;
@@ -351,10 +351,7 @@ public class DBUserDAO implements UserDAO {
 			ps.setString(1, email);
 			ps.setString(2, password);
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				return true;
-			} else
-				return false;
+            return rs.next();
 		} catch (SQLException e) {
 			throw new DAOException("Faild to find user: ", e);
 		} catch (ConnectionPoolException e) {

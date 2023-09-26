@@ -18,10 +18,10 @@ import lombok.ToString;
 @ToString
 public class InterviewMark implements Serializable {
 
-	private static final long serialVersionUID = 6239229876210029009L;
+  private static final long serialVersionUID = 6239229876210029009L;
 
-	private int idMark;
-	private String skill;
-	private SkillType mark;
-	private int idInterview;
+  private int idMark;
+  private String skill;
+  private SkillType mark;
+  private int idInterview;
 }

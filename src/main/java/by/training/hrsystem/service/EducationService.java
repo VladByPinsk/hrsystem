@@ -1,7 +1,5 @@
 package by.training.hrsystem.service;
 
-import java.util.List;
-
 import by.training.hrsystem.domain.Education;
 import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.exeption.education.WrongCourseServiceException;
@@ -11,6 +9,7 @@ import by.training.hrsystem.service.exeption.education.WrongFacultyServiceExcept
 import by.training.hrsystem.service.exeption.education.WrongGradYearServiceException;
 import by.training.hrsystem.service.exeption.education.WrongInstitutionServiceException;
 import by.training.hrsystem.service.exeption.education.WrongPostGraduateServiceException;
+import java.util.List;
 
 /**
  * Interface {@code EducationService} describes interaction logic command layer

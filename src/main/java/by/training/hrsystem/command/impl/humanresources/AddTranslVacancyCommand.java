@@ -1,15 +1,5 @@
 package by.training.hrsystem.command.impl.humanresources;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.training.hrsystem.command.Command;
 import by.training.hrsystem.command.constant.Attribute;
 import by.training.hrsystem.command.constant.PageName;
@@ -22,6 +12,13 @@ import by.training.hrsystem.service.exeption.vacancy.WrongDescriptionServiceExce
 import by.training.hrsystem.service.exeption.vacancy.WrongDutyServiceException;
 import by.training.hrsystem.service.exeption.vacancy.WrongVacancyNameServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AddTranslVacancyCommand implements Command {
 
