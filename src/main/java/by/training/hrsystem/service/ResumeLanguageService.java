@@ -8,14 +8,19 @@ import by.training.hrsystem.service.exeption.languagelevel.LanguageLevelServiceE
 import by.training.hrsystem.service.exeption.languagelevel.LanguageNameServiceException;
 
 public interface ResumeLanguageService {
+<<<<<<< Updated upstream
 	void addLanguage(String name, String skillLevel, String idResume)
 			throws LanguageNameServiceException, LanguageLevelServiceException, ServiceException;
 
 	void updateLanguage(String name, String skillLevel, String idLanguage)
 			throws LanguageNameServiceException, LanguageLevelServiceException, ServiceException;
+=======
+  void addLanguage(String name, String skillLevel, String idResume) throws ServiceException;
 
-	void deleteLanguage(String idLanguage) throws ServiceException;
+  void updateLanguage(String name, String skillLevel, String idLanguage) throws ServiceException;
+>>>>>>> Stashed changes
 
-	List<ResumeLanguage> selectLanguageByIdResume(String idResume) throws ServiceException;
+  void deleteLanguage(String idLanguage) throws ServiceException;
 
+  List<ResumeLanguage> selectLanguageByIdResume(String idResume) throws ServiceException;
 }

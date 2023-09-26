@@ -31,52 +31,54 @@ import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class ShowResumeCommand implements Command {
-	private static final Logger logger = LogManager.getLogger(ShowResumeCommand.class);
+  private static final Logger logger = LogManager.getLogger(ShowResumeCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("ShowResumeCommand:execute() start");
-		User user = (User) request.getSession().getAttribute(Attribute.USER);
-		String idResume = request.getParameter(Attribute.ID_RESUME);
-		if (user != null) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				ResumeService resumeService = serviceFactory.getResumeService();
-				UserService userService = serviceFactory.getUserService();
-				EducationService educationService = serviceFactory.getEducationService();
-				SkillService skillService = serviceFactory.getSkillService();
-				ResumeLanguageService resumeLanguageService = serviceFactory.getResumeLanguageService();
-				WorkPlaceService workPlaceService = serviceFactory.getWorkPlaceService();
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ShowResumeCommand:execute() start");
+    User user = (User) request.getSession().getAttribute(Attribute.USER);
+    String idResume = request.getParameter(Attribute.ID_RESUME);
+    if (user != null) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        ResumeService resumeService = serviceFactory.getResumeService();
+        UserService userService = serviceFactory.getUserService();
+        EducationService educationService = serviceFactory.getEducationService();
+        SkillService skillService = serviceFactory.getSkillService();
+        ResumeLanguageService resumeLanguageService = serviceFactory.getResumeLanguageService();
+        WorkPlaceService workPlaceService = serviceFactory.getWorkPlaceService();
 
-				Resume resume = resumeService.selectResumeById(idResume);
-				User applicant = userService.selectUserByIdResume(idResume);
-				List<Education> education = educationService.selectEducationbyIdResume(idResume);
-				List<Skill> skills = skillService.selectSkillByIdResume(idResume);
-				List<ResumeLanguage> resumeLanguage = resumeLanguageService.selectLanguageByIdResume(idResume);
-				List<WorkPlace> workPlace = workPlaceService.selectWorkPlaceByIdResume(idResume);
+        Resume resume = resumeService.selectResumeById(idResume);
+        User applicant = userService.selectUserByIdResume(idResume);
+        List<Education> education = educationService.selectEducationbyIdResume(idResume);
+        List<Skill> skills = skillService.selectSkillByIdResume(idResume);
+        List<ResumeLanguage> resumeLanguage =
+            resumeLanguageService.selectLanguageByIdResume(idResume);
+        List<WorkPlace> workPlace = workPlaceService.selectWorkPlaceByIdResume(idResume);
 
-				request.setAttribute(Attribute.RESUME, resume);
-				request.setAttribute(Attribute.APPLICANT, applicant);
-				request.setAttribute(Attribute.EDUCATION_LIST, education);
-				request.setAttribute(Attribute.SKILL_LIST, skills);
-				request.setAttribute(Attribute.LANGUAGE_LIST, resumeLanguage);
-				request.setAttribute(Attribute.WORKPLACE_LIST, workPlace);
-				if (user.getRole() == Role.APPLICANT) {
-					request.getRequestDispatcher(PageName.APPLICANT_RESUME_PAGE).forward(request, response);
-				} else if (user.getRole() == Role.HR) {
-					request.getRequestDispatcher(PageName.HR_APPLICANT_RESUME_PAGE).forward(request, response);
-				}
-				QueryUtil.saveHttpQuery(request);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("user session is over");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		logger.debug("ShowResumeCommand:execute() end");
-
-	}
-
+        request.setAttribute(Attribute.RESUME, resume);
+        request.setAttribute(Attribute.APPLICANT, applicant);
+        request.setAttribute(Attribute.EDUCATION_LIST, education);
+        request.setAttribute(Attribute.SKILL_LIST, skills);
+        request.setAttribute(Attribute.LANGUAGE_LIST, resumeLanguage);
+        request.setAttribute(Attribute.WORKPLACE_LIST, workPlace);
+        if (user.getRole() == Role.APPLICANT) {
+          request.getRequestDispatcher(PageName.APPLICANT_RESUME_PAGE).forward(request, response);
+        } else if (user.getRole() == Role.HR) {
+          request
+              .getRequestDispatcher(PageName.HR_APPLICANT_RESUME_PAGE)
+              .forward(request, response);
+        }
+        QueryUtil.saveHttpQuery(request);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("user session is over");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    logger.debug("ShowResumeCommand:execute() end");
+  }
 }

@@ -26,25 +26,24 @@ import lombok.ToString;
 @Entity(name = "Education")
 public class Education implements Serializable {
 
-	private static final long serialVersionUID = 8686405203355662547L;
+  private static final long serialVersionUID = 8686405203355662547L;
 
-	@Id
-	private int idEducation;
-	
-	@Column
-	private String institution;
-	private String faculty;
-	private String department;
-	
-	@Enumerated(EnumType.STRING)
-	@Column
-	private EducationType education;
-	private int course;
-	private int gradYear;
-	
-	@Enumerated(EnumType.STRING)
-	@Column
-	private PostgraduateType postGraduate;
-	private int idResume;
+  @Id private int idEducation;
 
+  @Column private String institution;
+  private String faculty;
+  private String department;
+
+  @Enumerated(EnumType.STRING)
+  @Column
+  private EducationType education;
+
+  private int course;
+  private int gradYear;
+
+  @Enumerated(EnumType.STRING)
+  @Column
+  private PostgraduateType postGraduate;
+
+  private int idResume;
 }

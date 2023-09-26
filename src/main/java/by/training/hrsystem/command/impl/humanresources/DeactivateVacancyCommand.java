@@ -21,33 +21,34 @@ import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class DeactivateVacancyCommand implements Command {
-	private static final Logger logger = LogManager.getLogger(DeactivateVacancyCommand.class);
+  private static final Logger logger = LogManager.getLogger(DeactivateVacancyCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("DeactivateVacancyCommand.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("DeactivateVacancyCommand.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String vacancyId = request.getParameter(Attribute.ID_VACANCY);
-		String prevQuery = (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String vacancyId = request.getParameter(Attribute.ID_VACANCY);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
 
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				VacancyService vacancyService = serviceFactory.getVacancyService();
-				vacancyService.deactivateVacancy(vacancyId);
-				response.sendRedirect(prevQuery);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        VacancyService vacancyService = serviceFactory.getVacancyService();
+        vacancyService.deactivateVacancy(vacancyId);
+        response.sendRedirect(prevQuery);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
 
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		logger.debug("DeactivateVacancyCommand.execute() stop");
-	}
-
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    logger.debug("DeactivateVacancyCommand.execute() stop");
+  }
 }

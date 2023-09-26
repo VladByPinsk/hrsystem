@@ -1,9 +1,8 @@
 package by.training.hrsystem.dao;
 
-import java.util.List;
-
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.domain.ResumeLanguage;
+import java.util.List;
 
 /**
  * Interface {@code ResumeLangugaeDAO} extends {@link AbstractDAO} and declare

@@ -1,7 +1,6 @@
 package by.training.hrsystem.command.util;
 
 import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**

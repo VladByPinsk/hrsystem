@@ -19,17 +19,16 @@ import lombok.ToString;
 @ToString
 public class User implements Serializable {
 
-	private static final long serialVersionUID = 4086813463692982999L;
+  private static final long serialVersionUID = 4086813463692982999L;
 
-	private String email;
-	private String password;
-	private String surname;
-	private String name;
-	private String secondName;
-	private String photo;
-	private String skype;
-	private int contactPhone;
-	private Date birthDate;
-	private Role role;
-
+  private String email;
+  private String password;
+  private String surname;
+  private String name;
+  private String secondName;
+  private String photo;
+  private String skype;
+  private int contactPhone;
+  private Date birthDate;
+  private Role role;
 }

@@ -21,31 +21,33 @@ import by.training.hrsystem.service.factory.ServiceFactory;
 
 public class DeleteInterviewCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(DeleteInterviewCommand.class);
+  private static final Logger logger = LogManager.getLogger(DeleteInterviewCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("DeleteInterview.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("DeleteInterview.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idInterview = request.getParameter(Attribute.ID_INTERVIEW);
-		String prevQuery = (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				InterviewService interviewService = serviceFactory.getInterviewService();
-				interviewService.deleteInterview(idInterview);
-				response.sendRedirect(prevQuery);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idInterview = request.getParameter(Attribute.ID_INTERVIEW);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        InterviewService interviewService = serviceFactory.getInterviewService();
+        interviewService.deleteInterview(idInterview);
+        response.sendRedirect(prevQuery);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
 
-		logger.debug("DeleteInterview.execute() stop");
-	}
+    logger.debug("DeleteInterview.execute() stop");
+  }
 }

@@ -20,12 +20,11 @@ import lombok.ToString;
 @ToString
 public class Interview implements Serializable {
 
-	private static final long serialVersionUID = -1371940779462637843L;
+  private static final long serialVersionUID = -1371940779462637843L;
 
-	private int idInterview;
-	private InterviewType interviewType;
-	private Date dateBegin;
-	private PassType pass;
-	private Verify verify;
-
+  private int idInterview;
+  private InterviewType interviewType;
+  private Date dateBegin;
+  private PassType pass;
+  private Verify verify;
 }

@@ -12,7 +12,6 @@ import by.training.hrsystem.domain.Interview;
 import by.training.hrsystem.domain.Verify;
 import by.training.hrsystem.service.InterviewService;
 import by.training.hrsystem.service.exeption.ServiceException;
-import by.training.hrsystem.service.exeption.interview.InterviewServiceException;
 import by.training.hrsystem.service.exeption.interview.WrongDateInterviewServiceException;
 import by.training.hrsystem.service.parser.Parser;
 import by.training.hrsystem.service.parser.exception.ParserException;

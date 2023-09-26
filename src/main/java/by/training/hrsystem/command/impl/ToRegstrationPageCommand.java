@@ -15,6 +15,7 @@ import by.training.hrsystem.command.util.QueryUtil;
 
 public class ToRegstrationPageCommand implements Command {
 
+<<<<<<< Updated upstream
 	private static final Logger logger = LogManager.getLogger(ToRegstrationPageCommand.class);
 
 	@Override
@@ -25,5 +26,16 @@ public class ToRegstrationPageCommand implements Command {
 		QueryUtil.saveHttpQuery(request);
 		logger.debug("ToRegistrarionPageCommand.execute()-end");
 	}
+=======
+  private static final Logger logger = LogManager.getLogger(ToRegstrationPageCommand.class);
+>>>>>>> Stashed changes
 
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ToRegistrarionPageCommand.execute()-start");
+    request.getRequestDispatcher(PageName.REGISTRATION_PAGE).forward(request, response);
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("ToRegistrarionPageCommand.execute()-end");
+  }
 }

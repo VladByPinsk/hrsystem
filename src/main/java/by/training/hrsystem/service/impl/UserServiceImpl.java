@@ -25,8 +25,9 @@ import by.training.hrsystem.service.parser.exception.ParserException;
 import by.training.hrsystem.service.validation.Validation;
 
 public class UserServiceImpl implements UserService {
-	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+  private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 
+<<<<<<< Updated upstream
 	@Override
 	public User login(String email, String password)
 			throws WrongEmailServiceException, WrongPasswordServiceException, ServiceException {
@@ -40,72 +41,107 @@ public class UserServiceImpl implements UserService {
 			throw new ServiceException("Service layer: cannot make a login operation", e);
 		}
 	}
+=======
+  @Override
+  public User login(String email, String password) throws ServiceException {
+    logger.debug(
+        "UserServiceImpl.login() : user's data is valid (email = {}, password = {})",
+        email,
+        password);
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User user = userDAO.userAuthentication(email, password);
+      return user;
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a login operation", e);
+    }
+  }
+>>>>>>> Stashed changes
 
-	@Override
-	public User registration(String email, String password, String copyPass, String surname, String name,
-			String secondName, String skype, String contcactPhone, String birthDate, String role)
-			throws ServiceException {
-		logger.debug(
-				"UserServiceImpl.registration() : user's data is valid (email = {}, password = {}, "
-						+ "surname = {}, name={}, secondname={}, skype={}, phone={}, birthDate={}, role={})",
-				email, password, surname, name, secondName, skype, contcactPhone, birthDate, role);
+  @Override
+  public User registration(
+      String email,
+      String password,
+      String copyPass,
+      String surname,
+      String name,
+      String secondName,
+      String skype,
+      String contcactPhone,
+      String birthDate,
+      String role)
+      throws ServiceException {
+    logger.debug(
+        "UserServiceImpl.registration() : user's data is valid (email = {}, password = {}, "
+            + "surname = {}, name={}, secondname={}, skype={}, phone={}, birthDate={}, role={})",
+        email,
+        password,
+        surname,
+        name,
+        secondName,
+        skype,
+        contcactPhone,
+        birthDate,
+        role);
 
-		if (!Validation.validateEmail(email)) {
-			throw new WrongEmailServiceException("Wrong email");
-		}
-		if (!Validation.validatePassword(password)) {
-			throw new WrongPasswordServiceException("Wrong password");
-		}
-		if (!password.equals(copyPass)) {
-			throw new PasswordNotEqualsServiceException("Password not equals");
-		}
-		if (!Validation.validateStringField(surname)) {
-			throw new WrongSurnameServiceException("Wrong surname");
-		}
-		if (!Validation.validateStringField(name)) {
-			throw new WrongNameServiceException("Wrong name");
-		}
-		if (!Validation.validateStringField(secondName)) {
-			throw new WrongSecondnameServiceException("Wrong Surname");
-		}
-		if (!Validation.validateStringField(skype)) {
-			throw new WrongSkypeServiceException("Wrong Skype");
-		}
-		if (!Validation.validatePhoneField(contcactPhone)) {
-			throw new WrongPhoneServiceException("Wrong contact phone");
-		}
-		if (!Validation.validateFullDateField(birthDate)) {
-			throw new WrongBirthDateServiceException("Wrong birht date");
-		}
+    if (!Validation.validateEmail(email)) {
+      throw new WrongEmailServiceException("Wrong email");
+    }
+    if (!Validation.validatePassword(password)) {
+      throw new WrongPasswordServiceException("Wrong password");
+    }
+    if (!password.equals(copyPass)) {
+      throw new PasswordNotEqualsServiceException("Password not equals");
+    }
+    if (!Validation.validateStringField(surname)) {
+      throw new WrongSurnameServiceException("Wrong surname");
+    }
+    if (!Validation.validateStringField(name)) {
+      throw new WrongNameServiceException("Wrong name");
+    }
+    if (!Validation.validateStringField(secondName)) {
+      throw new WrongSecondnameServiceException("Wrong Surname");
+    }
+    if (!Validation.validateStringField(skype)) {
+      throw new WrongSkypeServiceException("Wrong Skype");
+    }
+    if (!Validation.validatePhoneField(contcactPhone)) {
+      throw new WrongPhoneServiceException("Wrong contact phone");
+    }
+    if (!Validation.validateFullDateField(birthDate)) {
+      throw new WrongBirthDateServiceException("Wrong birht date");
+    }
 
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			User userWithThisEmail = userDAO.getUserByEmail(email);
-			if (userWithThisEmail != null) {
-				throw new UserWithThisEmailExistServiceException("User with this email exist");
-			}
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User userWithThisEmail = userDAO.getUserByEmail(email);
+      if (userWithThisEmail != null) {
+        throw new UserWithThisEmailExistServiceException("User with this email exist");
+      }
 
-			User newUser = new User();
-			newUser.setEmail(email);
-			newUser.setPassword(password);
-			newUser.setSurname(surname);
-			newUser.setName(name);
-			newUser.setSecondName(secondName);
-			newUser.setSkype(skype);
-			newUser.setContactPhone(Parser.parseStringtoInt(contcactPhone));
-			newUser.setBirthDate(Parser.parseToFullDate(birthDate));
-			newUser.setRole(Parser.fromStringToRole(role));
-			userDAO.add(newUser);
+      User newUser = new User();
+      newUser.setEmail(email);
+      newUser.setPassword(password);
+      newUser.setSurname(surname);
+      newUser.setName(name);
+      newUser.setSecondName(secondName);
+      newUser.setSkype(skype);
+      newUser.setContactPhone(Parser.parseStringtoInt(contcactPhone));
+      newUser.setBirthDate(Parser.parseToFullDate(birthDate));
+      newUser.setRole(Parser.fromStringToRole(role));
+      userDAO.add(newUser);
 
-			return newUser;
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a registration", e);
-		} catch (ParserException e) {
-			throw new ServiceException("Service layer: can not parse date");
-		}
-	}
+      return newUser;
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a registration", e);
+    } catch (ParserException e) {
+      throw new ServiceException("Service layer: can not parse date");
+    }
+  }
 
+<<<<<<< Updated upstream
 	@Override
 	public void updateProfile(String surname, String name, String secondName, String skype, String contcactPhone,
 			String birthDate, String email)
@@ -117,118 +153,138 @@ public class UserServiceImpl implements UserService {
 				"UserServiceImpl.updateProfile() : user's data is valid ( "
 						+ "surname = {}, name={}, secondname={}, skype={}, phone={}, birthdate={},email = {})",
 				surname, name, secondName, skype, contcactPhone, birthDate, email);
+=======
+  @Override
+  public void updateProfile(
+      String surname,
+      String name,
+      String secondName,
+      String skype,
+      String contcactPhone,
+      String birthDate,
+      String email)
+      throws ServiceException {
+    logger.debug(
+        "UserServiceImpl.updateProfile() : user's data is valid ( "
+            + "surname = {}, name={}, secondname={}, skype={}, phone={}, birthdate={},email = {})",
+        surname,
+        name,
+        secondName,
+        skype,
+        contcactPhone,
+        birthDate,
+        email);
+>>>>>>> Stashed changes
 
-		if (!Validation.validateStringField(surname)) {
-			throw new WrongSurnameServiceException("Wrong surname");
-		}
-		if (!Validation.validateStringField(name)) {
-			throw new WrongNameServiceException("Wrong name");
-		}
-		if (!Validation.validateStringField(secondName)) {
-			throw new WrongSecondnameServiceException("Wrong Surname");
-		}
-		if (!Validation.validateStringField(skype)) {
-			throw new WrongSkypeServiceException("Wrong Skype");
-		}
-		if (!Validation.validatePhoneField(contcactPhone)) {
-			throw new WrongPhoneServiceException("Wrong contact phone");
-		}
-		if (!Validation.validateFullDateField(birthDate)) {
-			throw new WrongBirthDateServiceException("Wrong birht date");
-		}
+    if (!Validation.validateStringField(surname)) {
+      throw new WrongSurnameServiceException("Wrong surname");
+    }
+    if (!Validation.validateStringField(name)) {
+      throw new WrongNameServiceException("Wrong name");
+    }
+    if (!Validation.validateStringField(secondName)) {
+      throw new WrongSecondnameServiceException("Wrong Surname");
+    }
+    if (!Validation.validateStringField(skype)) {
+      throw new WrongSkypeServiceException("Wrong Skype");
+    }
+    if (!Validation.validatePhoneField(contcactPhone)) {
+      throw new WrongPhoneServiceException("Wrong contact phone");
+    }
+    if (!Validation.validateFullDateField(birthDate)) {
+      throw new WrongBirthDateServiceException("Wrong birht date");
+    }
 
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			User updateUser = new User();
-			updateUser.setSurname(surname);
-			updateUser.setName(name);
-			updateUser.setSecondName(secondName);
-			updateUser.setSkype(skype);
-			updateUser.setContactPhone(Parser.parseStringtoInt(contcactPhone));
-			updateUser.setBirthDate(Parser.parseToFullDate(birthDate));
-			updateUser.setEmail(email);
-			userDAO.update(updateUser);
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a registration", e);
-		} catch (ParserException e) {
-			throw new ServiceException("Service layer: can not parse date");
-		}
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User updateUser = new User();
+      updateUser.setSurname(surname);
+      updateUser.setName(name);
+      updateUser.setSecondName(secondName);
+      updateUser.setSkype(skype);
+      updateUser.setContactPhone(Parser.parseStringtoInt(contcactPhone));
+      updateUser.setBirthDate(Parser.parseToFullDate(birthDate));
+      updateUser.setEmail(email);
+      userDAO.update(updateUser);
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a registration", e);
+    } catch (ParserException e) {
+      throw new ServiceException("Service layer: can not parse date");
+    }
+  }
 
-	}
+  @Override
+  public User selectUserByEmail(String email) throws ServiceException {
+    logger.debug("UserServiceImpl.selectUserByEmail() : email = {}", email);
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User user = userDAO.getUserByEmail(email);
+      return user;
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a selectUserByEmail operation", e);
+    }
+  }
 
-	@Override
-	public User selectUserByEmail(String email) throws ServiceException {
-		logger.debug("UserServiceImpl.selectUserByEmail() : email = {}", email);
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			User user = userDAO.getUserByEmail(email);
-			return user;
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a selectUserByEmail operation", e);
-		}
-	}
+  @Override
+  public User selectUserByIdVacancy(String idVacancy) throws ServiceException {
+    logger.debug("UserServiceImpl.selectUserByIdVacancyl() : idVacancy = {}", idVacancy);
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User user = userDAO.getUserByIdVacancy(Parser.parseStringtoInt(idVacancy));
+      return user;
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a selectUserByIdVacancy operation", e);
+    }
+  }
 
-	@Override
-	public User selectUserByIdVacancy(String idVacancy) throws ServiceException {
-		logger.debug("UserServiceImpl.selectUserByIdVacancyl() : idVacancy = {}", idVacancy);
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			User user = userDAO.getUserByIdVacancy(Parser.parseStringtoInt(idVacancy));
-			return user;
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a selectUserByIdVacancy operation", e);
-		}
+  @Override
+  public int countAllApplicants() throws ServiceException {
+    int countAllApplicants = 0;
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      countAllApplicants = userDAO.countAllApplicants();
+    } catch (DAOException e) {
 
-	}
+      throw new ServiceException("Service layer: cant show count of applicants");
+    }
+    logger.debug("UserServiceImpl.countAllApplicants() : count={}", countAllApplicants);
+    return countAllApplicants;
+  }
 
-	@Override
-	public int countAllApplicants() throws ServiceException {
-		int countAllApplicants = 0;
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			countAllApplicants = userDAO.countAllApplicants();
-		} catch (DAOException e) {
+  @Override
+  public User selectUserByIdResume(String idResume) throws ServiceException {
+    logger.debug("UserServiceImpl.selectUserByIdResume() : idResume = {}", idResume);
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      User user = userDAO.getUserByIdResume(Parser.parseStringtoInt(idResume));
+      return user;
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a selectUserByIdVacancy operation", e);
+    }
+  }
 
-			throw new ServiceException("Service layer: cant show count of applicants");
-		}
-		logger.debug("UserServiceImpl.countAllApplicants() : count={}", countAllApplicants);
-		return countAllApplicants;
+  @Override
+  public boolean userExist(String email, String password) throws ServiceException {
+    logger.debug(
+        "UserServiceImpl.userExist login() : user's data is valid (email = {}, password = {})",
+        email,
+        password);
+    try {
+      DAOFactory daoFactory = DAOFactory.getInstance();
+      UserDAO userDAO = daoFactory.getUserDAO();
+      if (userDAO.userExist(email, password)) {
+        return true;
+      } else {
+        throw new PasswordNotEqualsServiceException("password or user not eq");
+      }
 
-	}
-
-	@Override
-	public User selectUserByIdResume(String idResume) throws ServiceException {
-		logger.debug("UserServiceImpl.selectUserByIdResume() : idResume = {}", idResume);
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			User user = userDAO.getUserByIdResume(Parser.parseStringtoInt(idResume));
-			return user;
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a selectUserByIdVacancy operation", e);
-		}
-	}
-
-	@Override
-	public boolean userExist(String email, String password) throws ServiceException {
-		logger.debug("UserServiceImpl.userExist login() : user's data is valid (email = {}, password = {})", email,
-				password);
-		try {
-			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
-			if (userDAO.userExist(email, password)) {
-				return true;
-			} else {
-				throw new PasswordNotEqualsServiceException("password or user not eq");
-			}
-
-		} catch (DAOException e) {
-			throw new ServiceException("Service layer: cannot make a login operation", e);
-		}
-	}
-
+    } catch (DAOException e) {
+      throw new ServiceException("Service layer: cannot make a login operation", e);
+    }
+  }
 }
