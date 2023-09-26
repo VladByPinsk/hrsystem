@@ -19,7 +19,6 @@ import by.training.hrsystem.domain.Vacancy;
 import by.training.hrsystem.domain.type.ActiveType;
 import by.training.hrsystem.domain.type.CurrencyType;
 import by.training.hrsystem.domain.type.EmploymentType;
-import by.training.hrsystem.domain.type.HotType;
 
 /**
  * Class {@code DBVacancyDAO} implements
@@ -92,7 +91,7 @@ public class DBVacancyDAO implements VacancyDAO {
 			ps.setString(4, entity.getDescription());
 			ps.setString(5, entity.getDuty());
 			ps.setString(6, entity.getCondition());
-			ps.setString(7, entity.getEmploymentType().getCurrencyType());
+			ps.setString(7, entity.getEmploymentType().getEmploymentType());
 			ps.setString(8, entity.getHrEmail());
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -125,7 +124,7 @@ public class DBVacancyDAO implements VacancyDAO {
 			ps.setString(4, entity.getDescription());
 			ps.setString(5, entity.getDuty());
 			ps.setString(6, entity.getCondition());
-			ps.setString(7, entity.getEmploymentType().getCurrencyType());
+			ps.setString(7, entity.getEmploymentType().getEmploymentType());
 			ps.setInt(8, entity.getIdVacancy());
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -293,7 +292,7 @@ public class DBVacancyDAO implements VacancyDAO {
 				vacancy.setCondition(rs.getString(8).replace("\n", "<br>"));
 				vacancy.setEmploymentType(EmploymentType.valueOf(rs.getString(9).toUpperCase().replace(' ', '_')));
 				vacancy.setActive(ActiveType.valueOf(rs.getString(10).toUpperCase().replace(' ', '_')));
-				vacancy.setHotType(HotType.valueOf(rs.getString(11).toUpperCase().replace(' ', '_')));
+				vacancy.setHot(true);
 				vacancy.setHrEmail(rs.getString(12));
 				return vacancy;
 			} else {
@@ -670,7 +669,7 @@ public class DBVacancyDAO implements VacancyDAO {
 		vacancy.setCondition(set.getString(8));
 		vacancy.setEmploymentType(EmploymentType.valueOf(set.getString(9).toUpperCase().replace(' ', '_')));
 		vacancy.setActive(ActiveType.valueOf(set.getString(10).toUpperCase().replace(' ', '_')));
-		vacancy.setHotType(HotType.valueOf(set.getString(11).toUpperCase().replace(' ', '_')));
+		vacancy.setHot(true);
 		vacancy.setHrEmail(set.getString(12));
 		return vacancy;
 	}

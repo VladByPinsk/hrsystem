@@ -119,7 +119,7 @@ public final class Parser {
 	public static EmploymentType fromStringToEmplType(String value) throws ParserException {
 		if (value != null) {
 			for (EmploymentType et : EmploymentType.values()) {
-				if (value.equalsIgnoreCase(et.getCurrencyType())) {
+				if (value.equalsIgnoreCase(et.getEmploymentType())) {
 					return et;
 				}
 			}
