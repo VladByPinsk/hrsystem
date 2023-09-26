@@ -7,7 +7,6 @@ import by.training.hrsystem.domain.User;
 import by.training.hrsystem.service.UserService;
 import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.exeption.user.PasswordNotEqualsServiceException;
-import by.training.hrsystem.service.exeption.user.UserServiceException;
 import by.training.hrsystem.service.exeption.user.UserWithThisEmailExistServiceException;
 import by.training.hrsystem.service.exeption.user.WrongBirthDateServiceException;
 import by.training.hrsystem.service.exeption.user.WrongEmailServiceException;

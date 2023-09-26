@@ -17,33 +17,33 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class AddMarkCommand implements Command {
-	private static final Logger logger = LogManager.getLogger(AddMarkCommand.class);
+  private static final Logger logger = LogManager.getLogger(AddMarkCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		logger.debug("AddMarkCommand.execute() start");
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null :(User) session.getAttribute(Attribute.USER);
-		String skill = request.getParameter(Attribute.INTERVIEW_SKILL);
-		String mark = request.getParameter(Attribute.INTERVIEW_MARK);
-		String idInterview = request.getParameter(Attribute.ID_INTERVIEW);
-		String prevQuery = (session == null) ? null :(String) session.getAttribute(Attribute.PREV_QUERY);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				InterviewMarkService interviewMarkService = serviceFactory.getInterviewMarkService();
-				interviewMarkService.addMark(skill, mark, idInterview);
-				response.sendRedirect(prevQuery);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		logger.debug("AddMarkCommand.execute() end");
-	}
-
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("AddMarkCommand.execute() start");
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String skill = request.getParameter(Attribute.INTERVIEW_SKILL);
+    String mark = request.getParameter(Attribute.INTERVIEW_MARK);
+    String idInterview = request.getParameter(Attribute.ID_INTERVIEW);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        InterviewMarkService interviewMarkService = serviceFactory.getInterviewMarkService();
+        interviewMarkService.addMark(skill, mark, idInterview);
+        response.sendRedirect(prevQuery);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    logger.debug("AddMarkCommand.execute() end");
+  }
 }

@@ -24,40 +24,43 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ToApplicantInerviewPageCommand implements Command {
-	private static final Logger logger = LogManager.getLogger(ToApplicantInerviewPageCommand.class);
+  private static final Logger logger = LogManager.getLogger(ToApplicantInerviewPageCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("ToApplicantInerviewPageCommand .execute() start");
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idVerify = request.getParameter(Attribute.ID_VERIFY);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				VerifyService verifyService = serviceFactory.gerVerifyService();
-				InterviewService interviewService = serviceFactory.getInterviewService();
-				InterviewMarkService interviewMarkService = serviceFactory.getInterviewMarkService();
-				Verify verify = verifyService.selectVerifyById(idVerify);
-				List<Interview> listInterview = interviewService.selectInterviewByVerify(idVerify);
-				List<InterviewMark> listMarkTechical = interviewMarkService.selectMarkOfTechicalInterview(idVerify);
-				List<InterviewMark> listMarkPreliminary = interviewMarkService
-						.selectMarkOfPreliminaryInterview(idVerify);
-				request.setAttribute(Attribute.LIST_INTERVIEW, listInterview);
-				request.setAttribute(Attribute.VERIFY, verify);
-				request.setAttribute(Attribute.MARK_TECHICAL, listMarkTechical);
-				request.setAttribute(Attribute.MARK_PRELIMINARY, listMarkPreliminary);
-				request.getRequestDispatcher(PageName.HR_APPLICANT_INTERVIEW_PAGE).forward(request, response);
-				QueryUtil.saveHttpQuery(request);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong!");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		logger.debug("ToApplicantInerviewPageCommand .execute() stop");
-	}
-
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ToApplicantInerviewPageCommand .execute() start");
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idVerify = request.getParameter(Attribute.ID_VERIFY);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        VerifyService verifyService = serviceFactory.gerVerifyService();
+        InterviewService interviewService = serviceFactory.getInterviewService();
+        InterviewMarkService interviewMarkService = serviceFactory.getInterviewMarkService();
+        Verify verify = verifyService.selectVerifyById(idVerify);
+        List<Interview> listInterview = interviewService.selectInterviewByVerify(idVerify);
+        List<InterviewMark> listMarkTechical =
+            interviewMarkService.selectMarkOfTechicalInterview(idVerify);
+        List<InterviewMark> listMarkPreliminary =
+            interviewMarkService.selectMarkOfPreliminaryInterview(idVerify);
+        request.setAttribute(Attribute.LIST_INTERVIEW, listInterview);
+        request.setAttribute(Attribute.VERIFY, verify);
+        request.setAttribute(Attribute.MARK_TECHICAL, listMarkTechical);
+        request.setAttribute(Attribute.MARK_PRELIMINARY, listMarkPreliminary);
+        request
+            .getRequestDispatcher(PageName.HR_APPLICANT_INTERVIEW_PAGE)
+            .forward(request, response);
+        QueryUtil.saveHttpQuery(request);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong!");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    logger.debug("ToApplicantInerviewPageCommand .execute() stop");
+  }
 }

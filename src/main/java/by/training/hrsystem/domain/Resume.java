@@ -1,11 +1,10 @@
 package by.training.hrsystem.domain;
 
+import by.training.hrsystem.domain.type.ActiveType;
+import by.training.hrsystem.domain.type.MilitaryType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import by.training.hrsystem.domain.type.ActiveType;
-import by.training.hrsystem.domain.type.MilitaryType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

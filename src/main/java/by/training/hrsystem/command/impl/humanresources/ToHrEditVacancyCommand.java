@@ -20,31 +20,31 @@ import org.apache.logging.log4j.Logger;
 
 public class ToHrEditVacancyCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(ToHrEditVacancyCommand.class);
+  private static final Logger logger = LogManager.getLogger(ToHrEditVacancyCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("ToEditVacancyCommand.execute() start");
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idVacancy = request.getParameter(Attribute.ID_VACANCY);
-		if (user != null && user.getRole() == Role.HR) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				VacancyService vacancyService = serviceFactory.getVacancyService();
-				Vacancy vacnacy = vacancyService.selectNormalVacancyById(idVacancy);
-				request.setAttribute(Attribute.VACANCY, vacnacy);
-				request.getRequestDispatcher(PageName.HR_EDIT_VACANCY_PAGE).forward(request, response);
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
-		QueryUtil.saveHttpQuery(request);
-		logger.debug("ToEditVacancyCommand.execute() end");
-
-	}
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("ToEditVacancyCommand.execute() start");
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idVacancy = request.getParameter(Attribute.ID_VACANCY);
+    if (user != null && user.getRole() == Role.HR) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        VacancyService vacancyService = serviceFactory.getVacancyService();
+        Vacancy vacnacy = vacancyService.selectNormalVacancyById(idVacancy);
+        request.setAttribute(Attribute.VACANCY, vacnacy);
+        request.getRequestDispatcher(PageName.HR_EDIT_VACANCY_PAGE).forward(request, response);
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
+    QueryUtil.saveHttpQuery(request);
+    logger.debug("ToEditVacancyCommand.execute() end");
+  }
 }

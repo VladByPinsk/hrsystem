@@ -12,20 +12,18 @@ import org.apache.logging.log4j.Logger;
 
 public class UserLogOutCommand implements Command {
 
-	private static final Logger LOGGER = LogManager.getLogger(UserLogOutCommand.class);
+  private static final Logger LOGGER = LogManager.getLogger(UserLogOutCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		LOGGER.debug("UserLogOutCommand: execute() - start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    LOGGER.debug("UserLogOutCommand: execute() - start");
 
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			session.invalidate();
-			request.getRequestDispatcher(PageName.FIRST_PAGE).forward(request, response);
-
-		}
-		LOGGER.debug("UserLogOutCommand:: execute() - end");
-	}
-
+    HttpSession session = request.getSession(false);
+    if (session != null) {
+      session.invalidate();
+      request.getRequestDispatcher(PageName.FIRST_PAGE).forward(request, response);
+    }
+    LOGGER.debug("UserLogOutCommand:: execute() - end");
+  }
 }

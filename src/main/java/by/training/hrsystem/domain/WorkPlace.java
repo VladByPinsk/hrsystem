@@ -17,13 +17,12 @@ import lombok.ToString;
 @ToString
 public class WorkPlace implements Serializable {
 
-	private static final long serialVersionUID = 2763967571085356739L;
+  private static final long serialVersionUID = 2763967571085356739L;
 
-	private int idWorkPlace;
-	private String companyName;
-	private String position;
-	private Date dateBegin;
-	private Date dateEnd;
-	private int idResume;
-
+  private int idWorkPlace;
+  private String companyName;
+  private String position;
+  private Date dateBegin;
+  private Date dateEnd;
+  private int idResume;
 }

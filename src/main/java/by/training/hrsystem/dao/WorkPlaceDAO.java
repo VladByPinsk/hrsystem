@@ -1,9 +1,8 @@
 package by.training.hrsystem.dao;
 
-import java.util.List;
-
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.domain.WorkPlace;
+import java.util.List;
 
 /**
  * Interface {@code WorkPlaceDAO} extends {@link AbstractDAO} and declare method than appropriate

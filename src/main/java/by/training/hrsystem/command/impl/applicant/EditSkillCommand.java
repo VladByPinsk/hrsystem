@@ -20,43 +20,48 @@ import org.apache.logging.log4j.Logger;
 
 public class EditSkillCommand implements Command {
 
-	private static final Logger logger = LogManager.getLogger(EditSkillCommand.class);
+  private static final Logger logger = LogManager.getLogger(EditSkillCommand.class);
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.debug("EditSkillCommand.execute() start");
+  @Override
+  public void execute(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    logger.debug("EditSkillCommand.execute() start");
 
-		HttpSession session = request.getSession(false);
-		User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
-		String idSkill = request.getParameter(Attribute.ID_SKILL);
-		String skillName = request.getParameter(Attribute.SKILL_NAME);
-		String skillLevel = request.getParameter(Attribute.SKILL_LEVEL);
-		String prevQuery = (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
+    HttpSession session = request.getSession(false);
+    User user = (session == null) ? null : (User) session.getAttribute(Attribute.USER);
+    String idSkill = request.getParameter(Attribute.ID_SKILL);
+    String skillName = request.getParameter(Attribute.SKILL_NAME);
+    String skillLevel = request.getParameter(Attribute.SKILL_LEVEL);
+    String prevQuery =
+        (session == null) ? null : (String) session.getAttribute(Attribute.PREV_QUERY);
 
-		if (user != null && user.getRole() == Role.APPLICANT) {
-			try {
-				ServiceFactory serviceFactory = ServiceFactory.getInstance();
-				SkillService skillService = serviceFactory.getSkillService();
-				skillService.updateSkill(skillName, skillLevel, idSkill);
-				response.sendRedirect(prevQuery);
-			} catch (WrongSkillNameServiceException e) {
-				request.setAttribute(Attribute.ERROR_SKILL_NAME, true);
-				request.getRequestDispatcher(PageName.APPLICANT_EDIT_RESUME_PAGE).forward(request, response);
-				logger.error("wrong skill name");
-			} catch (WrongRaitingServiceException e) {
-				request.setAttribute(Attribute.ERROR_RAITING, true);
-				request.getRequestDispatcher(PageName.APPLICANT_EDIT_RESUME_PAGE).forward(request, response);
-				logger.error("wrong raiting");
-			} catch (ServiceException e) {
-				request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
-				logger.error("something goes wrong");
-			}
-		} else {
-			request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
-			logger.error("user session is over");
-		}
+    if (user != null && user.getRole() == Role.APPLICANT) {
+      try {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        SkillService skillService = serviceFactory.getSkillService();
+        skillService.updateSkill(skillName, skillLevel, idSkill);
+        response.sendRedirect(prevQuery);
+      } catch (WrongSkillNameServiceException e) {
+        request.setAttribute(Attribute.ERROR_SKILL_NAME, true);
+        request
+            .getRequestDispatcher(PageName.APPLICANT_EDIT_RESUME_PAGE)
+            .forward(request, response);
+        logger.error("wrong skill name");
+      } catch (WrongRaitingServiceException e) {
+        request.setAttribute(Attribute.ERROR_RAITING, true);
+        request
+            .getRequestDispatcher(PageName.APPLICANT_EDIT_RESUME_PAGE)
+            .forward(request, response);
+        logger.error("wrong raiting");
+      } catch (ServiceException e) {
+        request.getRequestDispatcher(PageName.ERROR_PAGE).forward(request, response);
+        logger.error("something goes wrong");
+      }
+    } else {
+      request.getRequestDispatcher(PageName.ERROR_TIME_OUT_PAGE).forward(request, response);
+      logger.error("user session is over");
+    }
 
-		logger.debug("EditSkillCommand.execute() stop");
-	}
-
+    logger.debug("EditSkillCommand.execute() stop");
+  }
 }

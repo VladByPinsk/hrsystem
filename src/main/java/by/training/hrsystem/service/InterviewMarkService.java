@@ -2,7 +2,6 @@ package by.training.hrsystem.service;
 
 import by.training.hrsystem.domain.InterviewMark;
 import by.training.hrsystem.service.exeption.ServiceException;
-import by.training.hrsystem.service.exeption.interviewmark.WrongMarkSkillServiceException;
 import java.util.List;
 
 public interface InterviewMarkService {

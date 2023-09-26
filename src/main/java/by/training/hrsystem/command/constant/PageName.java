@@ -42,6 +42,7 @@ public final class PageName {
   public static final String ABOUT_PAGE = "about.jsp";
   public static final String VACANCIES_PAGE = "WEB-INF/jsp/vacancies.jsp";
   public static final String VACANCY_PAGE = "WEB-INF/jsp/vacancy.jsp";
-  private PageName() {}
   public static final String EDIT_VACANCY_PAGE = "WEB-INF/jsp/hr/edit-movie.jsp";
+
+  private PageName() {}
 }

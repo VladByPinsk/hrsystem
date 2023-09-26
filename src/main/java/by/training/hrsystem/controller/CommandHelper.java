@@ -59,75 +59,74 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class CommandHelper {
-	private static final CommandHelper INSTANCE = new CommandHelper();
-	private final Map<CommandName, Command> commands = new HashMap<>();
+  private static final CommandHelper INSTANCE = new CommandHelper();
+  private final Map<CommandName, Command> commands = new HashMap<>();
 
-	private CommandHelper() {
-		commands.put(CommandName.USER_REGISTRARION, new UserRegistrationCommand());
-		commands.put(CommandName.USER_LOGIN, new UserLoginCommand());
-		commands.put(CommandName.USER_LOGOUT, new UserLogOutCommand());
-		commands.put(CommandName.SWITCH_LOCALE, new ChangeLocaleCommand());
-		commands.put(CommandName.TO_REGISTRATION_PAGE, new ToRegstrationPageCommand());
-		commands.put(CommandName.TO_PRIVATE_OFFICE, new ToPrivateOfficeCommand());
-		commands.put(CommandName.TO_INDEX_PAGE, new ToIndexPageCommand());
-		commands.put(CommandName.TO_EDIT_PROFILE, new ToEditProfileCommand());
-		commands.put(CommandName.EDIT_PROFILE, new EditProfileCommand());
-		commands.put(CommandName.TO_APPLICANT_ADD_RESUME, new ToApplicantAddResumeCommand());
-		commands.put(CommandName.ADD_RESUME, new AddResumeCommand());
-		commands.put(CommandName.TO_APPLICANT_LIST_RESUME, new ToApplicantListResumeCommand());
-		commands.put(CommandName.SHOW_VACANCY, new ShowVacancyCommand());
-		commands.put(CommandName.TO_HR_LIST_VACANCY, new ToHrListVacancyCommand());
-		commands.put(CommandName.TO_HR_ADD_VACANCY_PAGE, new ToHrAddVacancyCommand());
-		commands.put(CommandName.ADD_VACANCY, new AddVacancyCommand());
-		commands.put(CommandName.HR_PRIVATE_OFFICE_SHOW_VACANCY, new HrPrivateOfficeShowVacancy());
-		commands.put(CommandName.DELETE_VACANCY, new DeleteVacancyCommand());
-		commands.put(CommandName.ACTIVATE_VACANCY, new ActivateVacancyCommand());
-		commands.put(CommandName.DEACTIVATE_VACANCY, new DeactivateVacancyCommand());
-		commands.put(CommandName.HOT_VACANCY, new HotVacancyCommand());
-		commands.put(CommandName.TO_APPLICANT_EDIT_RESUME, new ToApplicantEditResumeCommand());
-		commands.put(CommandName.SHOW_RESUME, new ShowResumeCommand());
-		commands.put(CommandName.EDIT_RESUME, new EditResumeCommand());
-		commands.put(CommandName.ADD_EDUCATION, new AddEducationCommand());
-		commands.put(CommandName.DELETE_EDUCATION, new DeleteEducationCommand());
-		commands.put(CommandName.EDIT_EDUCATION, new EditEducationCommand());
-		commands.put(CommandName.ADD_RESUME_LANGUAGE, new AddResumeLanguageCommand());
-		commands.put(CommandName.DELETE_RESUME_LANGUAGE, new DeleteResumeLanguageCommand());
-		commands.put(CommandName.EDIT_RESUME_LANGUAGE, new EditResumeLanguageCommand());
-		commands.put(CommandName.ADD_SKILL, new AddSkillCommand());
-		commands.put(CommandName.DELETE_SKILL, new DeleteSkillCommand());
-		commands.put(CommandName.EDIT_SKILL, new EditSkillCommand());
-		commands.put(CommandName.ADD_WORKPLACE, new AddWorkplaceCommand());
-		commands.put(CommandName.EDIT_WORKPLACE, new EditWorkPlaceCommand());
-		commands.put(CommandName.DELETE_WORKPLACE, new DeleteWorkPlaceCommand());
-		commands.put(CommandName.SEARCH_VACANCY, new SearchVacancyByNameCommand());
-		commands.put(CommandName.ADD_RESUME_TO_VACANCY, new AddResumeToVacancyCommand());
-		commands.put(CommandName.TO_VERIFY_LIST, new ToVerifyListCommand());
-		commands.put(CommandName.SHOW_APPLICANT_WHO_LEAVE_RESUME, new ShowApplicantsWhoLeaveResume());
-		commands.put(CommandName.TO_PASS_VERIFY_APPLICANT, new ToPassVerifyApplicantCommand());
-		commands.put(CommandName.TO_APPLICANT_INTERVIEW, new ToApplicantInerviewPageCommand());
-		commands.put(CommandName.ADD_INTERVIEW_TO_APPLICANT, new AddInterviewToApplicantCommand());
-		commands.put(CommandName.ADD_MARK, new AddMarkCommand());
-		commands.put(CommandName.DELETE_RESUME, new DeleteResumeCommand());
-		commands.put(CommandName.TO_ADD_TRANSL_VACANCY, new ToAddTranslVacancyCommand());
-		commands.put(CommandName.ADD_TRANSL_VACANCY, new AddTranslVacancyCommand());
-		commands.put(CommandName.TO_HR_EDIT_VACANCY, new ToHrEditVacancyCommand());
-		commands.put(CommandName.EDIT_VACANCY, new EditVacancyCommand());
-		commands.put(CommandName.VERIFY_PASS, new VerifyResumePassCommand());
-		commands.put(CommandName.VERIFY_NOT_PASS, new VerifyResumeNotPassCommand());
-		commands.put(CommandName.DELETE_INTERVIEW_MARK, new DeleteInterviewMarkCommand());
-		commands.put(CommandName.DELETE_INTERVIEW, new DeleteInterviewCommand());
-		commands.put(CommandName.EDIT_TRANSL_VACANCY, new EditTranslVacancyCommand());
-	}
+  private CommandHelper() {
+    commands.put(CommandName.USER_REGISTRARION, new UserRegistrationCommand());
+    commands.put(CommandName.USER_LOGIN, new UserLoginCommand());
+    commands.put(CommandName.USER_LOGOUT, new UserLogOutCommand());
+    commands.put(CommandName.SWITCH_LOCALE, new ChangeLocaleCommand());
+    commands.put(CommandName.TO_REGISTRATION_PAGE, new ToRegstrationPageCommand());
+    commands.put(CommandName.TO_PRIVATE_OFFICE, new ToPrivateOfficeCommand());
+    commands.put(CommandName.TO_INDEX_PAGE, new ToIndexPageCommand());
+    commands.put(CommandName.TO_EDIT_PROFILE, new ToEditProfileCommand());
+    commands.put(CommandName.EDIT_PROFILE, new EditProfileCommand());
+    commands.put(CommandName.TO_APPLICANT_ADD_RESUME, new ToApplicantAddResumeCommand());
+    commands.put(CommandName.ADD_RESUME, new AddResumeCommand());
+    commands.put(CommandName.TO_APPLICANT_LIST_RESUME, new ToApplicantListResumeCommand());
+    commands.put(CommandName.SHOW_VACANCY, new ShowVacancyCommand());
+    commands.put(CommandName.TO_HR_LIST_VACANCY, new ToHrListVacancyCommand());
+    commands.put(CommandName.TO_HR_ADD_VACANCY_PAGE, new ToHrAddVacancyCommand());
+    commands.put(CommandName.ADD_VACANCY, new AddVacancyCommand());
+    commands.put(CommandName.HR_PRIVATE_OFFICE_SHOW_VACANCY, new HrPrivateOfficeShowVacancy());
+    commands.put(CommandName.DELETE_VACANCY, new DeleteVacancyCommand());
+    commands.put(CommandName.ACTIVATE_VACANCY, new ActivateVacancyCommand());
+    commands.put(CommandName.DEACTIVATE_VACANCY, new DeactivateVacancyCommand());
+    commands.put(CommandName.HOT_VACANCY, new HotVacancyCommand());
+    commands.put(CommandName.TO_APPLICANT_EDIT_RESUME, new ToApplicantEditResumeCommand());
+    commands.put(CommandName.SHOW_RESUME, new ShowResumeCommand());
+    commands.put(CommandName.EDIT_RESUME, new EditResumeCommand());
+    commands.put(CommandName.ADD_EDUCATION, new AddEducationCommand());
+    commands.put(CommandName.DELETE_EDUCATION, new DeleteEducationCommand());
+    commands.put(CommandName.EDIT_EDUCATION, new EditEducationCommand());
+    commands.put(CommandName.ADD_RESUME_LANGUAGE, new AddResumeLanguageCommand());
+    commands.put(CommandName.DELETE_RESUME_LANGUAGE, new DeleteResumeLanguageCommand());
+    commands.put(CommandName.EDIT_RESUME_LANGUAGE, new EditResumeLanguageCommand());
+    commands.put(CommandName.ADD_SKILL, new AddSkillCommand());
+    commands.put(CommandName.DELETE_SKILL, new DeleteSkillCommand());
+    commands.put(CommandName.EDIT_SKILL, new EditSkillCommand());
+    commands.put(CommandName.ADD_WORKPLACE, new AddWorkplaceCommand());
+    commands.put(CommandName.EDIT_WORKPLACE, new EditWorkPlaceCommand());
+    commands.put(CommandName.DELETE_WORKPLACE, new DeleteWorkPlaceCommand());
+    commands.put(CommandName.SEARCH_VACANCY, new SearchVacancyByNameCommand());
+    commands.put(CommandName.ADD_RESUME_TO_VACANCY, new AddResumeToVacancyCommand());
+    commands.put(CommandName.TO_VERIFY_LIST, new ToVerifyListCommand());
+    commands.put(CommandName.SHOW_APPLICANT_WHO_LEAVE_RESUME, new ShowApplicantsWhoLeaveResume());
+    commands.put(CommandName.TO_PASS_VERIFY_APPLICANT, new ToPassVerifyApplicantCommand());
+    commands.put(CommandName.TO_APPLICANT_INTERVIEW, new ToApplicantInerviewPageCommand());
+    commands.put(CommandName.ADD_INTERVIEW_TO_APPLICANT, new AddInterviewToApplicantCommand());
+    commands.put(CommandName.ADD_MARK, new AddMarkCommand());
+    commands.put(CommandName.DELETE_RESUME, new DeleteResumeCommand());
+    commands.put(CommandName.TO_ADD_TRANSL_VACANCY, new ToAddTranslVacancyCommand());
+    commands.put(CommandName.ADD_TRANSL_VACANCY, new AddTranslVacancyCommand());
+    commands.put(CommandName.TO_HR_EDIT_VACANCY, new ToHrEditVacancyCommand());
+    commands.put(CommandName.EDIT_VACANCY, new EditVacancyCommand());
+    commands.put(CommandName.VERIFY_PASS, new VerifyResumePassCommand());
+    commands.put(CommandName.VERIFY_NOT_PASS, new VerifyResumeNotPassCommand());
+    commands.put(CommandName.DELETE_INTERVIEW_MARK, new DeleteInterviewMarkCommand());
+    commands.put(CommandName.DELETE_INTERVIEW, new DeleteInterviewCommand());
+    commands.put(CommandName.EDIT_TRANSL_VACANCY, new EditTranslVacancyCommand());
+  }
 
-	public static CommandHelper getInstance() {
-		return INSTANCE;
-	}
+  public static CommandHelper getInstance() {
+    return INSTANCE;
+  }
 
-	public Command getCommand(String name) {
-		name = name.replace('-', '_');
-		CommandName commandName = CommandName.valueOf(name.toUpperCase());
-		Command command = commands.get(commandName);
-		return command;
-
-	}
+  public Command getCommand(String name) {
+    name = name.replace('-', '_');
+    CommandName commandName = CommandName.valueOf(name.toUpperCase());
+    Command command = commands.get(commandName);
+    return command;
+  }
 }

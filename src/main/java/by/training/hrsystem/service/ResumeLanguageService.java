@@ -2,8 +2,6 @@ package by.training.hrsystem.service;
 
 import by.training.hrsystem.domain.ResumeLanguage;
 import by.training.hrsystem.service.exeption.ServiceException;
-import by.training.hrsystem.service.exeption.languagelevel.LanguageLevelServiceException;
-import by.training.hrsystem.service.exeption.languagelevel.LanguageNameServiceException;
 import java.util.List;
 
 public interface ResumeLanguageService {
