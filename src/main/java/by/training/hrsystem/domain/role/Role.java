@@ -1,20 +1,15 @@
 package by.training.hrsystem.domain.role;
 
+import lombok.Getter;
+
+@Getter
 public enum Role {
-  APPLICANT {
-    {
-      role = "applicant";
-    }
-  },
-  HR {
-    {
-      role = "hr";
-    }
-  };
+  APPLICANT("applicant"),
+  HR("hr");
 
-  String role;
+  final String roleValue;
 
-  public String getRole() {
-    return role;
+  Role(final String roleValue) {
+    this.roleValue = roleValue;
   }
 }

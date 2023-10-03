@@ -1,16 +1,15 @@
 package by.training.hrsystem.domain.type;
 
+import lombok.Getter;
+
+@Getter
 public enum ActiveType {
   ACTIVE("active"),
   NON_ACTIVE("non active");
 
-  private final String activeType;
+  private final String active;
 
-  ActiveType(final String activeType) {
-    this.activeType = activeType;
-  }
-
-  public String getActiveType() {
-    return activeType;
+  ActiveType(final String active) {
+    this.active = active;
   }
 }

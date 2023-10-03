@@ -1,16 +1,15 @@
 package by.training.hrsystem.domain.type;
 
+import lombok.Getter;
+
+@Getter
 public enum CurrencyType {
   RUB("rub"),
-  DOLAR("dolar");
+  DOLLAR("dollar");
 
-  private final String currencyType;
+  private final String currency;
 
-  CurrencyType(final String currencyType) {
-    this.currencyType = currencyType;
-  }
-
-  public String getCurrencyType() {
-    return currencyType;
+  CurrencyType(final String currency) {
+    this.currency = currency;
   }
 }
