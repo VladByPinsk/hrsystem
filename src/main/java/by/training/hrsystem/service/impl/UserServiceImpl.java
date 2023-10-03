@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.UserDAO;
+import by.training.hrsystem.dao.UserDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.User;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 		logger.debug("UserServiceImpl.login() : user's data is valid (email = {}, password = {})", email, password);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User user = userDAO.userAuthentication(email, password);
 			return user;
 		} catch (DAOException e) {
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User userWithThisEmail = userDAO.getUserByEmail(email);
 			if (userWithThisEmail != null) {
 				throw new UserWithThisEmailExistServiceException("User with this email exist");
@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService {
 
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User updateUser = new User();
 			updateUser.setSurname(surname);
 			updateUser.setName(name);
@@ -158,7 +158,7 @@ public class UserServiceImpl implements UserService {
 		logger.debug("UserServiceImpl.selectUserByEmail() : email = {}", email);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User user = userDAO.getUserByEmail(email);
 			return user;
 		} catch (DAOException e) {
@@ -171,7 +171,7 @@ public class UserServiceImpl implements UserService {
 		logger.debug("UserServiceImpl.selectUserByIdVacancyl() : idVacancy = {}", idVacancy);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User user = userDAO.getUserByIdVacancy(Parser.parseStringtoInt(idVacancy));
 			return user;
 		} catch (DAOException e) {
@@ -185,7 +185,7 @@ public class UserServiceImpl implements UserService {
 		int countAllApplicants = 0;
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			countAllApplicants = userDAO.countAllApplicants();
 		} catch (DAOException e) {
 
@@ -201,7 +201,7 @@ public class UserServiceImpl implements UserService {
 		logger.debug("UserServiceImpl.selectUserByIdResume() : idResume = {}", idResume);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			User user = userDAO.getUserByIdResume(Parser.parseStringtoInt(idResume));
 			return user;
 		} catch (DAOException e) {
@@ -215,7 +215,7 @@ public class UserServiceImpl implements UserService {
 				password);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			UserDAO userDAO = daoFactory.getUserDAO();
+			UserDao userDAO = daoFactory.getUserDAO();
 			if (userDAO.userExist(email, password)) {
 				return true;
 			} else {

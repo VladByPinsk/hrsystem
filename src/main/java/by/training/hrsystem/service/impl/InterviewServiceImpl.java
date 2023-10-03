@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.InterviewDAO;
+import by.training.hrsystem.dao.InterviewDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Interview;
@@ -32,7 +32,7 @@ public class InterviewServiceImpl implements InterviewService {
 
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			InterviewDAO interviewDAO = daoFactory.getInterviewDAO();
+			InterviewDao interviewDAO = daoFactory.getInterviewDAO();
 			Interview interview = new Interview();
 			interview.setInterviewType(Parser.fromStringToInterviewType(interivewType));
 			interview.setDateBegin(Parser.parseToDateTime(dateInterview));
@@ -54,7 +54,7 @@ public class InterviewServiceImpl implements InterviewService {
 		List<Interview> listInterview = null;
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			InterviewDAO interviewDAO = daoFactory.getInterviewDAO();
+			InterviewDao interviewDAO = daoFactory.getInterviewDAO();
 			listInterview = interviewDAO.selectInterviewByIdVerify(Parser.parseStringtoInt(idVerify));
 		} catch (DAOException e) {
 			throw new ServiceException("Service layer: can not show list of interview");
@@ -67,7 +67,7 @@ public class InterviewServiceImpl implements InterviewService {
 		logger.debug("InterviewServiceImpl.deleteInterview : idInterview={}", idInterview);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			InterviewDAO interviewDAO = daoFactory.getInterviewDAO();
+			InterviewDao interviewDAO = daoFactory.getInterviewDAO();
 			interviewDAO.delete(Parser.parseStringtoInt(idInterview));
 		} catch (DAOException e) {
 			throw new ServiceException("Service layer: can not delete interview");

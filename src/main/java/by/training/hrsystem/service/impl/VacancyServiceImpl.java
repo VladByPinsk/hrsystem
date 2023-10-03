@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.VacancyDAO;
+import by.training.hrsystem.dao.VacancyDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Vacancy;
@@ -60,7 +60,7 @@ public class VacancyServiceImpl implements VacancyService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
 
       Vacancy vacancy = new Vacancy();
       vacancy.setName(vacancyName);
@@ -119,7 +119,7 @@ public class VacancyServiceImpl implements VacancyService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
 
       Vacancy vacancy = new Vacancy();
       vacancy.setName(vacancyName);
@@ -144,7 +144,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl: deleteVacancy() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       vacancyDAO.delete(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not delete vacancy");
@@ -157,7 +157,7 @@ public class VacancyServiceImpl implements VacancyService {
     List<Vacancy> listVacancy = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
 
       listVacancy = vacancyDAO.selectAllVacancy(lang);
 
@@ -178,7 +178,7 @@ public class VacancyServiceImpl implements VacancyService {
     List<Vacancy> listVacancy;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       listVacancy = vacancyDAO.selectAllActiveVacancy(lang, first, perPage);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not show list of vacancies");
@@ -191,7 +191,7 @@ public class VacancyServiceImpl implements VacancyService {
     int countActiveVacancy = 0;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       countActiveVacancy = vacancyDAO.selectCountActiveVacancy();
     } catch (DAOException e) {
 
@@ -213,7 +213,7 @@ public class VacancyServiceImpl implements VacancyService {
     List<Vacancy> listVacancy;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       listVacancy = vacancyDAO.selectVacancyByHrEmail(hrEmail, lang, first, perPage);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not show list of vacancies");
@@ -226,7 +226,7 @@ public class VacancyServiceImpl implements VacancyService {
     int countVacancy = 0;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       countVacancy = vacancyDAO.selectCountVacancyByHrEmail(hrEmail);
     } catch (DAOException e) {
 
@@ -241,7 +241,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.activateVacancy() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       vacancyDAO.activateVacancy(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not activate vacancy");
@@ -253,7 +253,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.deactivateVacancy() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       vacancyDAO.deactivateVacancy(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not deactivate vacancy");
@@ -265,7 +265,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.hotVacancy() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       vacancyDAO.hotVacancy(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not deactivate vacancy");
@@ -278,7 +278,7 @@ public class VacancyServiceImpl implements VacancyService {
     List<Vacancy> listVacancy;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       listVacancy = vacancyDAO.selectAllHotVacancy(lang);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not show list of vacancies");
@@ -292,7 +292,7 @@ public class VacancyServiceImpl implements VacancyService {
     List<Vacancy> listVacancy;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       listVacancy = vacancyDAO.selectVacancyLike(vacancyName);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not show list of vacancy");
@@ -332,7 +332,7 @@ public class VacancyServiceImpl implements VacancyService {
     }
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
 
       Vacancy vacancy = new Vacancy();
       vacancy.setIdVacancy(Parser.parseStringtoInt(idVacancy));
@@ -353,7 +353,7 @@ public class VacancyServiceImpl implements VacancyService {
         "VacancyServiceImpl.selectVacancyById() : idVacancy = {}, lang={}", idVacancy, lang);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       Vacancy vacancy = vacancyDAO.selectVacancyById(Parser.parseStringtoInt(idVacancy), lang);
       return vacancy;
     } catch (DAOException e) {
@@ -366,7 +366,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.selectNormalVacancyById : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       Vacancy vacancy = vacancyDAO.selectNormalVacancyById(Parser.parseStringtoInt(idVacancy));
       return vacancy;
     } catch (DAOException e) {
@@ -380,7 +380,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.selectVacancyById() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       Vacancy vacancy = vacancyDAO.selectTranslVacancyById(Parser.parseStringtoInt(idVacancy));
       return vacancy;
     } catch (DAOException e) {
@@ -421,7 +421,7 @@ public class VacancyServiceImpl implements VacancyService {
     }
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
 
       Vacancy vacancy = new Vacancy();
       vacancy.setName(vacancyName);
@@ -441,7 +441,7 @@ public class VacancyServiceImpl implements VacancyService {
     logger.debug("VacancyServiceImpl.translExist() : idVacancy = {}", idVacancy);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VacancyDAO vacancyDAO = daoFactory.getVacancyDAO();
+      VacancyDao vacancyDAO = daoFactory.getVacancyDAO();
       return vacancyDAO.translExist(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: cannot make a selectUserByEmail operation", e);

@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.VerifyDAO;
+import by.training.hrsystem.dao.VerifyDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Resume;
@@ -25,7 +25,7 @@ public class VerifyServiceImpl implements VerifyService {
         idResume);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       Verify verify = new Verify();
       Vacancy vacancy = new Vacancy();
       Resume resume = new Resume();
@@ -45,7 +45,7 @@ public class VerifyServiceImpl implements VerifyService {
     List<Verify> listVerify = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       listVerify = verifyDAO.verifyList(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service laye: can not show list of verfiy");
@@ -59,7 +59,7 @@ public class VerifyServiceImpl implements VerifyService {
     List<Verify> listVerify = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       listVerify = verifyDAO.passVerifyList(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service laye: can not show list of pass verify");
@@ -72,7 +72,7 @@ public class VerifyServiceImpl implements VerifyService {
     logger.debug("VerifyServiceImpl.selectVerifyById() : idVerify = {}", idVerify);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       Verify verify = verifyDAO.getVerifyById(Parser.parseStringtoInt(idVerify));
       return verify;
     } catch (DAOException e) {
@@ -85,7 +85,7 @@ public class VerifyServiceImpl implements VerifyService {
     logger.debug("VerifyServiceImpl.verifyResumePass : idVerify = {}", idVerify);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       verifyDAO.verifyResumePass(Parser.parseStringtoInt(idVerify));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: cannot make a verifyResumePass operation", e);
@@ -97,7 +97,7 @@ public class VerifyServiceImpl implements VerifyService {
     logger.debug("VerifyServiceImpl.verifyResumeNotPass : idVerify = {}", idVerify);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      VerifyDAO verifyDAO = daoFactory.getVerifyDAO();
+      VerifyDao verifyDAO = daoFactory.getVerifyDAO();
       verifyDAO.verifyResumeNotPass(Parser.parseStringtoInt(idVerify));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: cannot make a verifyResumeNotPass operation", e);

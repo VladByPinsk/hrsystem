@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.Vacancy;
 import java.util.List;
 
 /**
- * Interface {@code VacancyDAO} extends {@link AbstractDAO} and declare method that appropriate just
+ * Interface {@code VacancyDAO} extends {@link CommonDao} and declare method that appropriate just
  * for {@link by.training.hrsystem.domain.Vacancy Vacancy} objects.
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.Vacancy Vacancy
  */
-public interface VacancyDAO extends AbstractDAO<Vacancy> {
+public interface VacancyDao extends CommonDao<Vacancy> {
   /**
    * Method {@code addTranslateVacancy} allow to create translation of object vacancy.
    *

@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.Education;
 import java.util.List;
 
 /**
- * Interface {@code EducationDAO} extends {@link AbstractDAO} and declare method than appropriate
+ * Interface {@code EducationDAO} extends {@link CommonDao} and declare method than appropriate
  * just for {@link by.training.hrsystem.domain.Education Education} objects
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.Education
  */
-public interface EducationDAO extends AbstractDAO<Education> {
+public interface EducationDao extends CommonDao<Education> {
   /**
    * Method {@code getEducationByIdResume} allow to find list of education objects by idResume
    *

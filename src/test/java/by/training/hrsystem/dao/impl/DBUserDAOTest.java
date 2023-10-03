@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.UserDAO;
+import by.training.hrsystem.dao.UserDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.dao.pool.ConnectionPool;
@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class DBUserDAOTest {
   private static ConnectionPool connectionPool;
-  private static UserDAO userDAO;
+  private static UserDao userDAO;
 
   @BeforeClass
   public static void init() throws ConnectionPoolException, DAOException {

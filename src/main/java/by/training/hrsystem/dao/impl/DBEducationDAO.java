@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.EducationDAO;
+import by.training.hrsystem.dao.EducationDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -15,17 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
- * Class {@code DBEducationDAO} implements {@link by.training.hrsystem.dao.EducationDAO
+ * Class {@code DBEducationDAO} implements {@link EducationDao
  * EducationDAO} and override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.EducationDAO
+ * @see EducationDao
  * @see by.training.hrsystem.domain.Education
  */
-public class DBEducationDAO implements EducationDAO {
-  private static final Logger logger = LogManager.getLogger(DBEducationDAO.class);
+@Component
+public class DBEducationDao implements EducationDao {
+  private static final Logger logger = LogManager.getLogger(DBEducationDao.class);
 
   private static final String SQL_ADD_EDUCATION =
       "INSERT INTO education (institution, faculty, department, education, course, grad_year, postgraduate, id_resume) "

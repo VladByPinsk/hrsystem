@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.InterviewMark;
 import java.util.List;
 
 /**
- * Interface {@code InterviewMarkDAO} extends {@link AbstractDAO} and declare method than
+ * Interface {@code InterviewMarkDAO} extends {@link CommonDao} and declare method than
  * appropriate just for {@link by.training.hrsystem.domain.InterviewMark InterviewMark} objects.
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.InterviewMark InterviewMark
  */
-public interface InterviewMarkDAO extends AbstractDAO<InterviewMark> {
+public interface InterviewMarkDao extends CommonDao<InterviewMark> {
   /**
    * Method {@code selectMarkOfTechicalInterview} allow to find list of marks for technical
    * interview by idVerify.

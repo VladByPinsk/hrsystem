@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.VacancyDAO;
+import by.training.hrsystem.dao.VacancyDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -19,15 +19,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBVacancyDAO} implements {@link by.training.hrsystem.dao.VacancyDAO VacancyDAO} and
+ * Class {@code DBVacancyDAO} implements {@link VacancyDao VacancyDAO} and
  * override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.VacancyDAO
+ * @see VacancyDao
  * @see by.training.hrsystem.domain.Vacancy
  */
-public class DBVacancyDAO implements VacancyDAO {
-  private static final Logger logger = LogManager.getLogger(DBVacancyDAO.class);
+public class DBVacancyDao implements VacancyDao {
+  private static final Logger logger = LogManager.getLogger(DBVacancyDao.class);
   private static final String SQL_ADD_VACANCY =
       "INSERT INTO vacancy (name, salary, currency, description, duties, conditions, employment_type, email) "
           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";

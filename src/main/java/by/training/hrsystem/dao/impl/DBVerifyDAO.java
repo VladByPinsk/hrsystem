@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.VerifyDAO;
+import by.training.hrsystem.dao.VerifyDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -19,16 +19,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBVerifyDAO} implements {@link by.training.hrsystem.dao.VerifyDAO VerifyDAO} and
+ * Class {@code DBVerifyDAO} implements {@link VerifyDao VerifyDAO} and
  * override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.VerifyDAO
+ * @see VerifyDao
  * @see by.training.hrsystem.domain.Verify
  */
-public class DBVerifyDAO implements VerifyDAO {
+public class DBVerifyDao implements VerifyDao {
 
-  private static final Logger logger = LogManager.getLogger(DBVerifyDAO.class);
+  private static final Logger logger = LogManager.getLogger(DBVerifyDao.class);
 
   private static final String SQL_ADD_RESUME_TO_VACANCY =
       "INSERT INTO verify (id_vacancy, id_resume) VALUES (?, ?);";

@@ -11,7 +11,7 @@ import java.util.List;
  * @author Vladislav
  * @see by.training.hrsystem.domain.Verify Verify
  */
-public interface VerifyDAO {
+public interface VerifyDao {
   /**
    * Method {@code addResumeToVacancy} allows you to leave your resume for given vacancy.
    *

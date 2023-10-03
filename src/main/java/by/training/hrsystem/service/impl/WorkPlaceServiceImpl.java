@@ -1,12 +1,11 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.WorkPlaceDAO;
+import by.training.hrsystem.dao.WorkPlaceDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.WorkPlace;
 import by.training.hrsystem.service.WorkPlaceService;
 import by.training.hrsystem.service.exeption.ServiceException;
-import by.training.hrsystem.service.exeption.workplace.ListWorkPlaceIsEmptyServiceException;
 import by.training.hrsystem.service.exeption.workplace.WrongCompanyNameServiceException;
 import by.training.hrsystem.service.exeption.workplace.WrongDateBeginServiceException;
 import by.training.hrsystem.service.exeption.workplace.WrongDateEndServiceException;
@@ -58,7 +57,7 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      WorkPlaceDAO workPlaceDAO = daoFactory.getWorkPlaceDAO();
+      WorkPlaceDao workPlaceDAO = daoFactory.getWorkPlaceDAO();
       WorkPlace workPlace = new WorkPlace();
       workPlace.setCompanyName(companyName);
       workPlace.setPosition(position);
@@ -111,7 +110,7 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      WorkPlaceDAO workPlaceDAO = daoFactory.getWorkPlaceDAO();
+      WorkPlaceDao workPlaceDAO = daoFactory.getWorkPlaceDAO();
       WorkPlace workPlace = new WorkPlace();
       workPlace.setCompanyName(companyName);
       workPlace.setPosition(position);
@@ -136,7 +135,7 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      WorkPlaceDAO workPlaceDAO = daoFactory.getWorkPlaceDAO();
+      WorkPlaceDao workPlaceDAO = daoFactory.getWorkPlaceDAO();
       workPlaceDAO.delete(Parser.parseStringtoInt(idWorPlace));
 
     } catch (DAOException e) {
@@ -153,7 +152,7 @@ public class WorkPlaceServiceImpl implements WorkPlaceService {
     List<WorkPlace> listWorkPlace = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      WorkPlaceDAO workPlaceDAO = daoFactory.getWorkPlaceDAO();
+      WorkPlaceDao workPlaceDAO = daoFactory.getWorkPlaceDAO();
 
       listWorkPlace = workPlaceDAO.getWorkPlaceByIdResume(Parser.parseStringtoInt(idResume));
 
