@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.EducationDAO;
+import by.training.hrsystem.dao.EducationDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Education;
@@ -52,7 +52,7 @@ public class EducationServiceImpl implements EducationService {
 
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			EducationDAO educationDAO = daoFactory.getEducationDAO();
+			EducationDao educationDAO = daoFactory.getEducationDAO();
 			Education newEducation = new Education();
 			newEducation.setInstitution(institution);
 			newEducation.setFaculty(faculty);
@@ -94,7 +94,7 @@ public class EducationServiceImpl implements EducationService {
 
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			EducationDAO educationDAO = daoFactory.getEducationDAO();
+			EducationDao educationDAO = daoFactory.getEducationDAO();
 			Education updateEducation = new Education();
 			updateEducation.setInstitution(institution);
 			updateEducation.setFaculty(faculty);
@@ -114,7 +114,7 @@ public class EducationServiceImpl implements EducationService {
 		logger.debug("EducationServiceImpl.deleteEducation() : user's data is valid (idEducation = {})", idEducation);
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			EducationDAO educationDAO = daoFactory.getEducationDAO();
+			EducationDao educationDAO = daoFactory.getEducationDAO();
 			educationDAO.delete(Parser.parseStringtoInt(idEducation));
 		} catch (DAOException e) {
 			throw new ServiceException("Service layer: can not delete education");
@@ -129,7 +129,7 @@ public class EducationServiceImpl implements EducationService {
 		List<Education> listEducation = null;
 		try {
 			DAOFactory daoFactory = DAOFactory.getInstance();
-			EducationDAO educationDAO = daoFactory.getEducationDAO();
+			EducationDao educationDAO = daoFactory.getEducationDAO();
 			listEducation = educationDAO.getEducationByIdResume(Parser.parseStringtoInt(idResume));
 		} catch (DAOException e) {
 			throw new ServiceException("Service laye: can not show list of education");

@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.ResumeLangugaeDAO;
+import by.training.hrsystem.dao.ResumeLanguageDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.ResumeLanguage;
@@ -35,14 +35,14 @@ public class ResumeLanguageServiceImpl implements ResumeLanguageService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeLangugaeDAO resumeLangugaeDAO = daoFactory.getResumeLanguageDAO();
+      ResumeLanguageDao resumeLanguageDao = daoFactory.getResumeLanguageDAO();
 
       ResumeLanguage language = new ResumeLanguage();
       language.setName(name);
       language.setRaiting(Parser.fromStringToLanguageLevel(skillLevel));
       language.setIdResume(Parser.parseStringtoInt(idResume));
 
-      resumeLangugaeDAO.add(language);
+      resumeLanguageDao.add(language);
 
     } catch (DAOException | ParserException e) {
       throw new ServiceException("Service layer: cannot make a new resumeLanguage", e);
@@ -66,14 +66,14 @@ public class ResumeLanguageServiceImpl implements ResumeLanguageService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeLangugaeDAO resumeLangugaeDAO = daoFactory.getResumeLanguageDAO();
+      ResumeLanguageDao resumeLanguageDao = daoFactory.getResumeLanguageDAO();
 
       ResumeLanguage language = new ResumeLanguage();
       language.setName(name);
       language.setRaiting(Parser.fromStringToLanguageLevel(skillLevel));
       language.setIdLanguage(Parser.parseStringtoInt(idLanguage));
 
-      resumeLangugaeDAO.update(language);
+      resumeLanguageDao.update(language);
 
     } catch (DAOException | ParserException e) {
       throw new ServiceException("Service layer: cannot update ResumeLanguage", e);
@@ -85,8 +85,8 @@ public class ResumeLanguageServiceImpl implements ResumeLanguageService {
     logger.debug("ResumeLanguageImpl.deleteLanguage() : idLanguage={}", idLanguage);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeLangugaeDAO resumeLangugaeDAO = daoFactory.getResumeLanguageDAO();
-      resumeLangugaeDAO.delete(Parser.parseStringtoInt(idLanguage));
+      ResumeLanguageDao resumeLanguageDao = daoFactory.getResumeLanguageDAO();
+      resumeLanguageDao.delete(Parser.parseStringtoInt(idLanguage));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not delete resumeLanguage");
     }
@@ -98,7 +98,7 @@ public class ResumeLanguageServiceImpl implements ResumeLanguageService {
     List<ResumeLanguage> listResumeLanguage = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeLangugaeDAO resumeLanguageDAO = daoFactory.getResumeLanguageDAO();
+      ResumeLanguageDao resumeLanguageDAO = daoFactory.getResumeLanguageDAO();
 
       listResumeLanguage =
           resumeLanguageDAO.getResumeLangByIdResume(Parser.parseStringtoInt(idResume));

@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.WorkPlaceDAO;
+import by.training.hrsystem.dao.WorkPlaceDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -15,15 +15,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBWorkPlaceDAO} implements {@link by.training.hrsystem.dao.WorkPlaceDAO
+ * Class {@code DBWorkPlaceDAO} implements {@link WorkPlaceDao
  * WorkPlaceDAO} and override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.WorkPlaceDAO
+ * @see WorkPlaceDao
  * @see by.training.hrsystem.domain.WorkPlace
  */
-public class DBWorkPlaceDAO implements WorkPlaceDAO {
-  private static final Logger logger = LogManager.getLogger(DBWorkPlaceDAO.class);
+public class DBWorkPlaceDao implements WorkPlaceDao {
+  private static final Logger logger = LogManager.getLogger(DBWorkPlaceDao.class);
   private static final String SQL_ADD_WORKPLACE =
       "INSERT INTO workplace (company_name, position, date_begin, date_end, id_resume) VALUES (?, ?, ?, ?, ?);";
   private static final String SQL_UPDATE_WORKPLACE =

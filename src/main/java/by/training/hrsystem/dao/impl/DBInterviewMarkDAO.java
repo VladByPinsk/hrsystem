@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.InterviewMarkDAO;
+import by.training.hrsystem.dao.InterviewMarkDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -16,15 +16,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBInterviewMarkDAO} implements {@link by.training.hrsystem.dao.InterviewMarkDAO
+ * Class {@code DBInterviewMarkDAO} implements {@link InterviewMarkDao
  * InterviewMarkDAO} and override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.InterviewMarkDAO
+ * @see InterviewMarkDao
  * @see by.training.hrsystem.domain.InterviewMark
  */
-public class DBInterviewMarkDAO implements InterviewMarkDAO {
-  private static final Logger logger = LogManager.getLogger(DBInterviewMarkDAO.class);
+public class DBInterviewMarkDao implements InterviewMarkDao {
+  private static final Logger logger = LogManager.getLogger(DBInterviewMarkDao.class);
   private static final String SQL_ADD_INTERVIEW_MARK =
       "INSERT INTO interview_mark (skill, mark, id_interview) VALUES (?, ?, ?);";
   private static final String SQL_DELETE_INTERVIEW_MARK =

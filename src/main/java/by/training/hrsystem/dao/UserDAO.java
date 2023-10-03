@@ -4,14 +4,14 @@ import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.domain.User;
 
 /**
- * Interface {@code UserDAO} extends {@link AbstractDAO} and declare method than appropriate just
+ * Interface {@code UserDAO} extends {@link CommonDao} and declare method than appropriate just
  * for {@link by.training.hrsystem.domain.User User} objects.
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.User User
  */
-public interface UserDAO extends AbstractDAO<User> {
+public interface UserDao extends CommonDao<User> {
   /**
    * Method {@code userAuthentication} allow login in the human resource system
    *
@@ -20,7 +20,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return user if that user exist.
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while login in the system.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   User userAuthentication(String email, String password) throws DAOException;
@@ -33,7 +33,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return true if user exist or false if user not exist
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while login in the system.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   boolean userExist(String email, String password) throws DAOException;
@@ -45,7 +45,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return user object if user exist; else return null;
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while finding user by email.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   User getUserByEmail(String email) throws DAOException;
@@ -57,7 +57,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return user object if user exist; else return null;
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while finding user by id vacancy.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   User getUserByIdVacancy(int idVcancy) throws DAOException;
@@ -69,7 +69,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return user user object if user exist; else return null;
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while finding user by id resume.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   User getUserByIdResume(int idResume) throws DAOException;
@@ -80,7 +80,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @return count of applicants.
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while finding count of applicants.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   int countAllApplicants() throws DAOException;
@@ -91,7 +91,7 @@ public interface UserDAO extends AbstractDAO<User> {
    * @param email user email
    * @throws DAOException if a database access error occurred or error interaction with connection
    *     pool while finding count of applicants.
-   * @see AbstractDAO
+   * @see CommonDao
    * @see by.training.hrsystem.domain.User User
    */
   void deleteUser(String email) throws DAOException;

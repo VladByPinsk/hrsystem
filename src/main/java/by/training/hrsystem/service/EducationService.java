@@ -1,5 +1,6 @@
 package by.training.hrsystem.service;
 
+import by.training.hrsystem.dao.impl.DBEducationDao;
 import by.training.hrsystem.domain.Education;
 import by.training.hrsystem.service.exeption.ServiceException;
 import by.training.hrsystem.service.exeption.education.WrongCourseServiceException;
@@ -22,7 +23,7 @@ public interface EducationService {
   /**
    * Method {@code addEducation} receiving string fields from command layer, validate and parse
    * them(if its required), create an object on the basis of these fields and send it into method
-   * {@code add} class {@link by.training.hrsystem.dao.impl.DBEducationDAO DBEducationDAO} through
+   * {@code add} class {@link DBEducationDao DBEducationDAO} through
    * the abstract factory.
    *
    * @param institution String filed receiving from command layer.
@@ -63,7 +64,7 @@ public interface EducationService {
   /**
    * Method {@code updateEducation} receiving string fields from command layer, validate and parse
    * them(if its required), create an object on the basis of these fields and send it into method
-   * {@code update} class {@link by.training.hrsystem.dao.impl.DBEducationDAO DBEducationDAO}
+   * {@code update} class {@link DBEducationDao DBEducationDAO}
    * through the abstract factory.
    *
    * @param institution String filed receiving from command layer.
@@ -104,7 +105,7 @@ public interface EducationService {
   /**
    * Method {@code deleteEducation} receiving string field id education from the command layer,
    * parse it and sends it into method {@code delete} class {@link
-   * by.training.hrsystem.dao.impl.DBEducationDAO DBEducationDAO} through the abstract factory.
+   * DBEducationDao DBEducationDAO} through the abstract factory.
    *
    * @param idEducation String filed receiving from command layer.
    * @throws ServiceException if something goes wrong on DAO layer or when parse string fields.

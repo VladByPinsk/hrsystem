@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.Resume;
 import java.util.List;
 
 /**
- * Interface {@code ResumeDAO} extends {@link AbstractDAO} and declare method than appropriate just
+ * Interface {@code ResumeDAO} extends {@link CommonDao} and declare method than appropriate just
  * for {@link by.training.hrsystem.domain.Resume Resume} objects
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.Resume
  */
-public interface ResumeDAO extends AbstractDAO<Resume> {
+public interface ResumeDao extends CommonDao<Resume> {
   /**
    * Method {@code selectCountResume} allow to find count of all resume.
    *

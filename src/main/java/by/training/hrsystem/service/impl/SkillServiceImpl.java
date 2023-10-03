@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.SkillDAO;
+import by.training.hrsystem.dao.SkillDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Skill;
@@ -37,7 +37,7 @@ public class SkillServiceImpl implements SkillService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      SkillDAO skillDAO = daoFactory.getSkillDAO();
+      SkillDao skillDAO = daoFactory.getSkillDAO();
 
       Skill skill = new Skill();
       skill.setName(name);
@@ -67,7 +67,7 @@ public class SkillServiceImpl implements SkillService {
     }
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      SkillDAO skillDAO = daoFactory.getSkillDAO();
+      SkillDao skillDAO = daoFactory.getSkillDAO();
       Skill skill = new Skill();
       skill.setName(name);
       skill.setRaiting(Parser.fromStringToSkill(raiting));
@@ -83,7 +83,7 @@ public class SkillServiceImpl implements SkillService {
     logger.debug("SkillServiceImpl.deleteSkill() : idSkill={}", idSkill);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      SkillDAO skillDAO = daoFactory.getSkillDAO();
+      SkillDao skillDAO = daoFactory.getSkillDAO();
       skillDAO.delete(Parser.parseStringtoInt(idSkill));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not delete skill");
@@ -96,7 +96,7 @@ public class SkillServiceImpl implements SkillService {
     List<Skill> listSkill = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      SkillDAO skillDAO = daoFactory.getSkillDAO();
+      SkillDao skillDAO = daoFactory.getSkillDAO();
 
       listSkill = skillDAO.getSkillByIdResume(Parser.parseStringtoInt(idResume));
     } catch (DAOException e) {

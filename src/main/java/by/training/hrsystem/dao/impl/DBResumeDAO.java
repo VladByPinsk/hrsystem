@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.ResumeDAO;
+import by.training.hrsystem.dao.ResumeDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -19,15 +19,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBResumeDAO} implements {@link by.training.hrsystem.dao.ResumeDAO ResumeDAO} and
+ * Class {@code DBResumeDAO} implements {@link ResumeDao ResumeDAO} and
  * override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.ResumeDAO
+ * @see ResumeDao
  * @see by.training.hrsystem.domain.Resume
  */
-public class DBResumeDAO implements ResumeDAO {
-  private static final Logger logger = LogManager.getLogger(DBResumeDAO.class);
+public class DBResumeDao implements ResumeDao {
+  private static final Logger logger = LogManager.getLogger(DBResumeDao.class);
 
   private static final String SQL_ADD_RESUME =
       "INSERT INTO resume (name, publish_date, military, email) VALUES (?, ?, ?, ?);";

@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.WorkPlace;
 import java.util.List;
 
 /**
- * Interface {@code WorkPlaceDAO} extends {@link AbstractDAO} and declare method than appropriate
+ * Interface {@code WorkPlaceDAO} extends {@link CommonDao} and declare method than appropriate
  * just for {@link by.training.hrsystem.domain.WorkPlace WorkPlace} objects
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.WorkPlace
  */
-public interface WorkPlaceDAO extends AbstractDAO<WorkPlace> {
+public interface WorkPlaceDao extends CommonDao<WorkPlace> {
   /**
    * Method {@code getWorkPlaceByIdResume} allow to find list of work places objects by id resume.
    *

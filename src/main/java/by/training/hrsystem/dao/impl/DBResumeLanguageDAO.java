@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.ResumeLangugaeDAO;
+import by.training.hrsystem.dao.ResumeLanguageDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
  * @see by.training.hrsystem.dao.ResumeLanguageDAO
  * @see by.training.hrsystem.domain.ResumeLanguage
  */
-public class DBResumeLanguageDAO implements ResumeLangugaeDAO {
+public class DBResumeLanguageDAO implements ResumeLanguageDao {
 
   private static final Logger logger = LogManager.getLogger(DBResumeLanguageDAO.class);
 

@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.UserDAO;
+import by.training.hrsystem.dao.UserDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -16,14 +16,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBUserDAO} implements {@link by.training.hrsystem.dao.UserDAO UserDAO} and override
+ * Class {@code DBUserDAO} implements {@link UserDao UserDAO} and override
  * all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.UserDAO
+ * @see UserDao
  * @see by.training.hrsystem.domain.User
  */
-public class DBUserDAO implements UserDAO {
+public class DBUserDao implements UserDao {
 
   private static final Logger logger = LogManager.getRootLogger();
   private static final String SQL_ADD_USER =

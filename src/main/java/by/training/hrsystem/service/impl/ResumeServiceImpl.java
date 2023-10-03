@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.ResumeDAO;
+import by.training.hrsystem.dao.ResumeDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.Resume;
@@ -33,7 +33,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       Resume resume = new Resume();
       resume.setName(name);
       resume.setMilitatyType(Parser.fromStringToMilitaryType(military));
@@ -63,7 +63,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       Resume resume = new Resume();
 
       resume.setName(name);
@@ -81,7 +81,7 @@ public class ResumeServiceImpl implements ResumeService {
     logger.debug("ResumeServiceImpl.deleteResume() : idResume = {}", idResume);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       resumeDAO.delete(Parser.parseStringtoInt(idResume));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not delete resume");
@@ -100,7 +100,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       listResume = resumeDAO.selectResumeByApplicant(email, first, perPage);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not select resume by email");
@@ -113,7 +113,7 @@ public class ResumeServiceImpl implements ResumeService {
     int countResume;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       countResume = resumeDAO.selectCountResume();
     } catch (DAOException e) {
       throw new ServiceException("Service layer: cant show count resume");
@@ -127,7 +127,7 @@ public class ResumeServiceImpl implements ResumeService {
     int countResume;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       countResume = resumeDAO.selectCountResumeByEmail(hrEmail);
     } catch (DAOException e) {
 
@@ -142,7 +142,7 @@ public class ResumeServiceImpl implements ResumeService {
     logger.debug("ResumeServiceImpl.selectResumeById() : idResume = {}", idResume);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       Resume resume = resumeDAO.selectResumeById(Parser.parseStringtoInt(idResume));
       return resume;
     } catch (DAOException e) {
@@ -157,7 +157,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       listResume = resumeDAO.selectResumeForVacancy(applicantEmail);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not select Resume for vacancy");
@@ -172,7 +172,7 @@ public class ResumeServiceImpl implements ResumeService {
     List<Resume> listResume = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       listResume = resumeDAO.selectListResumeByVacancy(Parser.parseStringtoInt(idVacancy));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not select list resume by id vacacncy");
@@ -191,7 +191,7 @@ public class ResumeServiceImpl implements ResumeService {
     List<Resume> listResume = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      ResumeDAO resumeDAO = daoFactory.getResumeDAO();
+      ResumeDao resumeDAO = daoFactory.getResumeDAO();
       listResume = resumeDAO.selectLeftResume(Parser.parseStringtoInt(idVacancy), applicantEmail);
     } catch (DAOException e) {
       throw new ServiceException("Service layer: cannot find left resume");

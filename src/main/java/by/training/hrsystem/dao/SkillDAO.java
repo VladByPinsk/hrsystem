@@ -5,14 +5,14 @@ import by.training.hrsystem.domain.Skill;
 import java.util.List;
 
 /**
- * Interface {@code SkillDAO} extends {@link AbstractDAO} and declare method than appropriate just
+ * Interface {@code SkillDAO} extends {@link CommonDao} and declare method than appropriate just
  * for {@link by.training.hrsystem.domain.Skill Skill} objects.
  *
  * @author Vladislav
- * @see AbstractDAO
+ * @see CommonDao
  * @see by.training.hrsystem.domain.Skill Skill
  */
-public interface SkillDAO extends AbstractDAO<Skill> {
+public interface SkillDao extends CommonDao<Skill> {
   /**
    * Method {@code getSkillByIdResume} allow to find list of skills objects by idResume
    *

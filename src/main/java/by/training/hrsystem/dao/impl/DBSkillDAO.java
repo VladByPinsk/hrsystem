@@ -1,6 +1,6 @@
 package by.training.hrsystem.dao.impl;
 
-import by.training.hrsystem.dao.SkillDAO;
+import by.training.hrsystem.dao.SkillDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.pool.ConnectionPool;
 import by.training.hrsystem.dao.pool.exception.ConnectionPoolException;
@@ -16,16 +16,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class {@code DBSkillDAO} implements {@link by.training.hrsystem.dao.SkillDAO SkillDAO} and
+ * Class {@code DBSkillDAO} implements {@link SkillDao SkillDAO} and
  * override all methods located at the interface.
  *
  * @author Vladislav
- * @see by.training.hrsystem.dao.SkillDAO
+ * @see SkillDao
  * @see by.training.hrsystem.domain.Skill
  */
-public class DBSkillDAO implements SkillDAO {
+public class DBSkillDao implements SkillDao {
 
-  private static final Logger logger = LogManager.getLogger(DBSkillDAO.class);
+  private static final Logger logger = LogManager.getLogger(DBSkillDao.class);
   private static final String SQL_ADD_SKILL =
       "INSERT INTO skill (name, raiting, id_resume) VALUES (?, ?, ?);";
   private static final String SQL_UPDATE_SKILL =
