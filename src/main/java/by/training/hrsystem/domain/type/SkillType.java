@@ -1,18 +1,17 @@
 package by.training.hrsystem.domain.type;
 
+import lombok.Getter;
+
+@Getter
 public enum SkillType {
   NOVICE("novice"),
   INTERMEDIATE("intermediate"),
   ADVANCED("advanced"),
   EXPERT("expert");
 
-  private final String skillType;
+  private final String skill;
 
-  SkillType(final String skillType) {
-    this.skillType = skillType;
-  }
-
-  public String getSkillType() {
-    return skillType;
+  SkillType(final String skill) {
+    this.skill = skill;
   }
 }

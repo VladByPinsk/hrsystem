@@ -1,22 +1,21 @@
 package by.training.hrsystem.domain.type;
 
+import lombok.Getter;
+
+@Getter
 public enum EducationType {
   NOT_SPECIFIED("not specified"),
-  UNIVERSITY_INCOMPLITE("university incomplete"),
+  UNIVERSITY_INCOMPLETE("university incomplete"),
   HIGHER("higher"),
   MASTER("master"),
   PHD("PhD"),
   SECONDARY("secondary"),
-  TECHNICAL_SHOOL("technical school"),
+  TECHNICAL_SCHOOL("technical school"),
   PHD_CANDIDATE("PhD candidate");
 
-  private final String educationType;
+  private final String education;
 
-  EducationType(final String educationType) {
-    this.educationType = educationType;
-  }
-
-  public String getEducationType() {
-    return educationType;
+  EducationType(final String education) {
+    this.education = education;
   }
 }

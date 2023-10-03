@@ -1,5 +1,8 @@
 package by.training.hrsystem.domain.type;
 
+import lombok.Getter;
+
+@Getter
 public enum MilitaryType {
   NOT_SPECIFIED("not specified"),
   FIT("fit"),
@@ -7,13 +10,9 @@ public enum MilitaryType {
   MILITARY_DEPARTMENT("military department"),
   NOT_BOUND("not bound");
 
-  String millatryType;
+  final String military;
 
-  MilitaryType(final String millatryType) {
-    this.millatryType = millatryType;
-  }
-
-  public String getMillatryType() {
-    return millatryType;
+  MilitaryType(final String military) {
+    this.military = military;
   }
 }
