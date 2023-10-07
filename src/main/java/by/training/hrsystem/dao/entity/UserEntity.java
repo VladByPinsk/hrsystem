@@ -8,13 +8,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.UuidGenerator;
@@ -23,7 +19,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @ToString
 @Entity(name = "USER")
-public class User {
+public class UserEntity {
 
   @Id
   @UuidGenerator
@@ -69,7 +65,7 @@ public class User {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    User user = (User) o;
+    UserEntity user = (UserEntity) o;
     return contactPhone == user.contactPhone
         && Objects.equals(idUser, user.idUser)
         && Objects.equals(email, user.email)

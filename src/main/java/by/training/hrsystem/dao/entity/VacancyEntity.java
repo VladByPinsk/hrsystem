@@ -21,7 +21,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @ToString
 @Entity(name = "VACANCY")
-public class Vacancy {
+public class VacancyEntity {
   @Id
   @UuidGenerator
   @Column(name = "V_ID_VACANCY", nullable = false)
@@ -74,7 +74,7 @@ public class Vacancy {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Vacancy vacancy = (Vacancy) o;
+    VacancyEntity vacancy = (VacancyEntity) o;
     return Objects.equals(idVacancy, vacancy.idVacancy)
         && Objects.equals(idUser, vacancy.idUser)
         && Objects.equals(name, vacancy.name)
