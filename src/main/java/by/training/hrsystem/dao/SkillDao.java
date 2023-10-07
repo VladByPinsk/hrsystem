@@ -1,28 +1,23 @@
 package by.training.hrsystem.dao;
 
-import by.training.hrsystem.dao.exception.DAOException;
-import by.training.hrsystem.domain.Skill;
+import by.training.hrsystem.dao.entity.SkillEntity;
 import java.util.List;
 
 /**
- * Interface {@code SkillDAO} extends {@link CommonDao} and declare method than appropriate just
- * for {@link by.training.hrsystem.domain.Skill Skill} objects.
+ * The {@code SkillDAO} interface extends {@link CommonDao} and provides methods specifically
+ * designed for operations on {@link SkillEntity Skill Entity} objects.
  *
- * @author Vladislav
- * @see CommonDao
- * @see by.training.hrsystem.domain.Skill Skill
+ * @author Uladzislau Hapeyenka
  */
-public interface SkillDao extends CommonDao<Skill> {
+public interface SkillDao extends CommonDao<SkillEntity> {
   /**
-   * Method {@code getSkillByIdResume} allow to find list of skills objects by idResume
+   * Method {@code getSkillByIdResume} retrieves a list of skills associated with a specific resume,
+   * identified by its unique ID.
    *
-   * @param idResume key of entity,it will use to find list of resume languages objects from
-   *     database
-   * @return list of skills that belong to the given id resume.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding list of education.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Skill
+   * @param idResume the unique identifier of the resume whose associated skills are to be fetched.
+   * @return a list of {@link SkillEntity} objects corresponding to the provided resume ID.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  List<Skill> getSkillByIdResume(int idResume) throws DAOException;
+  List<SkillEntity> getSkillByIdResume(String idResume);
 }

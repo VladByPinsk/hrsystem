@@ -1,98 +1,78 @@
 package by.training.hrsystem.dao;
 
-import by.training.hrsystem.dao.exception.DAOException;
-import by.training.hrsystem.domain.User;
+import by.training.hrsystem.dao.entity.UserEntity;
 
 /**
- * Interface {@code UserDAO} extends {@link CommonDao} and declare method than appropriate just
- * for {@link by.training.hrsystem.domain.User User} objects.
+ * The {@code UserDAO} interface extends {@link CommonDao} and provides methods specifically
+ * tailored for operations on {@link UserEntity} objects.
  *
- * @author Vladislav
- * @see CommonDao
- * @see by.training.hrsystem.domain.User User
+ * @author Uladzislau Hapeyenka
  */
-public interface UserDao extends CommonDao<User> {
+public interface UserDao extends CommonDao<UserEntity> {
   /**
-   * Method {@code userAuthentication} allow login in the human resource system
+   * Method {@code userAuthentication} authenticates a user based on the provided login credentials.
    *
-   * @param email email of user
-   * @param password password of user
-   * @return user if that user exist.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while login in the system.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @param login the login of the user.
+   * @param password the password associated with the provided login.
+   * @return an instance of {@link UserEntity} if authentication is successful; otherwise, null.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the authentication process.
    */
-  User userAuthentication(String email, String password) throws DAOException;
+  UserEntity userAuthentication(String login, String password);
 
   /**
-   * Method {@code userAuthentication} allow to know that user exist or not
+   * Method {@code userAuthentication} checks if a user with the provided credentials exists in the
+   * system.
    *
-   * @param email user email
-   * @param password user password
-   * @return true if user exist or false if user not exist
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while login in the system.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @param login the user's login.
+   * @param password the password associated with the provided login.
+   * @return {@code true} if a user with the provided credentials exists; {@code false} otherwise.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the check.
    */
-  boolean userExist(String email, String password) throws DAOException;
+  boolean userExist(String login, String password);
 
   /**
-   * Method {@code getUserByEmail} allow to find user by email.
+   * Method {@code getUserByEmail} retrieves a user based on their email address.
    *
-   * @param email user email
-   * @return user object if user exist; else return null;
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding user by email.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @param email the email of the user to retrieve.
+   * @return an instance of {@link UserEntity} if a user with the given email exists; otherwise,
+   *     null.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  User getUserByEmail(String email) throws DAOException;
+  UserEntity getUserByEmail(String email);
 
   /**
-   * Method {@code getUserByIdVacancy} allow to find user by id vacancy.
+   * Method {@code getUserByIdVacancy} retrieves a user associated with a specific vacancy,
+   * identified by its unique ID.
    *
-   * @param idVcancy id vacancy
-   * @return user object if user exist; else return null;
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding user by id vacancy.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @param idVacancy the unique identifier of the vacancy.
+   * @return an instance of {@link UserEntity} if a user associated with the given vacancy ID
+   *     exists; otherwise, null.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  User getUserByIdVacancy(int idVcancy) throws DAOException;
+  UserEntity getUserByIdVacancy(String idVacancy);
 
   /**
-   * Method {@code getUserByIdResume} allow to find user by id resume.
+   * Method {@code getUserByIdResume} retrieves a user associated with a specific resume, identified
+   * by its unique ID.
    *
-   * @param idResume key of entity,it will use to find user object from database
-   * @return user user object if user exist; else return null;
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding user by id resume.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @param idResume the unique identifier of the resume.
+   * @return an instance of {@link UserEntity} if a user associated with the given resume ID exists;
+   *     otherwise, null.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  User getUserByIdResume(int idResume) throws DAOException;
+  UserEntity getUserByIdResume(String idResume);
 
   /**
-   * Method {@code countAllApplicants} allow to find count of all applicants.
+   * Method {@code countAllApplicants} calculates the total number of applicants in the system.
    *
-   * @return count of applicants.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of applicants.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
+   * @return the total number of applicants.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the calculation.
    */
-  int countAllApplicants() throws DAOException;
-
-  /**
-   * Method {@code deleteUser} allow to delete user.
-   *
-   * @param email user email
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of applicants.
-   * @see CommonDao
-   * @see by.training.hrsystem.domain.User User
-   */
-  void deleteUser(String email) throws DAOException;
+  int countAllApplicants();
 }

@@ -1,27 +1,26 @@
 package by.training.hrsystem.dao;
 
+import by.training.hrsystem.dao.entity.EducationEntity;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.domain.Education;
 import java.util.List;
 
 /**
- * Interface {@code EducationDAO} extends {@link CommonDao} and declare method than appropriate
- * just for {@link by.training.hrsystem.domain.Education Education} objects
+ * Interface {@code EducationDAO} extends the {@link CommonDao} interface for basic CRUD operations.
+ * Specifies the data access operations related to {@link EducationEntity EducationEntity} entities.
  *
- * @author Vladislav
- * @see CommonDao
- * @see by.training.hrsystem.domain.Education
+ * @author Uladzislau Hapeyenka
  */
-public interface EducationDao extends CommonDao<Education> {
+public interface EducationDao extends CommonDao<EducationEntity> {
   /**
-   * Method {@code getEducationByIdResume} allow to find list of education objects by idResume
+   * Method {@code getEducationByIdResume} retrieves a list of education records associated with the
+   * given resume ID.
    *
-   * @param idResume key of entity,it will use to find education object from database
-   * @return list of education that belong to the given id resume.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding list of education.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Education
+   * @param idResume The resume ID to filter education records.
+   * @return A list of education entities associated with the provided resume ID.
+   * @throws org.hibernate.HibernateException If an error occurs during the data retrieval
+   *     operation.
+   * @see by.training.hrsystem.dao.entity.EducationEntity
    */
-  List<Education> getEducationByIdResume(int idResume) throws DAOException;
+  List<EducationEntity> getEducationByIdResume(String idResume);
 }
