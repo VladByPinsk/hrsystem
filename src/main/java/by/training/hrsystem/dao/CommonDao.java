@@ -1,42 +1,35 @@
 package by.training.hrsystem.dao;
 
-import by.training.hrsystem.dao.exception.DAOException;
-
 /**
- * Interface {@code AbstractDAO} describe the basic methods interaction with the database
+ * Interface {@code CommonDao} defines the basic CRUD operations for interacting with the database.
+ * The interface uses generics to be adaptable for multiple entity types.
  *
- * @author Vladislav
- * @param <T> type of entity
+ * @author Uladzislau Hapeyenka
+ * @param <T> type of the entity
  */
 public interface CommonDao<T> {
 
   /**
-   * Method {@code add} allow to create entity object.
+   * Method {@code add} persists the given entity in the database.
    *
-   * @param entity object that will be created.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while creating entity.
-   * @see by.training.hrsystem.dao.exception.DAOException
+   * @param entity The entity to be persisted.
+   * @throws org.hibernate.HibernateException If an error occurs during the persist operation.
    */
-  void add(T entity) throws DAOException;
+  void add(T entity);
 
   /**
-   * Method {@code update} allow to update entity object.
+   * Method {@code update} Updates the state of the given entity in the database.
    *
-   * @param entity object that will be updated
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while updating entity.
-   * @see by.training.hrsystem.dao.exception.DAOException
+   * @param entity The entity with updated state to be applied.
+   * @throws org.hibernate.HibernateException If an error occurs during the update operation.
    */
-  void update(T entity) throws DAOException;
+  void update(T entity);
 
   /**
-   * Method {@code delete} allow to delete entity object.
+   * Method {@code delete} deletes the entity with the specified primary key from the database.
    *
-   * @param id primary key of entity,it will use for deleting entity from database
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while deleting entity.
-   * @see by.training.hrsystem.dao.exception.DAOException
+   * @param id The primary key of the entity to be deleted.
+   * @throws org.hibernate.HibernateException If an error occurs during the delete operation.
    */
-  void delete(int id) throws DAOException;
+  void delete(String id);
 }

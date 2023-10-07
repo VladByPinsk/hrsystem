@@ -1,104 +1,95 @@
 package by.training.hrsystem.dao;
 
-import by.training.hrsystem.dao.exception.DAOException;
+import by.training.hrsystem.dao.entity.ResumeEntity;
 import by.training.hrsystem.domain.Resume;
 import java.util.List;
 
 /**
- * Interface {@code ResumeDAO} extends {@link CommonDao} and declare method than appropriate just
- * for {@link by.training.hrsystem.domain.Resume Resume} objects
+ * The {@code ResumeDAO} interface provides methods specifically tailored for operations on {@link
+ * ResumeEntity} objects.
  *
- * @author Vladislav
- * @see CommonDao
- * @see by.training.hrsystem.domain.Resume
+ * @author Uladzislau Hapeyenka
  */
-public interface ResumeDao extends CommonDao<Resume> {
+public interface ResumeDao extends CommonDao<ResumeEntity> {
   /**
-   * Method {@code selectCountResume} allow to find count of all resume.
+   * Retrieves the total count of all resumes present in the database.
    *
-   * @return count of resume
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of resume.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @return the total number of resumes.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  int selectCountResume() throws DAOException;
+  int selectCountResume();
 
   /**
-   * Method {@code activateResume} allow to activate resume.
+   * Method {@code activateResume} activates the resume corresponding to the provided id.
    *
-   * @param resume object that will be update to active state
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while update resume to active state.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @param idResume the unique identifier of the resume to be activated.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the update operation.
    */
-  void activateResume(Resume resume) throws DAOException;
+  void activateResume(String idResume);
 
   /**
-   * Method {@code selectResumeById} allow to find resume by idResume.
+   * Method {@code selectResumeById} retrieves a resume based on its unique identifier.
    *
-   * @param idResume primary key of resume,it will use to find resume object from database
-   * @return object of {@link by.training.hrsystem.domain.Resume Resume} class if in database exist
-   *     resume with given id;otherwise returns {@link
-   *     by.training.hrsystem.dao.exception.DAODataDoesNotExistException
-   *     DAODataDoesNotExistException}
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while update resume to active state.
-   * @throws DAODataDoesNotExistException if in database not exist resume with given id.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @param idResume the unique identifier of the resume.
+   * @return the {@link ResumeEntity} object corresponding to the provided id, or null if not found.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  Resume selectResumeById(int idResume) throws DAOException;
+  ResumeEntity selectResumeById(String idResume);
 
   /**
-   * Method {@code selectResumeByApplicant} allow to find limit resume by applicant email.
+   * Method {@code selectResumeByApplicant} retrieves a limited list of resumes associated with a
+   * specific applicant.
    *
-   * @param applicantEmail email of applicant
-   * @param pageNum start field
-   * @param amountPerPage how many field i need
-   * @return limit list of resume
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding limit list of resume.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @param applicantId the unique identifier of the applicant.
+   * @param amount the number of resumes to retrieve.
+   * @return a limited list of resumes.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database
    */
-  List<Resume> selectResumeByApplicant(String applicantEmail, int pageNum, int amountPerPage)
-      throws DAOException;
+  List<ResumeEntity> selectResumeByApplicant(String applicantId, int amount);
 
   /**
-   * Method {@code selectResumeForVacancy} allow to find all resume by applicant to add to vacancy.
+   * Method {@code selectResumeForVacancy} retrieves all resumes associated with a specific
+   * applicant that can be added to a vacancy.
    *
-   * @param applicantEmail email of applicant
-   * @return list of all resume
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding all resume.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @param applicantId the unique identifier of the applicant.
+   * @return a list of all resumes corresponding to the provided applicant id.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  List<Resume> selectResumeForVacancy(String applicantEmail) throws DAOException;
+  List<ResumeEntity> selectResumeForVacancy(String applicantId);
 
   /**
-   * Method {@code selectListResumeByVacancy} allow to find all resume by idVacancy
+   * Method {@code selectListResumeByVacancy} retrieves all resumes associated with a specific
+   * vacancy based on its unique identifier.
    *
-   * @param idVacancy key of entity,it will use to find list of resume objects from database.
-   * @return list of resume objects
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding all resume by id vacancy.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Resume
+   * @param idVacancy the unique identifier of the vacancy.
+   * @return a list of resumes corresponding to the provided vacancy id.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  List<Resume> selectListResumeByVacancy(int idVacancy) throws DAOException;
+  List<ResumeEntity> selectListResumeByVacancy(String idVacancy);
 
   /**
-   * Method {@code selectCountResumeByEmail} allow to find count of resume that have applicant.
+   * Method {@code selectCountResumeByEmail} retrieves the count of resumes associated with a
+   * specific applicant.
    *
-   * @param applicantEmail email of applicant
-   * @return count of resume that have applicant
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of resume.
+   * @param applicantId the unique identifier of the applicant.
+   * @return the number of resumes linked to the provided applicant.
+   * @throws org.hibernate.HibernateException if there's an issue accessing the database or
+   *     interacting with the connection pool during the retrieval process.
    */
-  int selectCountResumeByEmail(String applicantEmail) throws DAOException;
+  int selectCountResumeByEmail(String applicantId);
 
-  List<Resume> selectLeftResume(int idVacancy, String applicantEmail) throws DAOException;
+  /**
+   * Method {@code selectResumeThatLeftUntouched} retrieves resumes for a given vacancy that haven't
+   * been acted upon by a specific applicant.
+   *
+   * @param idVacancy the unique identifier of the vacancy.
+   * @param applicantId the unique identifier of the applicant.
+   * @return a list of untouched resumes for the given criteria.
+   */
+  List<Resume> selectResumeThatLeftUntouched(String idVacancy, String applicantId);
 }

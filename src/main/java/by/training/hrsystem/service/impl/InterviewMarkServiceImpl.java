@@ -1,6 +1,6 @@
 package by.training.hrsystem.service.impl;
 
-import by.training.hrsystem.dao.InterviewMarkDao;
+import by.training.hrsystem.dao.ApplicationDao;
 import by.training.hrsystem.dao.exception.DAOException;
 import by.training.hrsystem.dao.factory.DAOFactory;
 import by.training.hrsystem.domain.InterviewMark;
@@ -31,7 +31,7 @@ public class InterviewMarkServiceImpl implements InterviewMarkService {
     }
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      InterviewMarkDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
+      ApplicationDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
       InterviewMark interviewMark = new InterviewMark();
       interviewMark.setSkill(skill);
       interviewMark.setMark(Parser.fromStringToSkill(mark));
@@ -50,7 +50,7 @@ public class InterviewMarkServiceImpl implements InterviewMarkService {
     List<InterviewMark> listInterviewMark = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      InterviewMarkDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
+      ApplicationDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
       listInterviewMark =
           interviewMarkDAO.selectMarkOfTechicalInterview(Parser.parseStringtoInt(idVerify));
     } catch (DAOException e) {
@@ -67,7 +67,7 @@ public class InterviewMarkServiceImpl implements InterviewMarkService {
     List<InterviewMark> listInterviewMark = null;
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      InterviewMarkDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
+      ApplicationDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
       listInterviewMark =
           interviewMarkDAO.selectMarkOfPreliminaryInterview(Parser.parseStringtoInt(idVerify));
     } catch (DAOException e) {
@@ -81,7 +81,7 @@ public class InterviewMarkServiceImpl implements InterviewMarkService {
     logger.debug("InterviewMarkServiceImpl.deleteInterviewMark : idMark={}", idMark);
     try {
       DAOFactory daoFactory = DAOFactory.getInstance();
-      InterviewMarkDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
+      ApplicationDao interviewMarkDAO = daoFactory.getInterviewMarkDAO();
       interviewMarkDAO.delete(Parser.parseStringtoInt(idMark));
     } catch (DAOException e) {
       throw new ServiceException("Service layer: can not delete interview mark");

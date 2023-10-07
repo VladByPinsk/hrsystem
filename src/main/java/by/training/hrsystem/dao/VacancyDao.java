@@ -1,228 +1,109 @@
 package by.training.hrsystem.dao;
 
-import by.training.hrsystem.dao.exception.DAOException;
-import by.training.hrsystem.domain.Vacancy;
+import by.training.hrsystem.dao.entity.VacancyEntity;
 import java.util.List;
 
 /**
- * Interface {@code VacancyDAO} extends {@link CommonDao} and declare method that appropriate just
- * for {@link by.training.hrsystem.domain.Vacancy Vacancy} objects.
+ * The {@code VacancyDAO} interface extends {@link CommonDao} and declares methods tailored
+ * specifically for operations involving {@link VacancyEntity} objects.
  *
- * @author Vladislav
- * @see CommonDao
- * @see by.training.hrsystem.domain.Vacancy Vacancy
+ * @author Uladzislau Hapeyenka
  */
-public interface VacancyDao extends CommonDao<Vacancy> {
-  /**
-   * Method {@code addTranslateVacancy} allow to create translation of object vacancy.
-   *
-   * @param vacancy object that will be created.
-   * @param lang language of translation.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while creating translation.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  void addTranslateVacancy(Vacancy vacancy, String lang) throws DAOException;
+public interface VacancyDao extends CommonDao<VacancyEntity> {
 
   /**
-   * Method {@code updateTranslateVacancy} allow to update translation of object vacancy.
+   * Method {@code selectCountVacancy} counts all the vacancies present in the system.
    *
-   * @param vacancy object that will be update.
-   * @param lang language of translation.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while updating translation.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @return the total count of all vacancies.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  void updateTranslateVacancy(Vacancy vacancy, String lang) throws DAOException;
+  int selectCountVacancy();
 
   /**
-   * Method {@code selectCountVacancy} allow to find count of all vacancies.
+   * Method {@code selectCountActiveVacancy} counts all the active vacancies present in the system.
    *
-   * @return count of all vacancies.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of vacancies.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @return the total count of active vacancies.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  int selectCountVacancy() throws DAOException;
+  int selectCountActiveVacancy();
 
   /**
-   * Method {@code selectCountActiveVacancy} allow to find count of all active vacancies.
+   * Method {@code selectNormalVacancyById} retrieves a specific vacancy based on its ID.
    *
-   * @return count of all active vacancies.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of all active vacancies.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param idVacancy the unique identifier of the vacancy.
+   * @return the corresponding vacancy object or null if not found.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  int selectCountActiveVacancy() throws DAOException;
+  VacancyEntity selectVacancyById(String idVacancy);
 
   /**
-   * Method {@code selectVacancyById} allow to find vacancy object by id depending on the selected
-   * language.
+   * Method {@code selectAllActiveVacancy} retrieves a limited list of active vacancies.
    *
-   * @param idVacancy key of entity,it will use to find vacancy object from database.
-   * @param lang the language in which the vacancy is displayed.
-   * @return vacancy object depending on the selected language.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object by id.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param amount the maximum number of vacancies to return.
+   * @return a list of active vacancies up to the specified amount.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  Vacancy selectVacancyById(int idVacancy, String lang) throws DAOException;
+  List<VacancyEntity> selectAllActiveVacancy(int amount);
 
   /**
-   * Method {@code selectTranslVacancyById} allow to find translation of vacancy object by id.
+   * Method {@code selectVacancyLike} searches for vacancies by their name.
    *
-   * @param idVacancy key of entity,it will use to find translation of vacancy object from database.
-   * @return translation of vacancy object.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding translation of vacancy object by id.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param name the name or partial name of the vacancy.
+   * @return a list of vacancies that match the given name.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  Vacancy selectTranslVacancyById(int idVacancy) throws DAOException;
+  List<VacancyEntity> selectVacancyLike(String name);
 
   /**
-   * Method {@code selectNormalVacancyById} allow to find vacancy object by id.
+   * Method {@code selectVacancyByHrEmail} retrieves vacancies associated with a specific human
+   * resource email.
    *
-   * @param idVacancy key of entity,it will use to find vacancy object from database.
-   * @return vacancy object.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object by id.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param hrEmail the email of the human resource.
+   * @param amount the maximum number of vacancies to return.
+   * @return a list of vacancies associated with the given HR email.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  Vacancy selectNormalVacancyById(int idVacancy) throws DAOException;
+  List<VacancyEntity> selectVacancyByHrEmail(String hrEmail, int amount);
 
   /**
-   * Method {@code translVacancyExist} lets you know if there is a translation of the vacancy.
+   * Method {@code selectCountVacancyByHrEmail} counts the number of vacancies associated with a
+   * specific human resource email.
    *
-   * @param idVacancy key of entity,it will use to find translation of vacancy object from database.
-   * @return true if translation exist and false if not.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object by id.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param idHr the email of the human resource.
+   * @return the number of vacancies linked with the HR email.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  boolean translExist(int idVacancy) throws DAOException;
+  int selectCountVacancyByHrId(String idHr);
 
   /**
-   * Method {@code selectAllVacancy} allow to find list of all vacancies objects depending on the
-   * selected language.
+   * Method {@code activateVacancy} activates a specified vacancy and updates its activation date.
    *
-   * @param lang the language in which the list of all vacancies objects are displayed.
-   * @return list of all vacancies objects depending on the selected language.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding list of all vacancies objects.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param idVacancy the unique identifier of the vacancy.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  List<Vacancy> selectAllVacancy(String lang) throws DAOException;
+  void activateVacancy(String idVacancy);
 
   /**
-   * Method {@code selectAllActiveVacancy} allow to find limit list of active vacancies objects
-   * depending on the selected language.
+   * Method {@code deactivateVacancy} deactivates a specified vacancy and marks it as "not hot".
    *
-   * @param lang the language in which the list of all vacancies objects are displayed.
-   * @param pageNum start field.
-   * @param amountPerPage how many fields I need.
-   * @return limit list of active vacancies objects depending on the selected language..
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding limit list of vacancies.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param idVacancy the unique identifier of the vacancy.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  List<Vacancy> selectAllActiveVacancy(String lang, int pageNum, int amountPerPage)
-      throws DAOException;
+  void deactivateVacancy(String idVacancy);
 
   /**
-   * Method {@code selectVacancyLike} allow to find list of vacancies objects by name.
+   * Method {@code hotVacancy} marks a specified vacancy as "hot".
    *
-   * @param name name of vacancy.
-   * @return list of vacancies objects with given name.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding list of vacancies objects.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @param idVacancy the unique identifier of the vacancy.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  List<Vacancy> selectVacancyLike(String name) throws DAOException;
+  void hotVacancy(String idVacancy);
 
   /**
-   * Method {@code selectVacancyByHrEmail} allow to find limit list of vacancies by human resource
-   * email.
+   * Method {@code selectAllHotVacancy} retrieves all vacancies marked as "hot".
    *
-   * @param hrEmail human resource email.
-   * @param pageNum start field.
-   * @param amountPerPage how many fields I need.
-   * @return limit list of vacancies by human resource email.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding limit list of resume.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
+   * @return a list of all hot vacancies.
+   * @throws org.hibernate.HibernateException in case of any database or connection pool issues.
    */
-  List<Vacancy> selectVacancyByHrEmail(String hrEmail, String lang, int pageNum, int amountPerPage)
-      throws DAOException;
-
-  /**
-   * Method {@code selectCountVacancyByHrEmail} allow to find count of all vacancies belonging to
-   * given human resource.
-   *
-   * @param hrEmail human resource email.
-   * @return count of all vacancies belonging to given human resource.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding count of all vacancies belonging to given human resource.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  int selectCountVacancyByHrEmail(String hrEmail) throws DAOException;
-
-  /**
-   * Method {@code activateVacancy} allow to set status of vacancy as "active" and add the date of
-   * activation.
-   *
-   * @param idVacancy key of entity,it will use to find vacancy object from database.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  void activateVacancy(int idVacancy) throws DAOException;
-
-  /**
-   * Method {@code deactivateVacancy} allow to set status of vacancy as "not hot" and "not active".
-   *
-   * @param idVacancy key of entity,it will use to find vacancy object from database.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  void deactivateVacancy(int idVacancy) throws DAOException;
-
-  /**
-   * Method {@code hotVacancy} allow to set status of vacancy as "hot".
-   *
-   * @param idVacancy key of entity,it will use to find vacancy object from database.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding vacancy object.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  void hotVacancy(int idVacancy) throws DAOException;
-
-  /**
-   * Method {@code selectAllHotVacancy} allow to find all hot vacancies objects depending on the
-   * selected language.
-   *
-   * @param lang the language in which list of hot vacancies objects are displayed.
-   * @return list of hot vacancies objects depending on the selected language.
-   * @throws DAOException if a database access error occurred or error interaction with connection
-   *     pool while finding list of hot vacancies objects.
-   * @see by.training.hrsystem.dao.exception.DAOException
-   * @see by.training.hrsystem.domain.Vacancy
-   */
-  List<Vacancy> selectAllHotVacancy(String lang) throws DAOException;
+  List<VacancyEntity> selectAllHotVacancy();
 }
