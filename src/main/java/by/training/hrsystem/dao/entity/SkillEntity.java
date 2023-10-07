@@ -15,37 +15,37 @@ import org.hibernate.annotations.UuidGenerator;
 @Getter
 @Setter
 @ToString
-@Entity(name = "SKILL_EVALUATION")
-public class SkillEvaluation {
+@Entity(name = "SKILL")
+public class SkillEntity {
 
   @Id
   @UuidGenerator
-  @Column(name = "SE_ID_SKILL_EVALUATION", nullable = false)
-  private String idEducation;
+  @Column(name = "S_ID_SKILL", nullable = false)
+  private String idSkill;
 
-  @Column(name = "I_ID_INTERVIEW", nullable = false)
-  private String idInterview;
+  @Column(name = "R_ID_RESUME", nullable = false)
+  private String idResume;
 
-  @Column(name = "SE_NAME", nullable = false)
+  @Column(name = "S_NAME", nullable = false)
   private String name;
 
   @Enumerated(EnumType.STRING)
-  @Column(name = "SE_SKILL_TYPE", nullable = false)
+  @Column(name = "S_SKILL_TYPE", nullable = false)
   private SkillType skillType;
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    SkillEvaluation that = (SkillEvaluation) o;
-    return Objects.equals(idEducation, that.idEducation)
-        && Objects.equals(idInterview, that.idInterview)
-        && Objects.equals(name, that.name)
-        && skillType == that.skillType;
+    SkillEntity skill = (SkillEntity) o;
+    return Objects.equals(idSkill, skill.idSkill)
+        && Objects.equals(idResume, skill.idResume)
+        && Objects.equals(name, skill.name)
+        && skillType == skill.skillType;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idEducation, idInterview, name, skillType);
+    return Objects.hash(idSkill, idResume, name, skillType);
   }
 }
